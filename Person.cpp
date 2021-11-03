@@ -1,6 +1,6 @@
 #include"DoHoa.h"
 #include"Film.h"
-#include<ctime>
+#include "Time.h"
 class Person
 {
 private:
@@ -41,23 +41,6 @@ public:
         cout << "Name: " << name << "      Age: " << age << "      Tel: " << tel << endl;
     }
 };
-string get_time()
-{
-	time_t now = time(0);
-	tm *ltm = localtime(&now);
-	return to_string(ltm->tm_hour) + ":" + to_string(ltm->tm_min) + ":" + to_string(ltm->tm_sec);
-}
-string get_day()
-{
-    time_t now=time(0);
-	tm *ltm = localtime(&now);
-	return to_string(ltm->tm_mday) + "/" + to_string(1 + ltm->tm_mon) + "/" + to_string(1900 + ltm->tm_year);
-}
-void intime()
-{
-	cout << " Thoi gian: " << get_time() << endl;
-	cout << " Ngay: " << get_day() << endl;
-}
 void us1()
 {
     
@@ -71,7 +54,7 @@ void thanhcong()
 	SetColor(0, 7);
 	cout << "------------------" << endl;
 }
-void DatVe()
+void DatVe() // viet trong phan quan ly ve
 {
     cout<<"Nhập số vé quý khách cần mua:"<<endl;
     int n;
@@ -109,84 +92,84 @@ void DatVe()
     thanhcong();
 }
 //chua co tham so
-void Person()
-{
-    system("cls");
-    SetColor(0,2);
-    cout<<"Đăng Nhập thành công!"<<endl;
-    SetColor(0,7);
-    cout<<"Xin chào";
-    SetColor(0,9);
-    //in họ tên
-    SetColor(0,14);
-    cout<<"\n1.Xem Hom nay co phim gi:"<<endl;
-    cout<<"\n2.Tim kiem Phim theo the loai:"<<endl;
-    cout<<"\n3.Search Phim"<<endl;
-    cout<<"\n4.Doi mat khau"<<endl;
-    SetColor(0,7);
-    int ma;
-    cout<<"Nhập lựa chọn của bạn:"<<endl;
-    cout<<" "<<(char)16<<(char)16;
-    cin>>ma;
-    switch(ma)
-    {
-        case 1:
-         int lenh;
-        //  Film F;
-        // F.Phim();
-         cout<<"\n1.Đặt vé"<<endl;
-         cout<<"2.Trở vể màn hình chọn"<<endl;
-         SetColor(0,7);
-         cout<<(char)16<<(char)16;
-         cin>>lenh;
-         if(lenh==2)
-         {
-             system("cls");
-             //chua co tham so
-             Person();
-         }
-         if(lenh==1)
-         {
-             DatVe();
-             int lenh;
-             cout<<"----------------------";
-             cout<<"bạn có muốn làm gì nữa không?"<<endl;
-            SetColor(0,14);
-            cout<<"1.Trở về màn hình chọn"<<endl;
-            cout<<"2.kết thúc"<<endl;
-            SetColor(0,7);
-            cout<<" "<<(char)16<<(char)16;
-            cin>>lenh;
-            if(lenh==1)
-            {
-                system("cls");
-                Person();
-            }
-         } 
-            break;
-        case 2:
-        // Film F1;
-        // F1.TimkiemPhim();
-        int lenh;
-             cout<<"----------------------";
-             cout<<"bạn có muốn làm gì nữa không?"<<endl;
-            SetColor(0,14);
-            cout<<"1.Trở về màn hình chọn"<<endl;
-            cout<<"2.kết thúc"<<endl;
-            SetColor(0,7);
-            cout<<" "<<(char)16<<(char)16;
-            cin>>lenh;
-            if(lenh==1)
-            {
-                system("cls");
-                Person();
-            }
-            break;
-        case 3:
-            break;
-        case 4:
-            break;
+// void Person()
+// {
+//     system("cls");
+//     SetColor(0,2);
+//     cout<<"Đăng Nhập thành công!"<<endl;
+//     SetColor(0,7);
+//     cout<<"Xin chào";
+//     SetColor(0,9);
+//     //in họ tên
+//     SetColor(0,14);
+//     cout<<"\n1.Xem Hom nay co phim gi:"<<endl;
+//     cout<<"\n2.Tim kiem Phim theo the loai:"<<endl;
+//     cout<<"\n3.Search Phim"<<endl;
+//     cout<<"\n4.Doi mat khau"<<endl;
+//     SetColor(0,7);
+//     int ma;
+//     cout<<"Nhập lựa chọn của bạn:"<<endl;
+//     cout<<" "<<(char)16<<(char)16;
+//     cin>>ma;
+//     switch(ma)
+//     {
+//         case 1:
+//          int lenh;
+//         //  Film F;
+//         // F.Phim();
+//          cout<<"\n1.Đặt vé"<<endl;
+//          cout<<"2.Trở vể màn hình chọn"<<endl;
+//          SetColor(0,7);
+//          cout<<(char)16<<(char)16;
+//          cin>>lenh;
+//          if(lenh==2)
+//          {
+//              system("cls");
+//              //chua co tham so
+//              Person();
+//          }
+//          if(lenh==1)
+//          {
+//              DatVe();
+//              int lenh;
+//              cout<<"----------------------";
+//              cout<<"bạn có muốn làm gì nữa không?"<<endl;
+//             SetColor(0,14);
+//             cout<<"1.Trở về màn hình chọn"<<endl;
+//             cout<<"2.kết thúc"<<endl;
+//             SetColor(0,7);
+//             cout<<" "<<(char)16<<(char)16;
+//             cin>>lenh;
+//             if(lenh==1)
+//             {
+//                 system("cls");
+//                 Person();
+//             }
+//          } 
+//             break;
+//         case 2:
+//         // Film F1;
+//         // F1.TimkiemPhim();
+//         int lenh;
+//              cout<<"----------------------";
+//              cout<<"bạn có muốn làm gì nữa không?"<<endl;
+//             SetColor(0,14);
+//             cout<<"1.Trở về màn hình chọn"<<endl;
+//             cout<<"2.kết thúc"<<endl;
+//             SetColor(0,7);
+//             cout<<" "<<(char)16<<(char)16;
+//             cin>>lenh;
+//             if(lenh==1)
+//             {
+//                 system("cls");
+//                 Person();
+//             }
+//             break;
+//         case 3:
+//             break;
+//         case 4:
+//             break;
     
-    } 
-} 
+//     } 
+// } 
 

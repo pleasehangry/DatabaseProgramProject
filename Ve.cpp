@@ -13,9 +13,9 @@ Ve::Ve(string MaVe, string TenLoaiVe, string LoaiPhim, string LoaiKhachHang, int
 Ve::~Ve(){}
 
 void Ve::Display(){
-    cout << "Mã Vé: " << this->MaVe  << endl;
-    cout << "Tên Loại Vé: " << this->TenLoaiVe << endl;
-    cout << "Loại Phim: " << this->LoaiPhim << endl;
-    cout << "Loại Khách Hàng: " << this->LoaiKhachHang << endl;
-    cout << "Giá Vé: " << this->GiaLoaiVe << endl;
+    cout << "Ma Ve: " << this->MaVe  << endl;
+    cout << "Ten Loai Ve: " << this->TenLoaiVe << endl;
+    cout << "Loai Phim: " << this->LoaiPhim << endl;
+    cout << "Loai Khach Hang: " << this->LoaiKhachHang << endl;
+    cout << "Gia Ve: " << this->GiaLoaiVe << endl;
 }
