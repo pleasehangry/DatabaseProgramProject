@@ -148,8 +148,9 @@ void QuanLyLichChieu::setLichChieu(){
     DocFile_Phim(QLP);
     DocFile_PC(QLPC);
     LichChieu temp;
-    string ngay, gio, phongchieu;
-    string MsPhim;
+    string ngay, gio, phongchieu,MsPhim, maLichChieu;
+    cin >> maLichChieu;
+    temp.setMaLichChieu(maLichChieu);
     QLP.Show();
     cout << "Nhap Ma So Phim Ban Muon Len Lich: "; cin >> MsPhim;
     int k = QLP.checkMSFilm(MsPhim);

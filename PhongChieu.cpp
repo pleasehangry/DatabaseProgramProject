@@ -67,13 +67,13 @@ PhongChieu::PhongChieu(const PhongChieu& p){
 }
 
 void PhongChieu::Display2(){
-    cout << "Mã Phòng Chiếu: " << this->MaPhongChieu << endl;
-    cout << "Số Chỗ: " << this->SoCho << endl;
-    cout << "Loại Máy Chiếu: " << this->MayChieu << endl;
-    cout << "Loại Âm Thanh: " << this->AmThanh << endl;
-    cout << "Diện Tích: " << this->DienTich << "mét vuông" << endl;
+    cout << "Ma Phong Chieu: " << this->MaPhongChieu << endl;
+    cout << "So Ghe: " << this->SoCho << endl;
+    cout << "Loai May Chieu: " << this->MayChieu << endl;
+    cout << "Loai Am Thanh: " << this->AmThanh << endl;
+    cout << "Dien Tich: " << this->DienTich << "met vuong" << endl;
     cout << "Tinh Trang: "  << this->TinhTrang << endl;
-    cout << "Mã Bảo Vệ: " << this->MaBaoVe << endl;
+    cout << "Ma Bao Ve: " << this->MaBaoVe << endl;
 }
 
 void PhongChieu::Display(){
