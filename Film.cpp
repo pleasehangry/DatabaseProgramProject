@@ -14,6 +14,9 @@ Film::Film(string maPhim, string tenPhim, string theLoai, string thoiLuong, stri
     this->namCongChieu = namCongChieu;
     this->quocGia = quocGia;
 }
+Film::~Film()
+{
+}
 
 void Film::setMaPhim(string maPhim)
 {
@@ -97,33 +100,3 @@ void Film::Display2(){
     cout << "Quoc Gia: " << this->quocGia << endl;
 }
 
-void Film::ShowMenu()
-{
-    cout<<"\n1.Xem Hom nay co phim gi:"<<endl;
-    cout<<"\n2.Tim kiem Phim theo the loai:"<<endl;
-    cout<<"\n3.Search Phim"<<endl;
-    cout<<"\n4.Doi mat khau"<<endl;
-}
-void Film::Phim()
-{
-   //đọc file và in ra 
-}
-void Film::TimkiemPhim()
-{ //in các thể loại của phim ra:
-  //khach hang chọn the loai
-  //in ra du lieu phim cua the loai do
-  /*in ra 3 sự lựa chọn:1.xem thông tin phim
-                         2.chon mua ve
-                         3.quay lại menu chinh*/ 
-}
-void Film::searchFilm()
-{
-    //khách hàng nhập tên phim muốn tìm kiếm
-    //Nếu có trong file Film.cvs thì in ra
-    /*in ra 3 sự lựa chọn:1.xem thông tin phim
-                         2.chon mua ve
-                         3.quay lại menu chinh*/
-    //nếu không in ra:"Hom nay không chiếu"
-    
-}
-Film::~Film(){};

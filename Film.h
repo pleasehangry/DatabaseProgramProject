@@ -1,5 +1,6 @@
 #include<iostream>
 #include<iomanip>
+#include<string>
 #pragma once
 using namespace std;
 
@@ -35,9 +36,5 @@ public:
     string getQuocGia();
     void Display();
     void Display2();
-    void ShowMenu();
-    void Phim();
-    void searchFilm();
-    void TimkiemPhim();
     ~Film();
 };

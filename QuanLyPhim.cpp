@@ -1,7 +1,7 @@
 #include "QuanLyPhim.h"
 QuanLyPhim::QuanLyPhim()
 {
-    this->p = NULL;
+    this->p = nullptr;
     this->n = 0;
 }
 
@@ -19,7 +19,7 @@ void QuanLyPhim::Add_Film(const Film &f)
     }
     else
     {
-        Film *temp = new Film[this->n + 1];
+        Film *temp = new Film[this->n];
         for (int i = 0; i < this->n; i++)
         {
             *(temp + i) = *(this->p + i);
@@ -63,19 +63,9 @@ int QuanLyPhim::checkMSFilm(string s)
     }
     return index;
 }
-
-// int QuanLyPhim::IndexOf(string k){
-//     int index = -1;
-//     for(int i = 0; i < this->n; i++){
-//         if((this->p+i)->getMaPhim() == k){
-//             index =
-//         }
-//     }
-// }
-
 void QuanLyPhim::Update_Film(string m)
 {
-    int i = checkMSFilm("m");
+    int i = checkMSFilm(m);
     if(i >= 0){
         if (m == (this->p + i)->getMaPhim())
         {
@@ -120,7 +110,6 @@ void QuanLyPhim::Update_Film(string m)
     else cout << "Khong Tim Thay Ma Phim Can Sua!";
     cout << endl;
 }
-
 void QuanLyPhim::Delete_Film(string m)
 {
     int f = checkMSFilm(m);

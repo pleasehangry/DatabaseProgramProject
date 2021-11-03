@@ -12,7 +12,8 @@ public:
     void Show();
     void Add_Film(const Film&);
     int checkMSFilm(string);
-    int IndexOf(string);
     void Update_Film(string);
+    // void TimKiem_Film(string);
     void Delete_Film(string);
+    
 };
