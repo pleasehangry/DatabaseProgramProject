@@ -1,50 +1,62 @@
 #include"DoHoa.h"
 #include"Film.h"
 #include "Time.h"
-class Person
-{
-private:
-    string name;
-    int age;
-    string tel;
-public:
-    Person(){};
-    void setPerson(){
-        cout << "Name: "; cin >> name;
-        cout << endl << "Age: "; cin >> age;
-        cout << endl << "Telephone: "; cin >> tel;
+#include "DocFile.h"
+
+
+QuanLyPhim QLP;
+QuanLyNhanVien QLNV;
+vector<Customer> CTM;
+QLPhongChieu QLPC;
+QuanLyLichChieu QLLC;
+QuanLyVe QLV;
+
+int SoKhach;
+
+
+void DatVe(){
+    string maPhim,maXuatChieu;
+    int SoVe;
+    DocFile(QLNV, QLP, QLLC, QLPC, QLV, CTM, SoKhach);
+    cout << "Nhap Ma Phim Ban Muon Dat Ve: ";
+    cin >> maPhim;
+
+    while(QLP.checkMSFilm(maPhim)<0){
+        cout << "Khong Co Ma Phim Nao Trung Khop, Xin Nhap Lai: ";
+        cin >> maPhim;
     }
-    Person(string name, int age, string tel){
-        this->name = name;
-        this->age = age;
-        this->tel = tel;
+    system("cls");
+    QLLC.Show();
+    cout << "Nhap Ma Xuat Chieu: ";
+    cin >> maXuatChieu;
+    while(QLLC.checkMaLichChieu(maXuatChieu) < 0){
+        cout << "Khong Co Ma Xuat Chieu Nao Trung Khop, Xin Nhap Lai: ";
+        cin >> maXuatChieu;
     }
-    void setName(string name){
-        this->name = name;
+    int k = QLLC.checkMaLichChieu(maXuatChieu);
+    string a = (QLLC.p + k)->getPhongChieu();
+    int h = QLPC.checkMSPC(a);
+    system("cls");
+    cout << "Ban Muon Dat Bao Nhieu Ve? ";
+    cin >> SoVe;
+    (QLV.p + QLV.GetMaVe(maPhim))->ThemSoVeDaBan(SoVe);
+    (QLPC.p + h)->DisplayTable();
+    cout << "Nhap Ghe Ma Ban Muon Dat: ";
+    for(int i = 0; i < SoVe; i++)
+    {
+        string maGhe;
+        cin >> maGhe;
     }
-    void setAge(int age){
-        this->age = age;
-    }
-    void setTel(string tel){
-        this->tel = tel;
-    }
-    string getName(){
-        return name;
-    }
-    int getAge(){
-        return age;
-    }
-    string getTel(){
-        return tel;
-    }
-    void display(){
-        cout << "Name: " << name << "      Age: " << age << "      Tel: " << tel << endl;
-    }
-};
+    cout << "Xong. Ban Hay Kiem Tra Gmail De Co Them Thong Tin Chi Tiet" << endl;
+
+}
+
+
 void us1()
 {
     
 }
+
 void thanhcong()
 {
 	cout << "------------------" << endl;
@@ -54,44 +66,7 @@ void thanhcong()
 	SetColor(0, 7);
 	cout << "------------------" << endl;
 }
-void DatVe() // viet trong phan quan ly ve
-{
-    cout<<"Nhập số vé quý khách cần mua:"<<endl;
-    int n;
-    cin>>n;
-    cout<<"Nhập mã vé mà quý khách muốn mua:"<<endl;
-    SetColor(0, 7);
-		while (n > 0)
-		{
-			n--;
-			int ms;
 
-			cout << " " << (char)16 << (char)16;
-			cin >> ms;
-            SetColor(0,2);
-            cout<<"Quý khách đặt vé xem Phim tên :";
-            //
-		} 
-        int lc2;
-    cout<<"Quý khách thanh toán bằng:"<<endl;
-    cout<<"1.tiền mặt."<<endl;
-    cout<<"2.chuyển ngân hàng."<<endl;
-    cin>>lc2;
-    if(lc2==1)
-    {
-
-    }
-    if(lc2==2)
-    {
-
-    }
-    else
-    {
-        cout<<"mời quý khách nhập lại."<<endl;
-    }
-    thanhcong();
-}
-//chua co tham so
 // void Person()
 // {
 //     system("cls");
@@ -131,9 +106,8 @@ void DatVe() // viet trong phan quan ly ve
 //          if(lenh==1)
 //          {
 //              DatVe();
-//              int lenh;
+//              int lenh2;
 //              cout<<"----------------------";
-//              cout<<"bạn có muốn làm gì nữa không?"<<endl;
 //             SetColor(0,14);
 //             cout<<"1.Trở về màn hình chọn"<<endl;
 //             cout<<"2.kết thúc"<<endl;
@@ -152,7 +126,6 @@ void DatVe() // viet trong phan quan ly ve
 //         // F1.TimkiemPhim();
 //         int lenh;
 //              cout<<"----------------------";
-//              cout<<"bạn có muốn làm gì nữa không?"<<endl;
 //             SetColor(0,14);
 //             cout<<"1.Trở về màn hình chọn"<<endl;
 //             cout<<"2.kết thúc"<<endl;

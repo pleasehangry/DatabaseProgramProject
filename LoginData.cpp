@@ -2,10 +2,12 @@
 
 
 
-Customer::Customer(string Gmail, string MatKhau)
+Customer::Customer(string Gmail, string MatKhau, string LoaiKhachHang)
 {
     this->Gmail = Gmail;
     this->MatKhau = MatKhau;
+    this->HoTen = Gmail;
+    this->LoaiKhachHang = LoaiKhachHang;
 }
 
 Customer::~Customer()

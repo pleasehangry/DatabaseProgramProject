@@ -23,4 +23,5 @@ public:
     void XemDSPhimCuaTheLoai(string);
     void TimKiemPhim();
     void MenuChoKhach();
+    friend void XemLichChieuCuaPhim(string);
 };

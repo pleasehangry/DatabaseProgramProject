@@ -1,6 +1,7 @@
 #include "QuanLyLichChieu.h"
 #include "DocFile.h"
 
+
 QuanLyLichChieu::QuanLyLichChieu(/* args */)
 {
     this->p = NULL;
@@ -181,4 +182,23 @@ void QuanLyLichChieu::setLichChieu(){
         cout << endl;
     }
     this->Add_LichChieu(temp);
+}
+
+void QuanLyLichChieu::XemLichChieuCuaPhim(string m){
+    QuanLyPhim QLP;
+    DocFile_Phim(QLP);
+    int k = QLP.checkMSFilm(m);
+    string n = QLP.getFimlName(k);
+    for (int i = 0; i < this->n; i++)
+    {
+        if((this->p +i)->getTenPhim() == n){
+            TieuDeCot();
+            for (int i = 0; i < this->n; i++)
+            {
+                cout << endl;
+                (p + i)->Display();
+            }
+        }
+    }
+    
 }

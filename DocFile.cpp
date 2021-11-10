@@ -1,12 +1,13 @@
 #include "DocFile.h"
 
-void DocFile(QuanLyNhanVien& QLNV,QuanLyPhim& QLP,QuanLyLichChieu& QLLC, QLPhongChieu& QLPC ,vector<Customer>& CTM, int& SoKhach){
+void DocFile(QuanLyNhanVien& QLNV,QuanLyPhim& QLP,QuanLyLichChieu& QLLC, QLPhongChieu& QLPC , QuanLyVe& QLV ,vector<Customer>& CTM, int& SoKhach){
     
     DocFile_Khach(CTM,SoKhach);
     DocFile_Phim(QLP);
     DocFile_PC(QLPC);
     DocFile_NV(QLNV);
     DocFile_LichChieu(QLLC);
+    DocFile_Ve(QLV);
 }
 
 void DocFile_Khach(vector<Customer>& CTM, int& SoKhach){
@@ -38,7 +39,7 @@ void DocFile_Phim(QuanLyPhim& QLP){
         getline(ip2,tl,',');
         getline(ip2,ti,',');
         getline(ip2,dd,',');
-        getline(ip2,dds,',');
+        getline(ip2,dds,',');   
         getline(ip2,ye,',');
         getline(ip2,qg,'\n');
         Film temp(mp,tp,tl,ti,dd,dds,ye,qg);
@@ -96,6 +97,26 @@ void DocFile_LichChieu(QuanLyLichChieu& QLLC){
         getline(ip5,PhongChieu,'\n');
         LichChieu temp(MaLichChieu,TenPhim,Ngay,Gio,PhongChieu);
         QLLC.Add_LichChieu(temp);
+    }
+    ip5.close();
+}
+
+void DocFile_Ve(QuanLyVe& QLV){
+    ifstream ip5("Ve.csv");
+    while(ip5.peek()!= EOF){
+        string MaVe,MaPhim,LoaiKhachHang;
+        string GiaLoaiVe1, SoLuong1, SoVeDaBan1;
+        getline(ip5,MaVe,',');
+        getline(ip5,MaPhim,',');
+        getline(ip5,LoaiKhachHang,',');
+        getline(ip5,GiaLoaiVe1,',');
+        getline(ip5,SoLuong1,',');
+        getline(ip5,SoVeDaBan1,'\n');
+        int GiaLoaiVe = stoi(GiaLoaiVe1);
+        int SoLuong = stoi(SoLuong1);
+        int SoVeDaBan = stoi(SoVeDaBan1);
+        Ve temp(MaVe,MaPhim,LoaiKhachHang,GiaLoaiVe,SoLuong,SoVeDaBan);
+        QLV.Add_Ve(temp);
     }
     ip5.close();
 }

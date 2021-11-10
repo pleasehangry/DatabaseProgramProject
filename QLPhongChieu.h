@@ -16,4 +16,5 @@ public:
     void Update_PC(string m);
     void Delete_PC(string m);
     friend void UpdateFile_PC(QLPhongChieu&);
+    friend void DatVe();
 };

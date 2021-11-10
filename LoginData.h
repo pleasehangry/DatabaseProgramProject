@@ -9,8 +9,9 @@ private:
     string Gmail;
     string MatKhau;
 public:
+    string LoaiKhachHang;
     string HoTen;
-    Customer(string = "Unknown", string = "Unknown");
+    Customer(string = "Unknown", string = "Unknown", string = "Member");
     ~Customer();
     void setGmail(string);
     void setMatKhau(string);
