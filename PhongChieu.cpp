@@ -1,4 +1,5 @@
 #include"PhongChieu.h"
+
 PhongChieu::PhongChieu(string MaPhongChieu, int SoCho, string MayChieu, string AmThanh, float DienTich, string TinhTrang, string MaBaoVe){
     this->MaPhongChieu = MaPhongChieu;
     this->SoCho = SoCho;
@@ -86,20 +87,41 @@ void PhongChieu::Display(){
     cout << setw(20) << left << this->MaBaoVe << endl;
 }
 
-vector<int> PhongChieu::DocFileDatGhe(){
-    ifstream ip2(this->getMaPhongChieu() + ".txt");
+void PhongChieu::DocFileDatGhe(vector<int>& A){
+    ifstream ip2;
+    ip2.open(this->getMaPhongChieu() + ".txt", ios::in);
     int check;
-    vector<int> A;
     while(ip2.peek()!= EOF){
         ip2 >> check;
         A.push_back(check);
     }
     ip2.close();
-    return A;
 }
 
-bool PhongChieu::isReserved(int k){
-    vector<int> A = DocFileDatGhe();
+void PhongChieu::DatGhe(int n){
+    for(int i = 0; i < n; i++){
+        cout << "Nhap Ghe Ma Ban Muon Dat: ";
+        int ghe;
+        cin >> ghe;
+        while(i < 0 || i > this->SoCho){
+            cout << "Vui Long Nhap Lai: ";
+            cin >> ghe;
+        }
+        this->GhiFileDatGhe(ghe);
+    }
+}
+void PhongChieu::GhiFileDatGhe(int ghe){
+    fstream ip1;
+    ip1.open(this->getMaPhongChieu() + ".txt", ios::app);
+    if(ip1.is_open()){
+        ip1.seekp(0,ios::end);
+        ip1 << endl;
+        ip1 << ghe;
+        ip1.close();
+    }
+}
+
+bool PhongChieu::isReserved(vector<int>& A, int k){
     for (int  i = 0; i < A.size(); i++)
     {
         if(k == A[i]){
@@ -111,22 +133,24 @@ bool PhongChieu::isReserved(int k){
 }
 
 void PhongChieu::DisplayTable(){
+    vector<int> A;
+    DocFileDatGhe(A);
     int Ghe[1000];
     for (int i = 1; i <= this->SoCho; i++)
     {   
         Ghe[i] = i;
     }
-
+    
     cout <<"\t\t  Man Hinh Chieu" << endl;
     cout << "       ";
     for(int i = 0; i < 5; i++) cout << "________";
     cout << endl;
     for(int i = 0; i < this->SoCho/10; i++){
         for(int j = 1; j <= 10; j++){
-            if(isReserved(Ghe[i*10 + j])){
+            if(this->isReserved(A,i*10 + j)){
                 SetColor(0,5);
                 cout << setw(5) << Ghe[i*10 + j];
-                SetColor(0,2);
+                SetColor(0,7);
             }
             else cout << setw(5) << Ghe[i*10 + j];
         }

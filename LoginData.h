@@ -8,6 +8,7 @@ class Customer
 private:
     string Gmail;
     string MatKhau;
+    int SoDu;
 public:
     string LoaiKhachHang;
     string HoTen;

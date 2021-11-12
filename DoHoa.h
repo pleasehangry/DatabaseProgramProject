@@ -1,6 +1,8 @@
 #pragma once
 #include <iostream>
 #include <windows.h>
+#include <stdlib.h>
+#include <string>   
 using namespace std;
 #include <stdio.h>
 #include <conio.h>
