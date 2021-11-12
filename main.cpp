@@ -24,7 +24,6 @@ using namespace std;
 // QuanLyLichChieu QLLC;
 // int SoKhach;
 int main(){
-    // DatVe();
     DatVe();
     return 0;
 }

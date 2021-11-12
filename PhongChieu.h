@@ -38,8 +38,13 @@ public:
     string getTinhTrang();
     string getMaBaoVe();
 
-    vector<int> DocFileDatGhe();
+    bool isReserved(vector<int>&, int);
 
+    void DatGhe(int);
+
+
+    void DocFileDatGhe(vector<int>&);
+    void GhiFileDatGhe(int);
     void DisplayTable();
 
     void Display2();

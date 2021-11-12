@@ -41,12 +41,7 @@ void DatVe(){
     cin >> SoVe;
     (QLV.p + QLV.GetMaVe(maPhim))->ThemSoVeDaBan(SoVe);
     (QLPC.p + h)->DisplayTable();
-    cout << "Nhap Ghe Ma Ban Muon Dat: ";
-    for(int i = 0; i < SoVe; i++)
-    {
-        string maGhe;
-        cin >> maGhe;
-    }
+    (QLPC.p + h)->DatGhe(SoVe);
     cout << "Xong. Ban Hay Kiem Tra Gmail De Co Them Thong Tin Chi Tiet" << endl;
 
 }
