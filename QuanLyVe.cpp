@@ -1,8 +1,7 @@
 #include "QuanLyVe.h"
-#include"DoHoa.h"
-#include"QuanLyPhim.h"
-#include"Time.h"
-#include"DocFile.h"
+#include "DocFile.h"
+
+
 QuanLyVe::QuanLyVe(/* args */)
 {
     this->p = NULL;
@@ -22,7 +21,7 @@ void QuanLyVe::Add_Ve(Ve v){
         *(this->p + this->n) = v;
     }
     else{
-        Ve *temp = new Ve[this->n];
+        Ve *temp = new Ve[this->n+1];
         for(int i = 0; i < this->n; i++){
             *(temp+i) = *(this->p+i);
         }
@@ -38,13 +37,13 @@ void QuanLyVe::Add_Ve(Ve v){
 }
 
 void QuanLyVe::Show(){
-    cout << setw(25) << left << "Mã Phòng Chiếu:" << "|";
-    cout << setw(20) << left << " Số Chỗ:" << "|";
-    cout << setw(20) << left << " Máy Chiếu:" << "|";
-    cout << setw(20) << left << " Âm Thanh:" << "|";
-    cout << setw(20) << left << " Diện Tích:" << "|";
-    cout << setw(20) << left << " Tình trạng:" << "|";
-    cout << setw(20) << left << " Mã Bảo Vệ:" << endl;
+    cout << setw(15-1) << left <<  "Ma Ve: " <<   "| ";
+    cout << setw(15-1) << left <<  "Ma Phim: " <<  "| ";
+    cout << setw(20-1) << left <<  "Loai Khach Hang: "  <<  "| ";
+    cout << setw(15-1) << left <<  "Gia Ve: " << "| ";
+    cout << setw(15-1) << left <<  "So Luong: "  <<  "| ";
+    cout << setw(15-1) << left <<  "So Ve Da Ban: "  <<  "| ";
+    cout << setw(15-1) << left <<  "Thanh Tien: " << endl;
     for(int i= 0; i < this->n; i++){
         (p+i)->Display();
     }
@@ -55,7 +54,7 @@ int QuanLyVe::checkMaVe(string s)
     int index = -1;
     for (int i = 0; i < this->n; i++)
     {
-        if (s == (this->p + i)->GetMaVe())
+        if (s == (this->p + i)->getMaVe())
         {
             index = i;
             break;
@@ -64,51 +63,46 @@ int QuanLyVe::checkMaVe(string s)
     return index;
 }
 
-// void QuanLyVe::Update_Ve(string m)
-// {
-//     int i = checkMAdd_Ve("m");
-//     if(i >= 0){
-//         if (m == (this->p + i)->getMaVe())
-//         {
-//             string a,c,d,f,g;
-//             int b;
-//             float e;
-//             system("cls");
-//             (this->p + i)->Display();
-//             cout << "Nhập Mã Phòng Chiếu: ";
-//             fflush(stdin);
-//             getline(cin, a);
-//             cout << "Nhập Số Chỗ: ";
-//             cin >> b;
-//             cout << "Nhập Máy Chiếu: ";
-//             fflush(stdin);
-//             getline(cin, c);
-//             cout << "Nhập Âm Thanh: ";
-//             fflush(stdin);
-//             getline(cin, c);
-//             cout << "Nhập Diện Tích: ";
-//             cin >> e;
-//             cout << "Nhập Tình Trạng: ";
-//             fflush(stdin);
-//             getline(cin, f);
-//             cout << "Nhập Mã Bảo Vệ: ";
-//             fflush(stdin);
-//             getline(cin, g);
-//             (this->p + i)->setMaVe(a);
-//             (this->p + i)->setSoCho(b);
-//             (this->p + i)->setMayChieu(c);
-//             (this->p + i)->setAmThanh(d);
-//             (this->p + i)->setDienTich(e);
-//             (this->p + i)->setTinhTrang(f);
-//             (this->p + i)->setMaBaoVe(g);
-//         }
-//     }
-//     else cout << "Khong Tim Thay Ma Phim Can Sua!";
-//     cout << endl;
-// }
+void QuanLyVe::Update_Ve(string m)
+{
+    int i = checkMaVe("m");
+    if(i >= 0){
+        if (m == (this->p + i)->getMaVe())
+        {
+            string a,b,c;
+            int d,e,f;
+            system("cls");
+            (this->p + i)->Display();
+            cout << "Nhap Ma Ve Moi: ";
+            fflush(stdin);
+            getline(cin, a);
+            cout << "Nhap Ma Phim: ";
+            fflush(stdin);
+            getline(cin, b);
+            cout << "Nhap Loai Khach Hang: ";
+            fflush(stdin);
+            getline(cin, c);
+            cout << "Nhap Gia Ve: ";
+            cin >> d;
+            cout << "Nhap So Luong: ";
+            cin >> e;
+            cout << "Nhap So Ve Da Ban: ";
+            cin >> f;
+            (this->p + i)->setMaVe(a);
+            (this->p + i)->setMaPhim(b);
+            (this->p + i)->setLoaiKhachHang(c);
+            (this->p + i)->setGiaLoaiVe(d);
+            (this->p + i)->setSoLuong(e);
+            (this->p + i)->setSoVeDaBan(f);
+            (this->p + i)->ThanhTien();
+        }
+    }
+    else cout << "Khong Tim Thay Ma Phim Can Sua!";
+    cout << endl;
+}
 
 void QuanLyVe::Delete_Ve(string m)
-{ 
+{
     int f = checkMaVe(m);
     if (f >= 0)
     {
@@ -142,52 +136,40 @@ void QuanLyVe::Delete_Ve(string m)
     }
     this->n--;
 }
-void Thanhcong()
-{
-	cout << "------------------" << endl;
-	SetColor(0, 9);
-	cout << " Yeu cau cua ban da duoc thuc hien" << endl;
-	intime();
-	SetColor(0, 7);
-	cout << "------------------" << endl;
+
+void QuanLyVe::setLoaiVe(){
+    QuanLyPhim QLP;
+    DocFile_Phim(QLP);
+    string maVe, maPhim, loaiKhachHang, soLuongVe;
+    Ve temp;
+    this->Show();
+    cout << "Nhap Ma Ve: ";
+    cin >> maVe;
+    temp.setMaVe(maVe);
+    QLP.Show();
+    cout << "Chon Ma Phim Ban Muon Tao Ve: ";
+    cin >> maPhim;
+    while(QLP.checkMSFilm(maPhim)<0){
+        cout << "Ban Da Nhap Sai Ma Phim, Vui Long Nhap Lai: ";
+        cin >> maPhim;
+    }
+    temp.setMaPhim(maPhim);
+    cout << "Nhap Loai Khach Hang: ";
+    cin >> loaiKhachHang;
+    cout << "Nhap So Luong Ve: ";
+    cin >> soLuongVe;
+    this->Add_Ve(temp);
+    cout << "Tao Ve Thanh Cong!" << endl;
 }
 
-void QuanLyVe::Datve() 
-{
-
-    cout<<"Nhap so ve quy khach muon mua:"<<endl;
-    int n;
-    cin>>n;
-    cout<<"Nhap ma:"<<endl;
-    SetColor(0, 7);
-		while (n > 0)
-		{
-			n--;
-			int ms;
-
-			cout << " " << (char)16 << (char)16;
-			cin >> ms;
-            SetColor(0,2);
-            QuanLyPhim F;
-            DocFile_Phim(F);
-            cout<<"Quy khach dat ve xem phim ten:"<<F.getFimlName(ms)<<endl;  
-		} 
-        int lc2;
-    cout<<"Quy khach thanh toan bang:"<<endl;
-    cout<<"1.Tien Mat."<<endl;
-    cout<<"2.Chuyen Ngan Hang"<<endl;
-    cin>>lc2;
-    if(lc2==1)
-    {
-        Thanhcong();   
+int QuanLyVe::GetMaVe(string maPhim, string loaiKhachHang){
+    int idex = -1;
+    for(int i = 0; i < this->n; i++){
+        if(((this->p + i)->getMaPhim() == maPhim) && ((this->p + i)->getLoaiKhachHang()== loaiKhachHang)){
+            idex = i;
+            break;
+        }
     }
-    if(lc2==2)
-    {
-        cout<<"chuyen vao stk:56010001595291 < TRAN THI HUONG TRINH> <BIDV> "<<endl;
-    }
-    else
-    {
-        cout<<"Moi quy khach nhap lai."<<endl;
-        //
-    }
+    return idex;
 }
+

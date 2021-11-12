@@ -44,11 +44,11 @@ string LichChieu::getPhongChieu(){
 
 
 void LichChieu::Display(){
-    cout << setw(20) << left << this->MaLichChieu << "| ";
-    cout << setw(20) << left << this->TenPhim << "| ";
-    cout << setw(20) << left << this->Ngay << "| ";
-    cout << setw(20) << left << this->Gio << "| ";
-    cout << setw(20) << left << this->PhongChieu << "| ";
+    cout << " " << setw(20-1) << left << this->MaLichChieu << "| ";
+    cout << setw(30-1) << left << this->TenPhim << "| ";
+    cout << setw(20-1) << left << this->Ngay << "| ";
+    cout << setw(20-1) << left << this->Gio << "| ";
+    cout << setw(20-1) << left << this->PhongChieu;
 }
 
 LichChieu::~LichChieu()

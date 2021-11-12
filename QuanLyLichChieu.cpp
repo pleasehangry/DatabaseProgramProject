@@ -1,6 +1,7 @@
 #include "QuanLyLichChieu.h"
 #include "DocFile.h"
 
+
 QuanLyLichChieu::QuanLyLichChieu(/* args */)
 {
     this->p = NULL;
@@ -10,6 +11,10 @@ QuanLyLichChieu::QuanLyLichChieu(/* args */)
 QuanLyLichChieu::~QuanLyLichChieu()
 {
     delete[] this->p;
+}
+
+int QuanLyLichChieu::getSoLuong(){
+    return this->n;
 }
 
 
@@ -40,12 +45,11 @@ void QuanLyLichChieu::Add_LichChieu(const LichChieu &f)
 }
 
 void QuanLyLichChieu::TieuDeCot(){
-    cout << setw(10) << left << " Ma Lich Chieu" << "|";
+    cout << setw(20) << left << " Ma Lich Chieu" << "|";
     cout << setw(30) << left << " Ten Phim:" << "|";
-    cout << setw(25) << left << " The loai:" << "|";
-    cout << setw(25) << left << " Thoi Luong:" << "|";
-    cout << setw(25) << left << " Dao Dien:" << "|";
-    cout << setw(25) << left << " Dien Vien:" << endl;
+    cout << setw(20) << left << " Ngay:" << "|";
+    cout << setw(20) << left << " Gio:" << "|";
+    cout << setw(20) << left << " Phong Chieu:";
 }
 
 void QuanLyLichChieu::Show()
@@ -53,6 +57,7 @@ void QuanLyLichChieu::Show()
     TieuDeCot();
     for (int i = 0; i < this->n; i++)
     {
+        cout << endl;
         (p + i)->Display();
     }
 }
@@ -149,6 +154,7 @@ void QuanLyLichChieu::setLichChieu(){
     DocFile_PC(QLPC);
     LichChieu temp;
     string ngay, gio, phongchieu,MsPhim, maLichChieu;
+    cout << "Nhap Ma Lich Chieu:";
     cin >> maLichChieu;
     temp.setMaLichChieu(maLichChieu);
     QLP.Show();
@@ -173,7 +179,26 @@ void QuanLyLichChieu::setLichChieu(){
     } else{
         temp.setPhongChieu(phongchieu);
         cout << "Len Lich Thanh Cong";
+        cout << endl;
     }
     this->Add_LichChieu(temp);
+}
+
+void QuanLyLichChieu::XemLichChieuCuaPhim(string m){
+    QuanLyPhim QLP;
+    DocFile_Phim(QLP);
+    int k = QLP.checkMSFilm(m);
+    string n = QLP.getFimlName(k);
+    for (int i = 0; i < this->n; i++)
+    {
+        if((this->p +i)->getTenPhim() == n){
+            TieuDeCot();
+            for (int i = 0; i < this->n; i++)
+            {
+                cout << endl;
+                (p + i)->Display();
+            }
+        }
+    }
     
 }

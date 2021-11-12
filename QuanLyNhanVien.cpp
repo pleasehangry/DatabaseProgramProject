@@ -56,15 +56,6 @@ int QuanLyNhanVien::checkMSNV(string s){
     return index;
 }
 
-// int QuanLyNhanVien::IndexOf(string k){
-//     int index = -1;
-//     for(int i = 0; i < this->n; i++){
-//         if((this->p+i)->getMaNV() == k){
-//             index = 
-//         }
-//     }
-// }
-
 void QuanLyNhanVien::Update_NV(string m){
     bool c = false;
     for(int i = 0; i < this->n; i++){
@@ -85,42 +76,6 @@ void QuanLyNhanVien::Update_NV(string m){
         }
     cout << endl;
 }
-
-// void QuanLyNhanVien::Delete_NV(string m){
-//     bool c = false;
-//     for(int i = 0; i < this->n; i++){
-//         if(m == (this->p +i)->getMaNV()){
-//             if(this->n == 1){
-//                 delete[] this->p;
-//                 this->p = nullptr;
-//             }
-//             else {
-//                 NhanVien *temp = new NhanVien[this->n];
-//                 for(int k = 0; k < this->n ; k++){
-//                     *(temp+k) = *(this->p + k);
-//                 }
-//                 delete[] this->p;
-//                 this->p = new NhanVien[this->n-1];
-//                 for (int j = 0; j < this->n-1; j++)
-//                 {
-//                     if(j < i){
-//                         *(this->p + j) = *(temp + j);
-//                     }
-//                     else{
-//                         *(this->p + j) = *(temp + j + 1);
-//                     }
-//                 }
-//                 delete[] temp;
-//             }
-//             c = true;
-//         }
-//     }
-//     if(!c) cout << "Khong Tim Thay" << endl;
-//     else {
-//         this->n--;
-//         cout << "Xoa Thanh Cong" << endl;
-//     }
-// }
 
 void QuanLyNhanVien::Delete_NV(string m){
     int f = checkMSNV(m);

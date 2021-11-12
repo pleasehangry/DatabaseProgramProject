@@ -15,4 +15,5 @@ public:
     int IndexOf(string);
     void Update_NV(string);
     void Delete_NV(string);
+    friend void UpdateFile_NV(QuanLyNhanVien&);
 };

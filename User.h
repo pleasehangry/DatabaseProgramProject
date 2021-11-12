@@ -1,5 +1,10 @@
-#include"QuanLyVe.h"
-#include"DocFile.h"
+#include"DoHoa.h"
+#include"Film.h"
+#include "Time.h"
+#include "DocFile.h"
 
- void Person();
 
+void DatVe();
+void us1();
+void thanhcong();
+void Person();

@@ -14,11 +14,14 @@ public:
     void Add_Film(const Film&);
     void TieuDeCot();
     int checkMSFilm(string);
-    string getFimlName(int);
+    int IndexOf(string);
+    friend void UpdateFile_Phim(QuanLyPhim&);
     void Update_Film(string);
     void Delete_Film(string);
     void XemTheloaiPhim();
     void XemDSPhimCuaTheLoai();
     void TimKiemPhim();
-    // void MenuChoKhach();   
+    void MenuChoKhach();
+    string getFimlName(int);
+    friend void XemLichChieuCuaPhim(string);
 };

@@ -10,8 +10,6 @@
 #include "LoginData.h"
 #include"User.h"
 using namespace std;
-int main()
-{
 //     QuanLyNhanVien QLNV;
 // QuanLyPhim QLP;
 // vector<Customer> CTM;
@@ -19,6 +17,8 @@ int main()
 // QuanLyLichChieu QLLC;
 // int SoKhach;
 //     DocFile(QLNV, QLP, QLPC, CTM, SoKhach);
-   Person();
+int main()
+{
+   DatVe();
    return 0;
 }

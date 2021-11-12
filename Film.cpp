@@ -79,6 +79,10 @@ string Film::getQuocGia()
 {
     return quocGia;
 }
+string Film::getNamCongChieu()
+{
+    return namCongChieu;
+}
 
 void Film::Display()
 {

@@ -86,21 +86,49 @@ void PhongChieu::Display(){
     cout << setw(20) << left << this->MaBaoVe << endl;
 }
 
-void PhongChieu::DisplayTable(){
-    char Chu[100];
-    int So[100];
-    for (int i = 0; i < sqrt(this->SoCho); i++)
+vector<int> PhongChieu::DocFileDatGhe(){
+    ifstream ip2(this->getMaPhongChieu() + ".txt");
+    int check;
+    vector<int> A;
+    while(ip2.peek()!= EOF){
+        ip2 >> check;
+        A.push_back(check);
+    }
+    ip2.close();
+    return A;
+}
+
+bool PhongChieu::isReserved(int k){
+    vector<int> A = DocFileDatGhe();
+    for (int  i = 0; i < A.size(); i++)
     {
-        Chu[i] = 'A'+i;
-        So[i] = i+1;
+        if(k == A[i]){
+            return true;
+            break;
+        }
+    }
+    return false;
+}
+
+void PhongChieu::DisplayTable(){
+    int Ghe[1000];
+    for (int i = 1; i <= this->SoCho; i++)
+    {   
+        Ghe[i] = i;
     }
 
-    cout <<"\t\t  Man Hinh Chieu";
+    cout <<"\t\t  Man Hinh Chieu" << endl;
+    cout << "       ";
     for(int i = 0; i < 5; i++) cout << "________";
     cout << endl;
-    for(int i = 0; i < sqrt(this->SoCho); i++){
-        for(int j = 0; j < sqrt(this->SoCho); j++){
-            cout << Chu[i] << So[j] << "    ";
+    for(int i = 0; i < this->SoCho/10; i++){
+        for(int j = 1; j <= 10; j++){
+            if(isReserved(Ghe[i*10 + j])){
+                SetColor(0,5);
+                cout << setw(5) << Ghe[i*10 + j];
+                SetColor(0,2);
+            }
+            else cout << setw(5) << Ghe[i*10 + j];
         }
         cout << endl;
         cout << endl;
