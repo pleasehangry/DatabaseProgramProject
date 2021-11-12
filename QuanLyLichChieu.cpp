@@ -175,4 +175,5 @@ void QuanLyLichChieu::setLichChieu(){
         cout << "Len Lich Thanh Cong";
     }
     this->Add_LichChieu(temp);
+    
 }

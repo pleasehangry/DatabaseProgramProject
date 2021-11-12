@@ -34,12 +34,7 @@ public:
     string getDaoDien();
     string getDienVien();
     string getQuocGia();
-
     void Display();
     void Display2();
-<<<<<<< HEAD
-=======
- 
->>>>>>> e88020abaff56c5a27f59bddb57421c77ef8263a
     ~Film();
 };

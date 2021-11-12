@@ -18,7 +18,7 @@ public:
     void Update_Film(string);
     void Delete_Film(string);
     void XemTheloaiPhim();
-    void XemDSPhimCuaTheLoai(string);
+    void XemDSPhimCuaTheLoai();
     void TimKiemPhim();
-    void MenuChoKhach();   
+    // void MenuChoKhach();   
 };

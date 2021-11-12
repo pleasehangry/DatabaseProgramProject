@@ -14,5 +14,6 @@ public:
     Ve(string, string, string, string, int);
     Ve();
     ~Ve();
+    string GetMaVe();
     void Display();
 };

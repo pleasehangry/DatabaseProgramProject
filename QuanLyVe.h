@@ -1,6 +1,7 @@
 #include "Ve.h"
 #include<string>
 #include<iomanip>
+
 class QuanLyVe
 {
 private:
@@ -15,4 +16,6 @@ public:
     int IndexOf(string);
     void Update_Ve(string);
     void Delete_Ve(string);
+    void Datve();
+    friend void Thanhcong();
 };

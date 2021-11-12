@@ -11,6 +11,10 @@ Ve::Ve(string MaVe, string TenLoaiVe, string LoaiPhim, string LoaiKhachHang, int
 }
 
 Ve::~Ve(){}
+string Ve::GetMaVe()
+{
+    return this->MaVe;
+}
 
 void Ve::Display(){
     cout << "Ma Ve: " << this->MaVe  << endl;
