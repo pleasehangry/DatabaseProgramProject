@@ -44,12 +44,7 @@ void DatVe(){
     (QLPC.p + h)->DatGhe(SoVe);
     cout << "Xong. Ban Hay Kiem Tra Gmail De Co Them Thong Tin Chi Tiet" << endl;
 
-}
 
-
-void us1()
-{
-    
 }
 
 void thanhcong()
@@ -62,82 +57,130 @@ void thanhcong()
 	cout << "------------------" << endl;
 }
 
-// void Person()
-// {
-//     system("cls");
-//     SetColor(0,2);
-//     cout<<"Đăng Nhập thành công!"<<endl;
-//     SetColor(0,7);
-//     cout<<"Xin chào";
-//     SetColor(0,9);
-//     //in họ tên
-//     SetColor(0,14);
-//     cout<<"\n1.Xem Hom nay co phim gi:"<<endl;
-//     cout<<"\n2.Tim kiem Phim theo the loai:"<<endl;
-//     cout<<"\n3.Search Phim"<<endl;
-//     cout<<"\n4.Doi mat khau"<<endl;
-//     SetColor(0,7);
-//     int ma;
-//     cout<<"Nhập lựa chọn của bạn:"<<endl;
-//     cout<<" "<<(char)16<<(char)16;
-//     cin>>ma;
-//     switch(ma)
-//     {
-//         case 1:
-//          int lenh;
-//         //  Film F;
-//         // F.Phim();
-//          cout<<"\n1.Đặt vé"<<endl;
-//          cout<<"2.Trở vể màn hình chọn"<<endl;
-//          SetColor(0,7);
-//          cout<<(char)16<<(char)16;
-//          cin>>lenh;
-//          if(lenh==2)
-//          {
-//              system("cls");
-//              //chua co tham so
-//              Person();
-//          }
-//          if(lenh==1)
-//          {
-//              DatVe();
-//              int lenh2;
-//              cout<<"----------------------";
-//             SetColor(0,14);
-//             cout<<"1.Trở về màn hình chọn"<<endl;
-//             cout<<"2.kết thúc"<<endl;
-//             SetColor(0,7);
-//             cout<<" "<<(char)16<<(char)16;
-//             cin>>lenh;
-//             if(lenh==1)
-//             {
-//                 system("cls");
-//                 Person();
-//             }
-//          } 
-//             break;
-//         case 2:
-//         // Film F1;
-//         // F1.TimkiemPhim();
-//         int lenh;
-//              cout<<"----------------------";
-//             SetColor(0,14);
-//             cout<<"1.Trở về màn hình chọn"<<endl;
-//             cout<<"2.kết thúc"<<endl;
-//             SetColor(0,7);
-//             cout<<" "<<(char)16<<(char)16;
-//             cin>>lenh;
-//             if(lenh==1)
-//             {
-//                 system("cls");
-//                 Person();
-//             }
-//             break;
-//         case 3:
-//             break;
-//         case 4:
-//             break;
-    
-//     } 
-// } 
+ void Person()
+{
+   QuanLyPhim F;
+   QuanLyVe V;
+   DocFile_Phim(F);
+    system("cls");
+    SetColor(0,2);
+    cout<<"Dang nhap thanh cong!"<<endl;
+    SetColor(0,7);
+    cout<<"Xin chao"; 
+    SetColor(0,9);
+    //in tên
+    SetColor(0,14);
+    cout<<"\n1.Xem Hom nay co phim gi:"<<endl;
+    cout<<"\n2.Tim kiem Phim theo the loai:"<<endl;
+    cout<<"\n3.Search Phim"<<endl;
+    cout<<"\n4.Doi mat khau"<<endl;
+    SetColor(0,7);
+    int ma;
+    cout<<"Nhap lua chon:"<<endl;
+    cout<<" "<<(char)16<<(char)16;
+    cin>>ma;
+    switch(ma)
+    {  int lenh;
+        case 1:
+        F.Show(); 
+         SetColor(0,14);        
+         cout<<"\n1.Dat ve"<<endl;
+         cout<<"2.Tro ve man hinh chon."<<endl;
+         SetColor(0,7);
+         cout<<(char)16<<(char)16;
+         cout<<"Nhap lua chon:";
+         cin>>lenh;
+         if(lenh==2)
+         {
+             system("cls");
+             Person();
+         }
+         if(lenh==1)
+         {
+            DatVe();
+             cout<<"----------------------";
+            SetColor(0,14);
+            cout<<"\n1.Tro ve man hinh chon"<<endl;
+            cout<<"2.Ket thuc"<<endl;
+            SetColor(0,7);
+            cout<<" "<<(char)16<<(char)16;
+            cout<<"Nhap lua chon:";
+            cin>>lenh;
+            if(lenh==1)
+            {
+                system("cls");
+                Person();
+            }
+         } 
+            break;
+        case 2:
+        F.XemTheloaiPhim();
+        F.XemDSPhimCuaTheLoai();
+         SetColor(0,14);
+         cout<<"\n1.Dat ve"<<endl;
+         cout<<"2.Tro ve man hinh chon."<<endl;
+         SetColor(0,7);
+         cout<<(char)16<<(char)16;
+         cout<<"Nhap lua chon:";
+         cin>>lenh;
+         if(lenh==2)
+         {
+             system("cls");
+             Person();
+         }
+         if(lenh==1)
+         {
+            DatVe();
+            cout<<"----------------------";
+            SetColor(0,14);
+            cout<<"\n1.Tro ve man hinh chon"<<endl;
+            cout<<"2.Ket thuc"<<endl;
+            SetColor(0,7);
+            cout<<" "<<(char)16<<(char)16;
+            cout<<"Nhap lua chon:";
+            cin>>lenh;
+            if(lenh==1)
+            {
+                system("cls");
+                Person();
+            }
+         } 
+            break;
+        case 3:
+        F.TimKiemPhim();
+         SetColor(0,14);
+         cout<<"\n1.Dat ve"<<endl;
+         cout<<"2.Tro ve man hinh chon."<<endl;
+         SetColor(0,7);
+         cout<<(char)16<<(char)16;
+         cout<<"Nhap lua chon:";
+         cin>>lenh;
+         if(lenh==2)
+         {
+             system("cls");
+             Person();
+         }
+         if(lenh==1)
+         {
+            DatVe();
+            cout<<"----------------------"<<endl;
+            SetColor(0,14);
+            cout<<"\n1.Tro ve man hinh chon"<<endl;
+            cout<<"2.Ket thuc"<<endl;
+            SetColor(0,7);
+            cout<<" "<<(char)16<<(char)16;
+            cout<<"Nhap lua chon:";
+            cin>>lenh;
+            if(lenh==1)
+            {
+                system("cls");
+                Person();
+            }
+         } 
+            break;
+        case 4:
 
+            break;
+
+    } 
+} 

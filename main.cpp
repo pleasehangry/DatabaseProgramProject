@@ -10,15 +10,15 @@
 #include "LoginData.h"
 #include"User.h"
 using namespace std;
-//     QuanLyNhanVien QLNV;
-// QuanLyPhim QLP;
+//  QuanLyNhanVien QLNV;
+//  QuanLyPhim QLP;
 // vector<Customer> CTM;
 // QLPhongChieu QLPC;
 // QuanLyLichChieu QLLC;
-// int SoKhach;
-//     DocFile(QLNV, QLP, QLPC, CTM, SoKhach);
+// QuanLyVe QLV;
+// int SoKhach;  
 int main()
-{
-   DatVe();
-   return 0;
+{   
+    Person();
+    return 0;
 }

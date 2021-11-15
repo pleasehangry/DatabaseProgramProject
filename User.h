@@ -5,6 +5,5 @@
 
 
 void DatVe();
-void us1();
 void thanhcong();
 void Person();

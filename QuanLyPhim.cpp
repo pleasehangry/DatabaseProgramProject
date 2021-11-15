@@ -170,9 +170,10 @@ void QuanLyPhim::XemTheloaiPhim(){
 }
 
 void QuanLyPhim::XemDSPhimCuaTheLoai(){
+    fflush(stdin);
     string m;
     cout<<"Nhap the loai phim:"<<endl;
-    cin>>m;
+    getline(cin,m);
     system("cls");
     int count = 0;
     cout << endl;
@@ -193,7 +194,9 @@ void QuanLyPhim::TimKiemPhim(){
     system("cls");
     string s;
     GoTo(0,3);
-    cout << "   Nhap Ten Phim Ban Muon Tim: ";  cin >> s;
+    fflush(stdin);
+    cout << "   Nhap Ten Phim Ban Muon Tim: "; 
+    getline(cin,s);
     int k = 0;
     cout << endl;
     TieuDeCot();
@@ -211,29 +214,11 @@ void QuanLyPhim::TimKiemPhim(){
     }
 }
 
-// void QuanLyPhim::MenuChoKhach()
-// {
-//     cout<<"\n1.Xem Hom nay co phim gi:"<<endl;
-//     cout<<"\n2.Tim kiem Phim theo the loai:"<<endl;
-//     cout<<"\n3.Tim kiem theo ten Phim"<<endl;
-//     cout << endl;
-//     int chon;
-//     cout << "Nhap Lua Chon: ";
-//     cin >> chon;
-//     switch (chon)
-//     {
-//     case 1:
-//         /* code */
-//         break;
-//     case 2:
-//         XemTheloaiPhim();
-//         break;
-//     case 3:
-//         TimKiemPhim();
-//         break;
-//     default:
-//         break;
-//     }
-    
-// }
+void QuanLyPhim::MenuChoKhach()
+{   SetColor(0,14);
+    cout<<"\n1.Xem Hom nay co phim gi:"<<endl;
+    cout<<"\n2.Tim kiem Phim theo the loai:"<<endl;
+    cout<<"\n3.Search Phim"<<endl;
+    cout<<"\n4.Doi mat khau"<<endl;  
+}
 
