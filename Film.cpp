@@ -107,3 +107,45 @@ void Film::Display2(){
     cout << "Quoc Gia: " << this->quocGia << endl;
 }
 
+//da nang hoa
+ostream& operator<<(ostream& o, const Film& f){
+    cout << " " << setw(9) << left << f.maPhim << "| ";
+    cout << setw(30-1) << left << f.tenPhim << "| ";
+    cout << setw(25-1) << left << f.theLoai << "| ";
+    cout << setw(15-1) << left << f.thoiLuong << "| ";
+    cout << setw(25-1) << left << f.daoDien << "| ";
+    cout << setw(40-1) << left << f.dienVien << endl;
+    return o;
+}
+
+istream& operator>>(istream& i, Film& f){
+
+    string maPhim, tenPhim, theLoai, thoiLuong, daoDien, dienVien, namCongChieu, quocGia;
+    cout << "Nhap Ma Phim: ";
+    i >> maPhim;
+     f.maPhim = maPhim;
+    cout << "Nhap Ten Phim: ";
+    i >> tenPhim;
+     f.tenPhim =  tenPhim;
+    cout << "Nhap The Loai: ";
+    i >> theLoai;
+     f.theLoai = theLoai;
+    cout << "Nhap Thoi Luong: ";
+    i >> thoiLuong;
+     f.thoiLuong = thoiLuong;
+    cout << "Nhap Dao Dien: ";
+    i >> daoDien;
+     f.daoDien = daoDien;
+    cout << "Nhap Dien Vien: ";
+    i >> dienVien;
+     f.dienVien = dienVien;
+    cout << "Nhap Nam Cong Chieu: ";
+    i >>namCongChieu;
+    f.namCongChieu;
+    cout << "Nhap Quoc Gia: ";
+    i >> quocGia;
+     f.quocGia = quocGia;
+    return i;
+}
+
+

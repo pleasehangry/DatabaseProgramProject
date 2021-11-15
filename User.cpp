@@ -46,7 +46,8 @@ void DatVe(){
 
 
 }
-
+// ủa 
+// a viêt them nhieu lam
 void thanhcong()
 {
 	cout << "------------------" << endl;
@@ -183,4 +184,5 @@ void thanhcong()
             break;
 
     } 
-} 
+}
+

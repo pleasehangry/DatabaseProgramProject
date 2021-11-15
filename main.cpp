@@ -19,6 +19,5 @@ using namespace std;
 // int SoKhach;  
 int main()
 {   
-    Person();
     return 0;
 }

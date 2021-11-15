@@ -24,4 +24,6 @@ public:
     void MenuChoKhach();
     string getFimlName(int);
     friend void XemLichChieuCuaPhim(string);
+    // da nang hoa
+    Film& operator[](const int&);
 };

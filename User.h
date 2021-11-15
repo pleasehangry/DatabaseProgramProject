@@ -6,4 +6,5 @@
 
 void DatVe();
 void thanhcong();
-void Person();
+void DatVe(int);
+void ThanhToan(int, int, int);
