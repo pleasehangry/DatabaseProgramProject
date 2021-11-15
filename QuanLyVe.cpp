@@ -11,6 +11,7 @@ QuanLyVe::QuanLyVe(/* args */)
 QuanLyVe::~QuanLyVe()
 {
     delete[] this->p;
+    this->n = 0;
 }
 
 
@@ -173,3 +174,10 @@ int QuanLyVe::GetMaVe(string maPhim, string loaiKhachHang){
     return idex;
 }
 
+Ve& QuanLyVe::operator[](const int& index){
+    static Ve temp;
+    if(index >=0 && index < this->n){
+        return *(this->p + index);
+    }
+    else return temp;
+}

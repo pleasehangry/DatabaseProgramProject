@@ -11,6 +11,7 @@ QuanLyLichChieu::QuanLyLichChieu(/* args */)
 QuanLyLichChieu::~QuanLyLichChieu()
 {
     delete[] this->p;
+    this->n = 0;
 }
 
 int QuanLyLichChieu::getSoLuong(){
@@ -201,4 +202,12 @@ void QuanLyLichChieu::XemLichChieuCuaPhim(string m){
         }
     }
     
+}
+
+LichChieu& QuanLyLichChieu::operator[](const int& index){
+    static LichChieu temp;
+    if(index >=0 && index < this->n){
+        return *(this->p + index);
+    }
+    else return temp;
 }

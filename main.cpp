@@ -12,13 +12,11 @@
 using namespace std;
 //     QuanLyNhanVien QLNV;
 // QuanLyPhim QLP;
-// vector<Customer> CTM;
 // QLPhongChieu QLPC;
 // QuanLyLichChieu QLLC;
-// int SoKhach;
 //     DocFile(QLNV, QLP, QLPC, CTM, SoKhach);
 int main()
 {
-   DatVe();
+   User(1);
    return 0;
 }

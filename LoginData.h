@@ -1,6 +1,7 @@
 #include<iostream>
 #pragma once
 #include<string>
+#include<iomanip>
 using namespace std;
 
 class Customer
@@ -12,10 +13,16 @@ private:
 public:
     string LoaiKhachHang;
     string HoTen;
-    Customer(string = "Unknown", string = "Unknown", string = "Member");
+    Customer(string = "Unknown", string = "Unknown",string = "Unknown", int = 50000);
     ~Customer();
     void setGmail(string);
     void setMatKhau(string);
+    void setSoDu(int);
+    int getSoDu();
     string getGmail();
     string getMatKhau();
+    bool checkTaiKhoan(string, string);
+    bool CheckSoDu(int);
+    void NapTien();
+    void Show();
 };

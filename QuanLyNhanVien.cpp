@@ -10,6 +10,7 @@ QuanLyNhanVien::QuanLyNhanVien(){
 
 QuanLyNhanVien::~QuanLyNhanVien(){
     delete[] this->p;
+    this->n = 0;
     this->ind--;
 }
 

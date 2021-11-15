@@ -12,17 +12,25 @@ void DocFile(QuanLyNhanVien& QLNV,QuanLyPhim& QLP,QuanLyLichChieu& QLLC, QLPhong
 
 void DocFile_Khach(vector<Customer>& CTM, int& SoKhach){
     int i = -1;
-    ifstream ip("GuestData.csv");
+    CTM.clear();
+    ifstream ip;
+    ip.open("GuestData.csv");
     string Gmail;
     string MatKhau;
     string HoTen;
+    string LoaiKhachHang;
+    string SoDus;
     // EOF = end of file
     while(ip.peek()!=EOF){
         i++;
         getline(ip,Gmail,',');
         getline(ip,MatKhau,',');
-        getline(ip,HoTen,'\n');
+        getline(ip,HoTen,',');
+        getline(ip,LoaiKhachHang,',');
+        getline(ip,SoDus,'\n');
+        int SoDu = stoi(SoDus);
         Customer temp; temp.setGmail(Gmail); temp.setMatKhau(MatKhau); temp.HoTen = HoTen;
+        temp.LoaiKhachHang = LoaiKhachHang; temp.setSoDu(SoDu);
         CTM.push_back(temp);
     }
     ip.close();
@@ -30,7 +38,9 @@ void DocFile_Khach(vector<Customer>& CTM, int& SoKhach){
 }
 
 void DocFile_Phim(QuanLyPhim& QLP){
-    ifstream ip2("Phim.csv");
+    ifstream ip2;
+    ip2.open("Phim.csv");
+    QLP.~QuanLyPhim();
     while(ip2.peek()!= EOF){
         string ti,ye;
         string mp,tp,tl,dd,dds,qg;
@@ -49,7 +59,9 @@ void DocFile_Phim(QuanLyPhim& QLP){
 }
 
 void DocFile_PC(QLPhongChieu& QLPC){
-    ifstream ip3("PhongChieu.csv");
+    ifstream ip3;
+    ip3.open("PhongChieu.csv");
+    QLPC.~QLPhongChieu();
     while(ip3.peek()!= EOF){
         string maPC,socho,maychieu,amthanh,dientich,tinhtrang,maBV;
         getline(ip3,maPC,',');
@@ -69,7 +81,9 @@ void DocFile_PC(QLPhongChieu& QLPC){
 }
 
 void DocFile_NV(QuanLyNhanVien& QLNV){
-    ifstream ip4("NhanVien.csv");
+    ifstream ip4;
+    ip4.open("NhanVien.csv");
+    QLNV.~QuanLyNhanVien();
     while(ip4.peek()!= EOF){
         string MaNV,HoTen,NgaySinh,QueQuan,SDT,SoCMT,ChucVu,PhanQuyen;
         getline(ip4,MaNV,',');
@@ -87,7 +101,9 @@ void DocFile_NV(QuanLyNhanVien& QLNV){
 }
 
 void DocFile_LichChieu(QuanLyLichChieu& QLLC){
-    ifstream ip5("LichChieu.csv");
+    ifstream ip5;
+    ip5.open("LichChieu.csv");
+    QLLC.~QuanLyLichChieu();
     while(ip5.peek()!= EOF){
         string MaLichChieu,TenPhim,Ngay,Gio,PhongChieu;
         getline(ip5,MaLichChieu,',');
@@ -102,16 +118,21 @@ void DocFile_LichChieu(QuanLyLichChieu& QLLC){
 }
 
 void DocFile_Ve(QuanLyVe& QLV){
-    ifstream ip5("Ve.csv");
+    ifstream ip5;
+    ip5.open("Ve.csv");
+    QLV.~QuanLyVe();
     while(ip5.peek()!= EOF){
         string MaVe,MaPhim,LoaiKhachHang;
         string GiaLoaiVe1, SoLuong1, SoVeDaBan1;
+        string thanhtien;
         getline(ip5,MaVe,',');
         getline(ip5,MaPhim,',');
         getline(ip5,LoaiKhachHang,',');
         getline(ip5,GiaLoaiVe1,',');
         getline(ip5,SoLuong1,',');
-        getline(ip5,SoVeDaBan1,'\n');
+        getline(ip5,SoVeDaBan1,',');
+        getline(ip5,thanhtien,'\n');
+        // int ThanhTien = stoi(thanhtien);
         int GiaLoaiVe = stoi(GiaLoaiVe1);
         int SoLuong = stoi(SoLuong1);
         int SoVeDaBan = stoi(SoVeDaBan1);
@@ -122,6 +143,24 @@ void DocFile_Ve(QuanLyVe& QLV){
 }
 
 
+void UpdateFile_Ve(QuanLyVe& QLV){
+    fstream ip1;
+    ip1.open("Ve.csv", ios::out);
+    int n = QLV.n;
+    if(ip1.is_open()){
+        for (int i = 0; i < n; i++)
+        {
+            ip1 << (QLV.p + i)->getMaVe() << ",";
+            ip1 << (QLV.p + i)->getMaPhim() << ",";
+            ip1 << (QLV.p + i)->getLoaiKhachHang() << ",";
+            ip1 << (QLV.p + i)->getGiaLoaiVe() << ",";
+            ip1 << (QLV.p + i)->getSoLuong() << ",";
+            ip1 << (QLV.p + i)->getSoVeDaBan() << ",";
+            ip1 << (QLV.p + i)->ThanhTien() << endl;
+        }
+        ip1.close();
+    }
+}
 void UpdateFile_LichChieu(QuanLyLichChieu& QLLC){
     fstream ip1;
     ip1.open("LichChieu.csv", ios::out);
@@ -201,16 +240,18 @@ void UpdateFile_PC(QLPhongChieu& QLPC){
 
 void UpdateFile_Khach(vector<Customer>& CTM, int& SoKhach){
     fstream ip1;
-    ip1.open("Guest.csv", ios::out);
+    ip1.open("GuestData.csv", ios::out);
     int n = CTM.size();
     if(ip1.is_open()){
         for (int i = 0; i < n; i++)
         {
             ip1 << CTM[i].getGmail() << ",";
             ip1 << CTM[i].getMatKhau() << ",";
-            ip1 << CTM[i].HoTen << endl;
-        ip1.close();
+            ip1 << CTM[i].HoTen << ",";
+            ip1 << CTM[i].LoaiKhachHang << ",";
+            ip1 << CTM[i].getSoDu() << endl;
         }
+        ip1.close();
     }
 }
 

@@ -157,4 +157,6 @@ void PhongChieu::DisplayTable(){
         cout << endl;
         cout << endl;
     }
+    cout << "Mau Tim: Da Dat Truoc" << endl;
+    cout << "Mau Trang: Co The Dat Ghe" << endl;
 }

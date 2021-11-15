@@ -8,6 +8,7 @@ QuanLyPhim::QuanLyPhim()
 QuanLyPhim::~QuanLyPhim()
 {
     delete[] this->p;
+    this->n = 0;
 }
 
 void QuanLyPhim::Add_Film(const Film &f)
@@ -236,4 +237,15 @@ void QuanLyPhim::TimKiemPhim(){
 //     }
     
 // }
+
+
+Film& QuanLyPhim::operator[](const int& index){
+    static Film temp;
+    if(index >=0 && index < this->n){
+        return *(this->p + index);
+    }
+    else return temp;
+}
+
+
 

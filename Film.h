@@ -38,4 +38,8 @@ public:
     void Display();
     void Display2();
     ~Film();
+
+    //da nang hoa
+    friend ostream& operator<<(ostream&, const Film&);
+    friend istream& operator>>(istream&, Film&);
 };

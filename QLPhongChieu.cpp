@@ -9,6 +9,7 @@ QLPhongChieu::QLPhongChieu(/* args */)
 QLPhongChieu::~QLPhongChieu()
 {
     delete[] this->p;
+    this->n = 0;
 }
 
 
@@ -35,13 +36,13 @@ void QLPhongChieu::Add_PC(PhongChieu v){
 }
 
 void QLPhongChieu::Show(){
-    cout << setw(25) << left << "Mã Phòng Chiếu:" << "|";
-    cout << setw(20) << left << " Số Chỗ:" << "|";
-    cout << setw(20) << left << " Máy Chiếu:" << "|";
-    cout << setw(20) << left << " Âm Thanh:" << "|";
-    cout << setw(20) << left << " Diện Tích:" << "|";
-    cout << setw(20) << left << " Tình trạng:" << "|";
-    cout << setw(20) << left << " Mã Bảo Vệ:" << endl;
+    cout << setw(25) << left << "Ma Phong Chieu" << "|";
+    cout << setw(20) << left << " So Ghe:" << "|";
+    cout << setw(20) << left << " May Chieu:" << "|";
+    cout << setw(20) << left << " Am Thanh:" << "|";
+    cout << setw(20) << left << " Dien Tich:" << "|";
+    cout << setw(20) << left << " Tinh Trang:" << "|";
+    cout << setw(20) << left << " Ma Bao Ve:" << endl;
     for(int i= 0; i < this->n; i++){
         (p+i)->Display();
     }
@@ -138,4 +139,13 @@ void QLPhongChieu::Delete_PC(string m)
         }
     }
     this->n--;
+}
+
+
+PhongChieu& QLPhongChieu::operator[](const int& index){
+    static PhongChieu temp;
+    if(index >=0 && index < this->n){
+        return *(this->p + index);
+    }
+    else return temp;
 }

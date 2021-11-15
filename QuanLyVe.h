@@ -17,6 +17,8 @@ public:
     void Delete_Ve(string);
     void setLoaiVe();
     int GetMaVe(string = "Unknown", string = "Member");
-    friend void DatVe();
-
+    friend void DatVe(int);
+    friend void UpdateFile_Ve(QuanLyVe&);
+    // da nang hoa
+    Ve& operator[](const int&);
 };
