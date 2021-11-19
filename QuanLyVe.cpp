@@ -181,3 +181,192 @@ Ve& QuanLyVe::operator[](const int& index){
     }
     else return temp;
 }
+
+
+
+void QuanLyVe::Menu(){
+    system("cls");
+
+    cout << endl;
+    cout << "1.Xem Danh Sach Phim" << endl;
+    cout << "2.Them Phim" << endl;
+    cout << "3.Xoa Phim" << endl;
+    cout << "4.Cap Nhat Phim" << endl;
+    int chon;
+    cout << "Nhap Lua Chon: ";
+    cin >> chon;
+    switch (chon)
+    {
+    case 1:
+        system("cls");
+        this->Show();
+        int chon2;
+        cout << "Xem Thong Tin Chi Tiet" << endl;
+        cout << "2.Tro Ve" << endl;
+        cout << ">>"; cin >> chon2;
+            switch (chon2)
+            {
+            case 1:
+                XemThongTinVe();
+                break;
+            case 2:
+                this->Menu();
+            default:
+                break;
+            }
+        break;
+    case 2:
+        this->ThemVe();
+        break;
+    case 3:
+        this->XoaVe();
+        break;
+    case 4:
+        this->CapNhatVe();
+        break;
+    default:
+        break;
+    }
+}
+
+void QuanLyVe::ThemVe(){
+    system("cls");
+    this->Show();
+    cout << "Them Mot Ve: " << endl;
+    Ve temp;
+    setLoaiVe();
+    cout << "Them Thanh Cong" << endl;
+    int chon;
+    cout << "1.Them Ve" << endl;
+    cout << "2.Tro Ve" << endl;
+    cout << "Nhap Lua Chon" << endl;
+    cin >> chon;
+    switch (chon)
+    {
+    case 1:
+        ThemVe();
+        break;
+    case 2:
+        this->Menu();
+        break;
+    default:
+        this->Menu();
+        break;
+    }
+}
+
+void QuanLyVe::CapNhatVe(){
+    system("cls");
+    this->Show();
+    string ma;
+    cout << "Nhap Ma Ve Ban Muon Cap Nhat: ";
+    cin >> ma;
+    int index = checkMaVe(ma);
+    if(index == -1){
+        cout << "Khong Co Ma Ve Nao Trung Khop" << endl;
+        int chon2;
+        cout << "1.Nhap Lai" << endl;
+        cout << "2.Tro Ve" << endl;
+        cout << ">> " << endl;
+        cin >> chon2;
+        if(chon2 == 1){
+            this->CapNhatVe();
+        }
+        else{
+            this->Menu();
+        }
+    }
+    else {
+        this->Update_Ve(ma);
+        cout << "Cap Nhat Ve Thanh Cong!!\n" << endl;
+        int chon3;
+        cout << "1.Nhap Lai" << endl;
+        cout << "2.Tro Ve" << endl;
+        cout << ">> " << endl;
+        cin >> chon3;
+        if(chon3 == 1){
+            this->CapNhatVe();
+        }
+        else{
+            this->Menu();
+        }
+    }
+}
+
+
+void QuanLyVe::XoaVe(){
+    system("cls");
+    this->Show();
+    string ma;
+    cout << "Nhap Ma Ve Ban Muon Xoa: ";
+    cin >> ma;
+    int index = checkMaVe(ma);
+    if(index == -1){
+        cout << "Khong Co Ma Ve Nao Trung Khop" << endl;
+        int chon2;
+        cout << "1.Nhap Lai" << endl;
+        cout << "2.Tro Ve" << endl;
+        cout << ">> " << endl;
+        cin >> chon2;
+        if(chon2 == 1){
+            this->XoaVe();
+        }
+        else{
+            this->Menu();
+        }
+    }
+    else {
+        this->Delete_Ve(ma);
+        cout << "Xoa Ve Thanh Cong!!\n" << endl;
+        int chon3;
+        cout << "1.Xoa Ve" << endl;
+        cout << "2.Tro Ve" << endl;
+        cout << ">> " << endl;
+        cin >> chon3;
+        if(chon3 == 1){
+            this->XoaVe();
+        }
+        else{
+            this->Menu();
+        }
+    }
+}
+void QuanLyVe::XemThongTinVe(){
+    system("cls");
+    this->Show();
+    string ma;
+    cout << "Nhap Ma Ve Ban Muon Xem: ";
+    cin >> ma;
+    int index = checkMaVe(ma);
+    if(index == -1){
+        cout << "Khong Co Ma Ve Nao Trung Khop" << endl;
+        int chon2;
+        cout << "1.Nhap Lai" << endl;
+        cout << "2.Tro Ve" << endl;
+        cout << ">> " << endl;
+        cin >> chon2;
+        if(chon2 == 1){
+            this->XemThongTinVe();
+        }
+        else if(chon2 == 2){
+            this->Menu();
+        }
+    }
+    else {
+        (this->p + index)->Display();
+        int chon3;
+        cout << "1.Xem Thong Tin Ve" << endl;
+        cout << "2.Tro Ve" << endl;
+        cout << ">> " << endl;
+        cin >> chon3;
+        if(chon3 == 1){
+            this->XemThongTinVe();
+        }
+        else if(chon3 == 2){
+            this->Menu();
+        }
+    }
+}
+
+
+

@@ -19,4 +19,10 @@ public:
     friend void DatVe(int);
     // da nang hoa
     PhongChieu& operator[](const int&);
+    // Menu
+    void Menu();
+    void ThemPhongChieu();
+    void CapNhatPhongChieu();
+    void XoaPhongChieu();
+    void XemThongTinPhongChieu();
 };

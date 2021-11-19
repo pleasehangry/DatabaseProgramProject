@@ -2,6 +2,9 @@
 #pragma once
 #include<string>
 #include<iomanip>
+#include<vector>
+#include<map>
+#include <cstring>
 using namespace std;
 
 class Customer
@@ -25,4 +28,13 @@ public:
     bool CheckSoDu(int);
     void NapTien();
     void Show();
+    Customer& operator=(const Customer&);
 };
+
+void Display(vector<Customer>& CTM,int& SoKhach);
+void ThemNguoiDung(vector<Customer>& CTM,int& SoKhach);
+void Menu_Khach(vector<Customer>& CTM,int& SoKhach);
+void XoaNguoiDung(vector<Customer>& CTM,int& SoKhach);
+void CapNhatNguoiDung(vector<Customer>& CTM,int& SoKhach);
+void NapTienNguoiDung(vector<Customer>& CTM,int& SoKhach);
+void TimKiemNguoiDung(vector<Customer>& CTM,int& SoKhach);

@@ -197,9 +197,9 @@ void QuanLyPhim::TimKiemPhim(){
     cout << "   Nhap Ten Phim Ban Muon Tim: ";  cin >> s;
     int k = 0;
     cout << endl;
-    TieuDeCot();
     for (int i = 0; i < this->n; i++)
     {
+        if(i == 0) TieuDeCot();
         if(strstr((this->p)->getTenPhim().c_str(),s.c_str())){ // chuoi s la con cua chuoi ten phim
             (this->p+i)->Display();
             k++;
@@ -212,39 +212,201 @@ void QuanLyPhim::TimKiemPhim(){
     }
 }
 
-// void QuanLyPhim::MenuChoKhach()
-// {
-//     cout<<"\n1.Xem Hom nay co phim gi:"<<endl;
-//     cout<<"\n2.Tim kiem Phim theo the loai:"<<endl;
-//     cout<<"\n3.Tim kiem theo ten Phim"<<endl;
-//     cout << endl;
-//     int chon;
-//     cout << "Nhap Lua Chon: ";
-//     cin >> chon;
-//     switch (chon)
-//     {
-//     case 1:
-//         /* code */
-//         break;
-//     case 2:
-//         XemTheloaiPhim();
-//         break;
-//     case 3:
-//         TimKiemPhim();
-//         break;
-//     default:
-//         break;
-//     }
-    
-// }
-
-
+// Da Nang Hoa
 Film& QuanLyPhim::operator[](const int& index){
     static Film temp;
     if(index >=0 && index < this->n){
         return *(this->p + index);
     }
     else return temp;
+}
+
+
+// Menu
+
+void QuanLyPhim::Menu(){
+    system("cls");
+
+    cout << endl;
+    cout << "1.Xem Danh Sach Phim" << endl;
+    cout << "2.Them Phim" << endl;
+    cout << "3.Xoa Phim" << endl;
+    cout << "4.Cap Nhat Phim" << endl;
+    int chon;
+    cout << "Nhap Lua Chon: ";
+    cin >> chon;
+    switch (chon)
+    {
+    case 1:
+        system("cls");
+        this->Show();
+        int chon2;
+        cout << "Xem Thong Tin Chi Tiet" << endl;
+        cout << "2.Tro Ve" << endl;
+        cout << ">>"; cin >> chon2;
+            switch (chon2)
+            {
+            case 1:
+                XemThongTinPhim();
+                break;
+            case 2:
+                this->Menu();
+            default:
+                break;
+            }
+        break;
+    case 2:
+        this->ThemPhim();
+        break;
+    case 3:
+        this->XoaPhim();
+        break;
+    case 4:
+        this->CapNhatPhim();
+        break;
+    default:
+        break;
+    }
+}
+
+void QuanLyPhim::ThemPhim(){
+    system("cls");
+    this->Show();
+    cout << "Them Mot Phim: " << endl;
+    Film temp;
+    cin >> temp;
+    this->Add_Film(temp);    
+    cout << "Them Thanh Cong" << endl;
+    int chon;
+    cout << "1.Them Phim" << endl;
+    cout << "2.Tro Ve" << endl;
+    cout << "Nhap Lua Chon" << endl;
+    cin >> chon;
+    switch (chon)
+    {
+    case 1:
+        ThemPhim();
+        break;
+    case 2:
+        this->Menu();
+        break;
+    default:
+        this->Menu();
+        break;
+    }
+}
+
+void QuanLyPhim::CapNhatPhim(){
+    system("cls");
+    this->Show();
+    string ma;
+    cout << "Nhap Ma Phim Ban Muon Cap Nhat: ";
+    cin >> ma;
+    int index = checkMSFilm(ma);
+    if(index == -1){
+        cout << "Khong Co Ma Phim Nao Trung Khop" << endl;
+        int chon2;
+        cout << "1.Nhap Lai" << endl;
+        cout << "2.Tro Ve" << endl;
+        cout << ">> " << endl;
+        cin >> chon2;
+        if(chon2 == 1){
+            this->CapNhatPhim();
+        }
+        else{
+            this->Menu();
+        }
+    }
+    else {
+        this->Update_Film(ma);
+        cout << "Cap Nhat Phim Thanh Cong!!\n" << endl;
+        int chon3;
+        cout << "1.Nhap Lai" << endl;
+        cout << "2.Tro Ve" << endl;
+        cout << ">> " << endl;
+        cin >> chon3;
+        if(chon3 == 1){
+            this->CapNhatPhim();
+        }
+        else{
+            this->Menu();
+        }
+    }
+}
+
+
+void QuanLyPhim::XoaPhim(){
+    system("cls");
+    this->Show();
+    string ma;
+    cout << "Nhap Ma Phim Ban Muon Xoa: ";
+    cin >> ma;
+    int index = checkMSFilm(ma);
+    if(index == -1){
+        cout << "Khong Co Ma Phim Nao Trung Khop" << endl;
+        int chon2;
+        cout << "1.Nhap Lai" << endl;
+        cout << "2.Tro Ve" << endl;
+        cout << ">> " << endl;
+        cin >> chon2;
+        if(chon2 == 1){
+            this->XoaPhim();
+        }
+        else{
+            this->Menu();
+        }
+    }
+    else {
+        this->Delete_Film(ma);
+        cout << "Xoa Phim Thanh Cong!!\n" << endl;
+        int chon3;
+        cout << "1.Xoa Phim" << endl;
+        cout << "2.Tro Ve" << endl;
+        cout << ">> " << endl;
+        cin >> chon3;
+        if(chon3 == 1){
+            this->XoaPhim();
+        }
+        else{
+            this->Menu();
+        }
+    }
+}
+void QuanLyPhim::XemThongTinPhim(){
+    system("cls");
+    this->Show();
+    string ma;
+    cout << "Nhap Ma Phim Ban Muon Xem: ";
+    cin >> ma;
+    int index = checkMSFilm(ma);
+    if(index == -1){
+        cout << "Khong Co Ma Phim Nao Trung Khop" << endl;
+        int chon2;
+        cout << "1.Nhap Lai" << endl;
+        cout << "2.Tro Ve" << endl;
+        cout << ">> " << endl;
+        cin >> chon2;
+        if(chon2 == 1){
+            this->XemThongTinPhim();
+        }
+        else if(chon2 == 2){
+            this->Menu();
+        }
+    }
+    else {
+        (this->p + index)->Display2();
+        int chon3;
+        cout << "1.Xem Thong Tin Phim" << endl;
+        cout << "2.Tro Ve" << endl;
+        cout << ">> " << endl;
+        cin >> chon3;
+        if(chon3 == 1){
+            this->XemThongTinPhim();
+        }
+        else if(chon3 == 2){
+            this->Menu();
+        }
+    }
 }
 
 

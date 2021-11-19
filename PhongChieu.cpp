@@ -160,3 +160,25 @@ void PhongChieu::DisplayTable(){
     cout << "Mau Tim: Da Dat Truoc" << endl;
     cout << "Mau Trang: Co The Dat Ghe" << endl;
 }
+
+istream& operator>>(istream& i, PhongChieu& e){
+    system("cls");
+    cout << "Nhap Ma Phong Chieu: ";
+    fflush(stdin);
+    getline(i,e.MaPhongChieu);
+    cout << "Nhap So Ghe: "; i >> e.SoCho;
+    cout << "Nhap Loai May Chieu: ";
+    fflush(stdin);
+    getline(i,e.MayChieu);
+    cout << "Nhap Loai Am Thanh: ";
+    fflush(stdin);
+    getline(i,e.AmThanh);
+    cout << "Nhap Dien Tich Phong Chieu:"; i >> e.DienTich;
+    cout << "Nhap Tinh Trang Phong Chieu:";
+    fflush(stdin);
+    getline(i,e.TinhTrang);
+    cout << "Nhap Ma Bao Ve: ";
+    fflush(stdin);
+    getline(i,e.MaBaoVe);
+    return i;
+}

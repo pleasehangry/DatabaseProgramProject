@@ -50,4 +50,7 @@ public:
     void Display2();
     ~PhongChieu();
     void Display();
+    // Da nang hoa
+    friend istream& operator>>(istream& i, PhongChieu& e);
+
 };

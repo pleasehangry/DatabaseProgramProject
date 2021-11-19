@@ -54,3 +54,25 @@ void LichChieu::Display(){
 LichChieu::~LichChieu()
 {
 }
+
+
+istream& operator>>(istream& i, LichChieu& e){
+    system("cls");
+    cout << "Nhap Ma Lich Chieu: ";
+    fflush(stdin);
+    getline(i,e.MaLichChieu);
+    cout << "Nhap Ten Phim: ";
+    fflush(stdin);
+    getline(i,e.TenPhim);
+    cout << "Nhap Que Quan: ";
+    fflush(stdin);
+    getline(i,e.Ngay);
+    cout << "Nhap Ngay: ";
+    fflush(stdin);
+    getline(i,e.Gio);
+    cout << "Nhap Gio :";
+    fflush(stdin);
+    getline(i,e.PhongChieu);
+    return i;
+}
+

@@ -85,7 +85,7 @@ void DocFile_NV(QuanLyNhanVien& QLNV){
     ip4.open("NhanVien.csv");
     QLNV.~QuanLyNhanVien();
     while(ip4.peek()!= EOF){
-        string MaNV,HoTen,NgaySinh,QueQuan,SDT,SoCMT,ChucVu,PhanQuyen;
+        string MaNV,HoTen,NgaySinh,QueQuan,SDT,SoCMT,ChucVu,PhanQuyen,TaiKhoan,MatKhau;
         getline(ip4,MaNV,',');
         getline(ip4,HoTen,',');
         getline(ip4,NgaySinh,',');
@@ -93,8 +93,10 @@ void DocFile_NV(QuanLyNhanVien& QLNV){
         getline(ip4,SDT,',');
         getline(ip4,SoCMT,',');
         getline(ip4,ChucVu,',');
-        getline(ip4,PhanQuyen,'\n');
-        NhanVien temp(MaNV,HoTen,NgaySinh,QueQuan,SDT,SoCMT,ChucVu,PhanQuyen);
+        getline(ip4,PhanQuyen,',');
+        getline(ip4,TaiKhoan,',');
+        getline(ip4,MatKhau,'\n');
+        NhanVien temp(MaNV,HoTen,NgaySinh,QueQuan,SDT,SoCMT,ChucVu,PhanQuyen,TaiKhoan,MatKhau);
         QLNV.Add_NV(temp);
     }
     ip4.close();
@@ -212,7 +214,9 @@ void UpdateFile_NV(QuanLyNhanVien& QLNV){
             ip1 << (QLNV.p + i)->getSDT() << ",";
             ip1 << (QLNV.p + i)->getSoCMT() << ",";
             ip1 << (QLNV.p + i)->getChucVu() << ",";
-            ip1 << (QLNV.p + i)->getPhanQuyen() << endl;
+            ip1 << (QLNV.p + i)->getPhanQuyen() << ",";
+            ip1 << (QLNV.p + i)->getTaiKhoan() << ",";
+            ip1 << (QLNV.p + i)->getMatKhau() << endl;
         }
         ip1.close();
     }
@@ -220,7 +224,7 @@ void UpdateFile_NV(QuanLyNhanVien& QLNV){
 
 void UpdateFile_PC(QLPhongChieu& QLPC){
     fstream ip1;
-    ip1.open("LichChieu.csv", ios::out);
+    ip1.open("PhongChieu.csv", ios::out);
     int n = QLPC.n;
     if(ip1.is_open()){
         for (int i = 0; i < n; i++)
@@ -255,9 +259,11 @@ void UpdateFile_Khach(vector<Customer>& CTM, int& SoKhach){
     }
 }
 
-void Update(QuanLyNhanVien& QLNV,QuanLyPhim& QLP, QuanLyLichChieu&QLLC, QLPhongChieu& QLPC ,vector<Customer>& CTM, int& SoKhach){
+
+void Update(QuanLyNhanVien& QLNV,QuanLyPhim& QLP,QuanLyLichChieu& QLLC, QLPhongChieu& QLPC , QuanLyVe& QLV ,vector<Customer>& CTM, int& SoKhach){
     UpdateFile_LichChieu(QLLC);
     UpdateFile_Phim( QLP);
+    UpdateFile_Ve(QLV);
     UpdateFile_NV( QLNV);
     UpdateFile_PC( QLPC);
     UpdateFile_Khach(CTM, SoKhach);

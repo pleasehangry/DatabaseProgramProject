@@ -31,5 +31,9 @@ public:
     string getPhongChieu();
 
     void Display();
+
+    // da nang hoa
+
+    friend istream& operator>>(istream& i, LichChieu& e);
 };
 

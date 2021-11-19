@@ -24,4 +24,10 @@ public:
     void XemLichChieuCuaPhim(string);
     // da nang hoa
     LichChieu& operator[](const int&);
+
+    // Menu
+    void Menu();
+    void ThemLichChieu();
+    void CapNhatLichChieu();
+    void XoaLichChieu();
 };
