@@ -38,30 +38,30 @@ void QuanLyPhim::Add_Film(const Film &f)
 }
 
 void QuanLyPhim::TieuDeCot(){
-    // cout << setw(10) << left << " Ma Phim" << "|";
-    // cout << setw(30) << left << " Ten Phim:" << "|";
-    // cout << setw(25) << left << " The loai:" << "|";
-    // cout << setw(15) << left << " Thoi Luong:" << "|";
-    // cout << setw(25) << left << " Dao Dien:" << "|";
-    // cout << setw(25) << left << " Dien Vien:" << endl;
+    cout << setw(10) << left << " Ma Phim" << "|";
+    cout << setw(30) << left << " Ten Phim:" << "|";
+    cout << setw(25) << left << " The loai:" << "|";
+    cout << setw(15) << left << " Thoi Luong:" << "|";
+    cout << setw(25) << left << " Dao Dien:" << "|";
+    cout << setw(25) << left << " Dien Vien:" << endl;
     
-    box(0,3,10,2,7,8,"Ma Phim");
-    box(10,3,30,2,7,8,"Ten Phim");
-    box(40,3,25,2,7,8,"The loai");
-    box(65,3,15,2,7,8,"Thoi Luong");
-    box(80,3,25,2,7,8,"Dao Dien");
-    box(105,3,25,2,7,8,"Dien Vien");
+    // box(0,3,10,2,7,8,"Ma Phim");
+    // box(10,3,30,2,7,8,"Ten Phim");
+    // box(40,3,25,2,7,8,"The loai");
+    // box(65,3,15,2,7,8,"Thoi Luong");
+    // box(80,3,25,2,7,8,"Dao Dien");
+    // box(105,3,25,2,7,8,"Dien Vien");
    
-    GoTo(10,3);cout<<char(194);
-    GoTo(10,5);cout<<char(193);
-    GoTo(40,3);cout<<char(194);
-    GoTo(40,5);cout<<char(193);
-    GoTo(65,3);cout<<char(194);
-    GoTo(65,5);cout<<char(193);
-    GoTo(80,3);cout<<char(194);
-    GoTo(80,5);cout<<char(193);
-    GoTo(105,3);cout<<char(194);
-    GoTo(105,5);cout<<char(193);
+    // GoTo(10,3);cout<<char(194);
+    // GoTo(10,5);cout<<char(193);
+    // GoTo(40,3);cout<<char(194);
+    // GoTo(40,5);cout<<char(193);
+    // GoTo(65,3);cout<<char(194);
+    // GoTo(65,5);cout<<char(193);
+    // GoTo(80,3);cout<<char(194);
+    // GoTo(80,5);cout<<char(193);
+    // GoTo(105,3);cout<<char(194);
+    // GoTo(105,5);cout<<char(193);
     cout<<endl;
 }
 
@@ -193,10 +193,7 @@ void QuanLyPhim::XemDSPhimCuaTheLoai(){
     fflush(stdin);
     string m;
     cout<<"Nhap the loai phim:"<<endl;
-<<<<<<< HEAD
-=======
     fflush(stdin);
->>>>>>> 027abd5e1ff73f2daed2c00f28540ebcb85df1c2
     getline(cin,m);
     system("cls");
     int count = 0;
@@ -239,13 +236,8 @@ void QuanLyPhim::TimKiemPhim(){
     system("cls");
     string s;
     GoTo(0,3);
-<<<<<<< HEAD
-    fflush(stdin);
-    cout << "   Nhap Ten Phim Ban Muon Tim: "; 
-=======
     cout << "   Nhap Ten Phim Ban Muon Tim: ";
     fflush(stdin);
->>>>>>> 027abd5e1ff73f2daed2c00f28540ebcb85df1c2
     getline(cin,s);
     int k = 0;
     cout << endl;
@@ -264,27 +256,7 @@ void QuanLyPhim::TimKiemPhim(){
     }
 }
 
-<<<<<<< HEAD
-void QuanLyPhim::MenuChoKhach()
-{  
-    menu();
-    
-    
-    
-    
-    
-    
-     SetColor(0,14);
-    cout<<"\n1.Xem Hom nay co phim gi:"<<endl;
-    cout<<"\n2.Tim kiem Phim theo the loai:"<<endl;
-    cout<<"\n3.Search Phim"<<endl;
-    cout<<"\n4.Doi mat khau"<<endl;  
-}
-
-
-=======
 // Da Nang Hoa
->>>>>>> 027abd5e1ff73f2daed2c00f28540ebcb85df1c2
 Film& QuanLyPhim::operator[](const int& index){
     static Film temp;
     if(index >=0 && index < this->n){
