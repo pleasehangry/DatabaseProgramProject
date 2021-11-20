@@ -18,6 +18,7 @@ using namespace std;
 // QuanLyVe QLV;
 // int SoKhach;  
 int main()
-{   
-    return 0;
+{  
+  User(1);
+   return 0;
 }

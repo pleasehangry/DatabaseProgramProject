@@ -86,12 +86,12 @@ string Film::getNamCongChieu()
 
 void Film::Display()
 {
-    cout << " " << setw(9) << left << this->maPhim << "| ";
-    cout << setw(30-1) << left << this->tenPhim << "| ";
-    cout << setw(25-1) << left << this->theLoai << "| ";
-    cout << setw(15-1) << left << this->thoiLuong << "| ";
-    cout << setw(25-1) << left << this->daoDien << "| ";
-    cout << setw(40-1) << left << this->dienVien << endl;
+    cout << char(179)<< setw(9) << left << this->maPhim <<char(179);
+    cout << setw(29) << left << this->tenPhim <<char(179);
+    cout << setw(24) << left << this->theLoai << char(179);
+    cout << setw(14) << left << this->thoiLuong << char(179);
+    cout << setw(24) << left << this->daoDien << char(179);
+    cout << setw(24) << left << this->dienVien<< char(179)<<endl;
 }
 
 
