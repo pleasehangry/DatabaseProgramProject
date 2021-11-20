@@ -47,7 +47,7 @@ void QuanLyLichChieu::Add_LichChieu(const LichChieu &f)
 
 void QuanLyLichChieu::TieuDeCot(){
     cout << setw(20) << left << " Ma Lich Chieu" << "|";
-    cout << setw(30) << left << " Ten Phim:" << "|";
+    cout << setw(30) << left << " Ten LichChieu:" << "|";
     cout << setw(20) << left << " Ngay:" << "|";
     cout << setw(20) << left << " Gio:" << "|";
     cout << setw(20) << left << " Phong Chieu:";
@@ -58,8 +58,7 @@ void QuanLyLichChieu::Show()
     TieuDeCot();
     for (int i = 0; i < this->n; i++)
     {
-        cout << endl;
-        (p + i)->Display();
+        (this->p + i)->Display();
     }
 }
 
@@ -89,7 +88,7 @@ void QuanLyLichChieu::Update_LichChieu(string m)
             cout << "Nhap Ma Lich Chieu Moi: ";
             fflush(stdin);
             getline(cin, a);
-            cout << "\nNhap Ten Phim Moi: ";
+            cout << "\nNhap Ten LichChieu Moi: ";
             fflush(stdin);
             getline(cin, b);
             cout << "\nNhap Ngay: ";
@@ -161,7 +160,7 @@ void QuanLyLichChieu::setLichChieu(){
     QLP.Show();
     cout << "Nhap Ma So Phim Ban Muon Len Lich: "; cin >> MsPhim;
     int k = QLP.checkMSFilm(MsPhim);
-    temp.setTenPhim((QLP.getFimlName(k)));
+    temp.setTenPhim(QLP.getFimlName(k));
     cout << "Nhap Ngay: "; cin >> ngay;
     temp.setNgay(ngay);
     cout << "Nhap Gio: "; cin >> gio;
@@ -186,28 +185,156 @@ void QuanLyLichChieu::setLichChieu(){
 }
 
 void QuanLyLichChieu::XemLichChieuCuaPhim(string m){
-    QuanLyPhim QLP;
-    DocFile_Phim(QLP);
-    int k = QLP.checkMSFilm(m);
-    string n = QLP.getFimlName(k);
     for (int i = 0; i < this->n; i++)
     {
-        if((this->p +i)->getTenPhim() == n){
-            TieuDeCot();
-            for (int i = 0; i < this->n; i++)
-            {
-                cout << endl;
-                (p + i)->Display();
-            }
+        if((this->p + i)->getTenPhim() == m){
+            (this->p + i)->Display();
         }
     }
     
 }
-
+// Da Nang Hoa
 LichChieu& QuanLyLichChieu::operator[](const int& index){
     static LichChieu temp;
     if(index >=0 && index < this->n){
         return *(this->p + index);
     }
     else return temp;
+}
+
+
+
+// Menu
+
+void QuanLyLichChieu::Menu(){
+    system("cls");
+
+    cout << endl;
+    cout << "1.Xem Danh Sach Lich Chieu" << endl;
+    cout << "2.Them Lich Chieu" << endl;
+    cout << "3.Xoa Lich Chieu" << endl;
+    cout << "4.Cap Nhat Lich Chieu" << endl;
+    cout << "5.Tro Ve Man Hinh Chinh" << endl;
+    int chon;
+    cout << "Nhap Lua Chon: "; cin >> chon;
+    switch (chon)
+    {
+    case 1:
+        system("cls");
+        this->Show();
+        break;
+    case 2:
+        this->ThemLichChieu();
+        break;
+    case 3:
+        this->XoaLichChieu();
+        break;
+    case 4:
+        this->CapNhatLichChieu();
+        break;
+    default:
+        break;
+    }
+}
+
+void QuanLyLichChieu::ThemLichChieu(){
+    system("cls");
+    this->Show();
+    cout << "Them Mot Lich Chieu: " << endl;
+    LichChieu temp;
+    cin >> temp;
+    this->Add_LichChieu(temp);    
+    cout << "Them Thanh Cong" << endl;
+    int chon;
+    cout << "1.Them Lich Chieu" << endl;
+    cout << "2.Tro Ve" << endl;
+    cout << "Nhap Lua Chon"; cin >> chon;
+    switch (chon)
+    {
+    case 1:
+        ThemLichChieu();
+        break;
+    case 2:
+        this->Menu();
+        break;
+    default:
+        this->Menu();
+        break;
+    }
+}
+
+void QuanLyLichChieu::CapNhatLichChieu(){
+    system("cls");
+    this->Show();
+    string ma;
+    cout << "Nhap Ma LichChieu Ban Muon Cap Nhat: ";
+    cin >> ma;
+    int index = checkMaLichChieu(ma);
+    if(index == -1){
+        cout << "Khong Co Ma Lich Chieu Nao Trung Khop" << endl;
+        int chon2;
+        cout << "1.Nhap Lai" << endl;
+        cout << "2.Tro Ve" << endl;
+        cout << ">> " << endl;
+        cin >> chon2;
+        if(chon2 == 1){
+            this->CapNhatLichChieu();
+        }
+        else{
+            this->Menu();
+        }
+    }
+    else {
+        this->Update_LichChieu(ma);
+        cout << "Cap Nhat Lich Chieu Thanh Cong!!\n" << endl;
+        int chon3;
+        cout << "1.Nhap Lai" << endl;
+        cout << "2.Tro Ve" << endl;
+        cout << ">> " << endl;
+        cin >> chon3;
+        if(chon3 == 1){
+            this->CapNhatLichChieu();
+        }
+        else{
+            this->Menu();
+        }
+    }
+}
+
+
+void QuanLyLichChieu::XoaLichChieu(){
+    system("cls");
+    this->Show();
+    string ma;
+    cout << "Nhap Ma Lich Chieu Ban Muon Xoa: ";
+    cin >> ma;
+    int index = checkMaLichChieu(ma);
+    if(index == -1){
+        cout << "Khong Co Ma Lich Chieu Nao Trung Khop" << endl;
+        int chon2;
+        cout << "1.Nhap Lai" << endl;
+        cout << "2.Tro Ve" << endl;
+        cout << ">> " << endl;
+        cin >> chon2;
+        if(chon2 == 1){
+            this->XoaLichChieu();
+        }
+        else{
+            this->Menu();
+        }
+    }
+    else {
+        this->Delete_LichChieu(ma);
+        cout << "Xoa Lich Chieu Thanh Cong!!\n" << endl;
+        int chon3;
+        cout << "1.Xoa Lich Chieu" << endl;
+        cout << "2.Tro Ve" << endl;
+        cout << ">> " << endl; cin >> chon3;
+        if(chon3 == 1){
+            this->XoaLichChieu();
+        }
+        else{
+            this->Menu();
+        }
+    }
 }

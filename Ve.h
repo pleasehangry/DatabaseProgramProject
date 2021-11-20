@@ -1,5 +1,6 @@
 #include<iostream>
 #include<iomanip>
+#include<string>
 #pragma once
 using namespace std;
 
@@ -35,5 +36,6 @@ public:
     int getGiaLoaiVe();
     int getSoLuong();
     int getSoVeDaBan();
+
 };
 

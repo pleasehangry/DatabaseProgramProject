@@ -118,34 +118,31 @@ ostream& operator<<(ostream& o, const Film& f){
     return o;
 }
 
-istream& operator>>(istream& i, Film& f){
-
-    string maPhim, tenPhim, theLoai, thoiLuong, daoDien, dienVien, namCongChieu, quocGia;
+istream& operator>>(istream& i, Film& e){
+    system("cls");
     cout << "Nhap Ma Phim: ";
-    i >> maPhim;
-     f.maPhim = maPhim;
+    fflush(stdin);
+    getline(i,e.maPhim);
     cout << "Nhap Ten Phim: ";
-    i >> tenPhim;
-     f.tenPhim =  tenPhim;
+    fflush(stdin);
+    getline(i,e.tenPhim);
     cout << "Nhap The Loai: ";
-    i >> theLoai;
-     f.theLoai = theLoai;
+    fflush(stdin);
+    getline(i,e.theLoai);
     cout << "Nhap Thoi Luong: ";
-    i >> thoiLuong;
-     f.thoiLuong = thoiLuong;
-    cout << "Nhap Dao Dien: ";
-    i >> daoDien;
-     f.daoDien = daoDien;
-    cout << "Nhap Dien Vien: ";
-    i >> dienVien;
-     f.dienVien = dienVien;
+    fflush(stdin);
+    getline(i,e.thoiLuong);
+    cout << "Nhap Dao Dien :";
+    fflush(stdin);
+    getline(i,e.daoDien);
+    cout << "Nhap Dien Vien:";
+    fflush(stdin);
+    getline(i,e.dienVien);
     cout << "Nhap Nam Cong Chieu: ";
-    i >>namCongChieu;
-    f.namCongChieu;
-    cout << "Nhap Quoc Gia: ";
-    i >> quocGia;
-     f.quocGia = quocGia;
+    fflush(stdin);
+    getline(i,e.namCongChieu);
+    cout << "Nhap Quoc Gia :";
+    fflush(stdin);
+    getline(i,e.quocGia);
     return i;
 }
-
-

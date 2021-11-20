@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 #include"DoHoa.h"
 #include"Film.h"
 #include "Time.h"
 #include "DocFile.h"
 
+=======
+
+#include "User.h"
+>>>>>>> 027abd5e1ff73f2daed2c00f28540ebcb85df1c2
 QuanLyPhim QLP;
 QuanLyNhanVien QLNV;
 vector<Customer> CTM;
@@ -12,10 +17,10 @@ QuanLyVe QLV;
 int SoKhach;
 
 
-
-void User(int index);
-void ThanhToan(int index, int indexmave, int SoVe);
-
+// void Menu_DangNhap();
+// void User(int index);
+// void ThanhToan(int index, int indexmave, int SoVe);
+// void DoiMatKhau(int index);
 
 
 void thanhcong()
@@ -60,7 +65,7 @@ void DatVe(int index){
         cin >> maPhim;
     }
     system("cls");
-    QLLC.Show();
+    QLLC.XemLichChieuCuaPhim(QLP[indexMaphim].getTenPhim());
     cout << "Nhap Ma Xuat Chieu: ";
     cin >> maXuatChieu;
     while(QLLC.checkMaLichChieu(maXuatChieu) < 0){
@@ -73,7 +78,8 @@ void DatVe(int index){
     system("cls");
     cout << "Ban Muon Dat Bao Nhieu Ve? ";
     cin >> SoVe;
-    int indexmave = QLV.GetMaVe(maPhim);
+    string loaikhachhang = CTM[index].LoaiKhachHang;
+    int indexmave = QLV.GetMaVe(maPhim, loaikhachhang);
     QLV[indexmave].ThemSoVeDaBan(SoVe);
     UpdateFile_Ve(QLV);
     QLPC[h].DisplayTable();
@@ -93,7 +99,7 @@ void DatVe(int index){
     cout << "1.Co" << endl;
     cout << "2.Khong" << endl;
     int In;
-    cin >> In;
+    cout << ">>"; cin >> In;
     switch (In)
     {
     case 1:
@@ -189,13 +195,6 @@ int TimTaiKhoan(string tk, string mk){
 
 
 
-
-void us1()
-{
-    
-}
-
-
 void User(int index)
 {
     DocFile(QLNV, QLP, QLLC, QLPC, QLV, CTM, SoKhach);
@@ -206,6 +205,16 @@ void User(int index)
     cout<<"Xin Chao ";
     SetColor(0,9);
     cout << CTM[index].HoTen;
+<<<<<<< HEAD
+=======
+    SetColor(0,14);
+    cout<<"\n1.Xem Hom Nay Co Phim Gi:"<<endl;
+    cout<<"\n2.Tim Kiem Phim"<<endl;
+    cout<<"\n3.Tim Kiem Phim Theo The Loai:"<<endl;
+    cout<<"\n4.Doi Mat Khau"<<endl;
+    cout<<"\n5.Xem Thong Tin Ca Nhan" << endl;
+    cout<<"\n6.Dang Xuat" << endl;
+>>>>>>> 027abd5e1ff73f2daed2c00f28540ebcb85df1c2
     SetColor(0,7);
     menu();
     int ma;
@@ -238,20 +247,35 @@ void User(int index)
             cout<<"\n1.Tro Ve"<<endl;
             cout<<"2.Dat Ve"<<endl;
             SetColor(0,7);
+<<<<<<< HEAD
             cout<<" "<<(char)16<<(char)16;
             cin>>lenh;
             if(lenh==1)
+=======
+            cout<<">>"; cin>>lenh2;
+            switch (lenh2)
+>>>>>>> 027abd5e1ff73f2daed2c00f28540ebcb85df1c2
             {
-                system("cls");
+            case 1:
                 User(index);
+<<<<<<< HEAD
             }
             else if(lenh == 2){
+=======
+                break;
+            case 2:
+>>>>>>> 027abd5e1ff73f2daed2c00f28540ebcb85df1c2
                 DatVe(index);
+                break;
+            default:
+                break;
             }
             break;
         case 3:
+            int Lenh4;
             QLP.XemTheloaiPhim();
             QLP.XemDSPhimCuaTheLoai();
+<<<<<<< HEAD
             SetColor(0,14);
             cout<<"\n1.Tro Ve"<<endl;
             cout<<"2.Dat Ve"<<endl;
@@ -265,11 +289,49 @@ void User(int index)
             }
             else if(lenh == 2){
                 DatVe(index);
+=======
+            cout<<"1.Tro Ve"<<endl;
+            cout<<"2.Dat Ve"<<endl;
+            SetColor(0,7);
+            cout<<">>";
+            cin>>Lenh4;
+            switch (Lenh4)
+            {
+            case 1:
+                User(index);
+                break;
+            case 2:
+                DatVe(index);
+                break;
+            default:
+                break;
+>>>>>>> 027abd5e1ff73f2daed2c00f28540ebcb85df1c2
             }
             break;
         case 4:
+            DoiMatKhau(index);
             break;
-    
+        case 5:
+            CTM[index].Show();
+            int naptien;
+            cout << "1.Nap Tien" << endl;
+            cout << "2.Tro Ve" << endl;
+            cout << ">>"; cin >> naptien;
+                switch (naptien)
+                {
+                case 1: 
+                    CTM[index].NapTien();
+                    break;
+                case 2:
+                    User(index);
+                    break;
+                default:
+                    break;
+                }
+            break;
+        default:
+            DangNhap_Khach();
+            break;
     } 
 } 
 
@@ -282,6 +344,9 @@ void DangNhap(){
     cout << "Nhap Mat Khau: " << endl;
     cin >> mk;
     int index = TimTaiKhoan(gmail,mk);
+    if(gmail == "0"){
+        Menu_DangNhap();
+    }
     if(index == -1){
         system("cls");
         DangNhap();
@@ -289,5 +354,120 @@ void DangNhap(){
     }
     else{
         User(index);
+    }
+}
+
+void DangKy(){
+    system("cls");
+    DocFile_Khach(CTM,SoKhach);
+    string gmail, mk, mk2, ten;
+    cout << "Nhap Gmail Cua Ban: ";cin >> gmail;
+    
+    cout << "Nhap Mat Khau: ";cin >> mk;
+    
+    cout << "Nhap Lai Mat khau: ";cin >> mk2;
+    
+    for (int i = 0; i < CTM.size(); i++)
+    {
+        if(gmail == CTM[i].getGmail()){
+            cout << "Tai Khoan Da Ton Tai" << endl;
+            break;
+            getch();
+            DangKy();
+        }
+    }
+    
+    while(mk!=mk2){
+        system("cls");
+        cout << "(Nhan 0 De Thoat)" << endl;
+        cout << "Mat Khau Khong Trung Khop" << endl;
+        cout << "\nNhap Gmail Cua Ban: " << gmail << endl;
+        cout << "Nhap Mat Khau:"; cin >> mk;
+        if(mk == "0"){
+            Menu_DangNhap();
+        }
+        cout << "Nhap Lai Mat Khau: ";cin >> mk2;
+        
+    }
+    cout << "Nhap Ho Ten Cua Ban: ";cin >> ten;
+    
+    Customer temp(gmail,mk,ten);
+    CTM.push_back(temp);
+    SoKhach++;
+    UpdateFile_Khach(CTM, SoKhach);
+    cout << "\n\nDang Ky Thanh Cong"<< endl;
+    cout << "Nhan Phim Bat Ky De Tro Ve";
+    getch();
+    Menu_DangNhap();
+}
+
+void Menu_DangNhap(){
+    system("cls");
+    int chon;
+    cout << "1. Dang Nhap" << endl;
+    cout << "2. Dang Ky" << endl;
+    cout << "3. Thoat" << endl;
+    cout << ">>";cin >> chon;
+    switch (chon)
+    {
+    case 1:
+        DangNhap();
+        break;
+    case 2:
+        DangKy();
+        break;
+    default:
+        break;
+    }
+}
+
+void DoiMatKhau(int index){
+    system("cls");
+    DocFile_Khach(CTM, SoKhach);
+    string mkc,mkm,mkm2;
+    cout << "Nhap Mat Khau Cu:";cin >> mkc;
+    
+    cout << "Nhap Mat Khau Moi:";cin >> mkm;
+    
+    cout << "Nhap Lai Mat Khau Moi:";cin >> mkm2;
+    if(mkc != CTM[index].getMatKhau()){
+        cout << "Mat Khau Cu Khong Chinh Xac!" << endl;
+        getch();
+        DoiMatKhau(index);
+    } else{
+        while(mkm!=mkm2){
+            cout << "Mat Khau Moi Khong Trung Khop!" << endl;
+            getch();
+            system("cls");
+            cout << "Nhap Mat Khau Cu: " << mkc << endl;
+            cout << "Nhap Mat Khau Moi:";cin >> mkm;
+            cout << "Nhap Lai Mat Khau Moi:";cin >> mkm2;
+        }
+    }
+    CTM[index].setMatKhau(mkm);
+    UpdateFile_Khach(CTM, SoKhach);
+    cout << "Doi Mat Khau Thanh Cong!" << endl;
+    cout << "Nhap Phim Bat Ky De Tro Ve" << endl;
+    getch();
+    User(index);
+}
+
+
+void DangNhap_Khach(){
+    int chon;
+    cout << "1.Dang Nhap" << endl;
+    cout << "2.Dang Ky" << endl;
+    cout << "3.Thoat" << endl;
+    cout << ">>"; cin >> chon;
+    switch (chon)
+    {
+    case 1:
+        DangNhap();
+        break;
+    case 2:
+        DangKy();
+        break;
+    default:
+        break;
     }
 }

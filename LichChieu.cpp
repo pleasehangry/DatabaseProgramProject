@@ -48,9 +48,31 @@ void LichChieu::Display(){
     cout << setw(30-1) << left << this->TenPhim << "| ";
     cout << setw(20-1) << left << this->Ngay << "| ";
     cout << setw(20-1) << left << this->Gio << "| ";
-    cout << setw(20-1) << left << this->PhongChieu;
+    cout << setw(20-1) << left << this->PhongChieu << endl;
 }
 
 LichChieu::~LichChieu()
 {
 }
+
+
+istream& operator>>(istream& i, LichChieu& e){
+    system("cls");
+    cout << "Nhap Ma Lich Chieu: ";
+    fflush(stdin);
+    getline(i,e.MaLichChieu);
+    cout << "Nhap Ten Phim: ";
+    fflush(stdin);
+    getline(i,e.TenPhim);
+    cout << "Nhap Que Quan: ";
+    fflush(stdin);
+    getline(i,e.Ngay);
+    cout << "Nhap Ngay: ";
+    fflush(stdin);
+    getline(i,e.Gio);
+    cout << "Nhap Gio :";
+    fflush(stdin);
+    getline(i,e.PhongChieu);
+    return i;
+}
+

@@ -1,5 +1,6 @@
 #include<iostream>
 #include<string>
+#include<conio.h>
 #pragma once
 using namespace std;
 
@@ -14,8 +15,10 @@ private:
     string SoCMT;
     string ChucVu;
     string PhanQuyen;
+    string TaiKhoan;
+    string MatKhau;
 public:
-    NhanVien(string = "Unknown", string = "Unknown", string = "Unknown", string = "Unknown", string = "Unknown", string = "Unknown", string = "Unknown", string = "Unknown");
+    NhanVien(string = "Unknown", string = "Unknown", string = "Unknown", string = "Unknown", string = "Unknown", string = "Unknown", string = "Unknown", string = "Unknown", string = "admin", string = "password");
     ~NhanVien();
     string getMaNV();
     string getHoTen();
@@ -25,6 +28,8 @@ public:
     string getSoCMT();
     string getChucVu();
     string getPhanQuyen();
+    string getTaiKhoan();
+    string getMatKhau();
 
     void setMaNV(string );
     void setHoTen(string );
@@ -34,6 +39,11 @@ public:
     void setSoCMT(string );
     void setChucVu(string );
     void setPhanQuyen(string );
+    void setTaiKhoan(string );
+    void setMatKhau(string );
 
     void Display();
+    void Display2();
+    //Da Nang Hoa;
+    friend istream& operator>>(istream& i,NhanVien&);
 };

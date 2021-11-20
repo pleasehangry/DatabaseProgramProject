@@ -21,4 +21,9 @@ public:
     friend void UpdateFile_Ve(QuanLyVe&);
     // da nang hoa
     Ve& operator[](const int&);
+    void Menu();
+    void ThemVe();
+    void CapNhatVe();
+    void XoaVe();
+    void XemThongTinVe();
 };

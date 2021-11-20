@@ -1,6 +1,7 @@
 #include "Film.h"
 #include"DoHoa.h"
 #include<string>
+#include <cstring>
 #pragma once
 class QuanLyPhim
 {
@@ -26,4 +27,10 @@ public:
     friend void XemLichChieuCuaPhim(string);
     // da nang hoa
     Film& operator[](const int&);
+    // Menu
+    void Menu();
+    void ThemPhim();
+    void CapNhatPhim();
+    void XoaPhim();
+    void XemThongTinPhim();
 };

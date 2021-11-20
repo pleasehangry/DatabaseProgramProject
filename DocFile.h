@@ -26,4 +26,4 @@ void UpdateFile_NV(QuanLyNhanVien&);
 void UpdateFile_PC(QLPhongChieu&);
 void UpdateFile_Khach(vector<Customer>&, int&);
 void UpdateFile_LichChieu(QuanLyLichChieu&);
-void Update(QuanLyNhanVien&,QuanLyPhim&, QuanLyLichChieu&, QLPhongChieu& ,vector<Customer>&, int&);
+void Update(QuanLyNhanVien&,QuanLyPhim&,QuanLyLichChieu&,QLPhongChieu&,QuanLyVe& ,vector<Customer>&, int&);
