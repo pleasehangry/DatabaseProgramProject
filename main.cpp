@@ -6,18 +6,6 @@
 #include"User.h"
 #include "Admin.h"
 using namespace std;
-<<<<<<< HEAD
-//  QuanLyNhanVien QLNV;
-//  QuanLyPhim QLP;
-// vector<Customer> CTM;
-// QLPhongChieu QLPC;
-// QuanLyLichChieu QLLC;
-// QuanLyVe QLV;
-// int SoKhach;  
-int main()
-{  
-  User(1);
-=======
 int main()
 {
    QuanLyPhim QLP;
@@ -48,6 +36,5 @@ int main()
    default:
       break;
    }
->>>>>>> 027abd5e1ff73f2daed2c00f28540ebcb85df1c2
    return 0;
 }

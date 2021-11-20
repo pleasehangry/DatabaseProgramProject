@@ -1,7 +1,7 @@
 #include "DoHoa.h"
 #include<iostream>
 #include<iomanip>
-#define KEY_NONE
+#define KEY_NONE -1
 using namespace std;
 
 int x=1;
@@ -200,7 +200,7 @@ void menu()
 		    SetColor(0,1);
 		    if(i==1)
 		    {
-		    	cout<<"i love you <3";
+		    	cout<<"";
 			}
 			if(i==2)
 			{
@@ -208,7 +208,7 @@ void menu()
 			}
 			if(i==3)
 			{
-				cout<<"hoang thui";
+				cout<<"  ";
 			}
 		    
 	

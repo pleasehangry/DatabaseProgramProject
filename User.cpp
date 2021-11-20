@@ -1,13 +1,5 @@
-<<<<<<< HEAD
-#include"DoHoa.h"
-#include"Film.h"
-#include "Time.h"
-#include "DocFile.h"
-
-=======
 
 #include "User.h"
->>>>>>> 027abd5e1ff73f2daed2c00f28540ebcb85df1c2
 QuanLyPhim QLP;
 QuanLyNhanVien QLNV;
 vector<Customer> CTM;
@@ -205,8 +197,6 @@ void User(int index)
     cout<<"Xin Chao ";
     SetColor(0,9);
     cout << CTM[index].HoTen;
-<<<<<<< HEAD
-=======
     SetColor(0,14);
     cout<<"\n1.Xem Hom Nay Co Phim Gi:"<<endl;
     cout<<"\n2.Tim Kiem Phim"<<endl;
@@ -214,7 +204,6 @@ void User(int index)
     cout<<"\n4.Doi Mat Khau"<<endl;
     cout<<"\n5.Xem Thong Tin Ca Nhan" << endl;
     cout<<"\n6.Dang Xuat" << endl;
->>>>>>> 027abd5e1ff73f2daed2c00f28540ebcb85df1c2
     SetColor(0,7);
     menu();
     int ma;
@@ -247,24 +236,13 @@ void User(int index)
             cout<<"\n1.Tro Ve"<<endl;
             cout<<"2.Dat Ve"<<endl;
             SetColor(0,7);
-<<<<<<< HEAD
-            cout<<" "<<(char)16<<(char)16;
-            cin>>lenh;
-            if(lenh==1)
-=======
-            cout<<">>"; cin>>lenh2;
-            switch (lenh2)
->>>>>>> 027abd5e1ff73f2daed2c00f28540ebcb85df1c2
+            cout<<">>"; cin>>lenh;
+            switch (lenh)
             {
             case 1:
                 User(index);
-<<<<<<< HEAD
-            }
-            else if(lenh == 2){
-=======
                 break;
             case 2:
->>>>>>> 027abd5e1ff73f2daed2c00f28540ebcb85df1c2
                 DatVe(index);
                 break;
             default:
@@ -275,21 +253,6 @@ void User(int index)
             int Lenh4;
             QLP.XemTheloaiPhim();
             QLP.XemDSPhimCuaTheLoai();
-<<<<<<< HEAD
-            SetColor(0,14);
-            cout<<"\n1.Tro Ve"<<endl;
-            cout<<"2.Dat Ve"<<endl;
-            SetColor(0,7);
-            cout<<" "<<(char)16<<(char)16;
-            cin>>lenh;
-            if(lenh==1)
-            {
-                system("cls");
-                User(index);
-            }
-            else if(lenh == 2){
-                DatVe(index);
-=======
             cout<<"1.Tro Ve"<<endl;
             cout<<"2.Dat Ve"<<endl;
             SetColor(0,7);
@@ -305,7 +268,6 @@ void User(int index)
                 break;
             default:
                 break;
->>>>>>> 027abd5e1ff73f2daed2c00f28540ebcb85df1c2
             }
             break;
         case 4:
