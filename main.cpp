@@ -1,10 +1,10 @@
 
-#include "DocFile.h"
-#include <math.h>
-#include "DoHoa.h"
-#include "Time.h"
+// #include "DocFile.h"
+// #include "DoHoa.h"
+// #include "Time.h"
 #include"User.h"
 #include "Admin.h"
+
 using namespace std;
 int main()
 {

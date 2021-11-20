@@ -44,14 +44,7 @@ int whereY()
 	return -1;
 }
 
-//============== d?ch con tr? hi?n t?i d?n di?m c� t?a d? (x,y) ==========
-// void gotoXY(int x, int y)
-// {
-// 	HANDLE hConsoleOutput;
-// 	COORD Cursor_an_Pos = { x, y };
-// 	hConsoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);
-// 	SetConsoleCursorPosition(hConsoleOutput, Cursor_an_Pos);
-// }
+
 //============= d?t m�u cho ch? =========
 // void SetColor(WORD color)
 // {

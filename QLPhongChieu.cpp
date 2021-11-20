@@ -210,8 +210,8 @@ void QLPhongChieu::ThemPhongChieu(){
     int chon;
     cout << "1.Them PhongChieu" << endl;
     cout << "2.Tro Ve" << endl;
-    cout << "Nhap Lua Chon" << endl;
-    cin >> chon;
+    cout << "Nhap Lua Chon";cin >> chon;
+    
     switch (chon)
     {
     case 1:
@@ -253,8 +253,8 @@ void QLPhongChieu::CapNhatPhongChieu(){
         int chon3;
         cout << "1.Nhap Lai" << endl;
         cout << "2.Tro Ve" << endl;
-        cout << ">> " << endl;
-        cin >> chon3;
+        cout << ">> ";cin >> chon3;
+        
         if(chon3 == 1){
             this->CapNhatPhongChieu();
         }
@@ -269,16 +269,16 @@ void QLPhongChieu::XoaPhongChieu(){
     system("cls");
     this->Show();
     string ma;
-    cout << "Nhap Ma PhongChieu Ban Muon Xoa: ";
+    cout << "Nhap Ma Phong Chieu Ban Muon Xoa: ";
     cin >> ma;
     int index = checkMSPC(ma);
     if(index == -1){
-        cout << "Khong Co Ma PhongChieu Nao Trung Khop" << endl;
+        cout << "Khong Co Ma Phong Chieu Nao Trung Khop" << endl;
         int chon2;
         cout << "1.Nhap Lai" << endl;
         cout << "2.Tro Ve" << endl;
-        cout << ">> " << endl;
-        cin >> chon2;
+        cout << ">> ";cin >> chon2;
+        
         if(chon2 == 1){
             this->XoaPhongChieu();
         }
@@ -306,11 +306,11 @@ void QLPhongChieu::XemThongTinPhongChieu(){
     system("cls");
     this->Show();
     string ma;
-    cout << "Nhap Ma PhongChieu Ban Muon Xem: ";
+    cout << "Nhap Ma Phong Chieu Ban Muon Xem: ";
     cin >> ma;
     int index = checkMSPC(ma);
     if(index == -1){
-        cout << "Khong Co Ma PhongChieu Nao Trung Khop" << endl;
+        cout << "Khong Co Ma Phong Chieu Nao Trung Khop" << endl;
         int chon2;
         cout << "1.Nhap Lai" << endl;
         cout << "2.Tro Ve" << endl;
@@ -328,8 +328,8 @@ void QLPhongChieu::XemThongTinPhongChieu(){
         int chon3;
         cout << "1.Xem Thong Tin PhongChieu" << endl;
         cout << "2.Tro Ve" << endl;
-        cout << ">> " << endl;
-        cin >> chon3;
+        cout << ">> "; cin >> chon3;
+        
         if(chon3 == 1){
             this->XemThongTinPhongChieu();
         }

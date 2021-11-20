@@ -50,7 +50,7 @@ void QuanLyLichChieu::TieuDeCot(){
     cout << setw(30) << left << " Ten LichChieu:" << "|";
     cout << setw(20) << left << " Ngay:" << "|";
     cout << setw(20) << left << " Gio:" << "|";
-    cout << setw(20) << left << " Phong Chieu:";
+    cout << setw(20) << left << " Phong Chieu:" << endl;
 }
 
 void QuanLyLichChieu::Show()
@@ -185,6 +185,7 @@ void QuanLyLichChieu::setLichChieu(){
 }
 
 void QuanLyLichChieu::XemLichChieuCuaPhim(string m){
+    TieuDeCot();
     for (int i = 0; i < this->n; i++)
     {
         if((this->p + i)->getTenPhim() == m){
@@ -216,7 +217,7 @@ void QuanLyLichChieu::Menu(){
     cout << "4.Cap Nhat Lich Chieu" << endl;
     cout << "5.Tro Ve Man Hinh Chinh" << endl;
     int chon;
-    cout << "Nhap Lua Chon: "; cin >> chon;
+    cout << ">>"; cin >> chon;
     switch (chon)
     {
     case 1:
@@ -248,7 +249,7 @@ void QuanLyLichChieu::ThemLichChieu(){
     int chon;
     cout << "1.Them Lich Chieu" << endl;
     cout << "2.Tro Ve" << endl;
-    cout << "Nhap Lua Chon"; cin >> chon;
+    cout << ">>"; cin >> chon;
     switch (chon)
     {
     case 1:
@@ -267,7 +268,7 @@ void QuanLyLichChieu::CapNhatLichChieu(){
     system("cls");
     this->Show();
     string ma;
-    cout << "Nhap Ma LichChieu Ban Muon Cap Nhat: ";
+    cout << "Nhap Ma Lich Chieu Ban Muon Cap Nhat: ";
     cin >> ma;
     int index = checkMaLichChieu(ma);
     if(index == -1){
@@ -275,8 +276,8 @@ void QuanLyLichChieu::CapNhatLichChieu(){
         int chon2;
         cout << "1.Nhap Lai" << endl;
         cout << "2.Tro Ve" << endl;
-        cout << ">> " << endl;
-        cin >> chon2;
+        cout << ">> ";cin >> chon2;
+        
         if(chon2 == 1){
             this->CapNhatLichChieu();
         }
@@ -314,8 +315,8 @@ void QuanLyLichChieu::XoaLichChieu(){
         int chon2;
         cout << "1.Nhap Lai" << endl;
         cout << "2.Tro Ve" << endl;
-        cout << ">> " << endl;
-        cin >> chon2;
+        cout << ">> ";cin >> chon2;
+        
         if(chon2 == 1){
             this->XoaLichChieu();
         }
