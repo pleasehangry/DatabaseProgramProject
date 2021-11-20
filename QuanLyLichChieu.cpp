@@ -58,7 +58,6 @@ void QuanLyLichChieu::Show()
     TieuDeCot();
     for (int i = 0; i < this->n; i++)
     {
-        cout << endl;
         (this->p + i)->Display();
     }
 }
@@ -186,19 +185,10 @@ void QuanLyLichChieu::setLichChieu(){
 }
 
 void QuanLyLichChieu::XemLichChieuCuaPhim(string m){
-    QuanLyPhim QLP;
-    DocFile_Phim(QLP);
-    int k = QLP.checkMSFilm(m);
-    string n = QLP.getFimlName(k);
     for (int i = 0; i < this->n; i++)
     {
-        if((this->p +i)->getTenPhim() == n){
-            TieuDeCot();
-            for (int i = 0; i < this->n; i++)
-            {
-                cout << endl;
-                (p + i)->Display();
-            }
+        if((this->p + i)->getTenPhim() == m){
+            (this->p + i)->Display();
         }
     }
     

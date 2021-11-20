@@ -1,6 +1,8 @@
 #include"DoHoa.h"
 #include "Time.h"
 #include "DocFile.h"
+#include<iostream>
+using namespace std;
 #pragma once
 
 void DangNhap();

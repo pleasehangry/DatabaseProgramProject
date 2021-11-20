@@ -202,7 +202,7 @@ void UpdateFile_Phim(QuanLyPhim& QLP){
 
 void UpdateFile_NV(QuanLyNhanVien& QLNV){
     fstream ip1;
-    ip1.open("LichChieu.csv", ios::out);
+    ip1.open("NhanVien.csv", ios::out);
     int n = QLNV.n;
     if(ip1.is_open()){
         for (int i = 0; i < n; i++)

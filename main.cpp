@@ -17,11 +17,11 @@ int main()
    int SoKhach;
 
    DocFile(QLNV, QLP, QLLC, QLPC, QLV, CTM, SoKhach);
-
+   system("cls");
    int chon;
    cout << "Ban La: " << endl;
-   cout << "Khach" << endl;
-   cout << "Admin" << endl;
+   cout << "1.Khach" << endl;
+   cout << "2.Admin" << endl;
    
    cout << ">>"; cin >> chon;
    switch (chon)
@@ -31,10 +31,10 @@ int main()
       break;
    case 2:
       DangNhap_Admin(QLP, QLNV,CTM, QLPC, QLLC, QLV, SoKhach);
+      Update(QLNV, QLP, QLLC, QLPC, QLV, CTM, SoKhach);
       break;
    default:
       break;
    }
-   Update(QLNV, QLP, QLLC, QLPC, QLV, CTM, SoKhach);
    return 0;
 }

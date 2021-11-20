@@ -48,7 +48,7 @@ void LichChieu::Display(){
     cout << setw(30-1) << left << this->TenPhim << "| ";
     cout << setw(20-1) << left << this->Ngay << "| ";
     cout << setw(20-1) << left << this->Gio << "| ";
-    cout << setw(20-1) << left << this->PhongChieu;
+    cout << setw(20-1) << left << this->PhongChieu << endl;
 }
 
 LichChieu::~LichChieu()

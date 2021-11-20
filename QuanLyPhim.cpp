@@ -173,28 +173,52 @@ void QuanLyPhim::XemTheloaiPhim(){
 void QuanLyPhim::XemDSPhimCuaTheLoai(){
     string m;
     cout<<"Nhap the loai phim:"<<endl;
-    cin>>m;
+    fflush(stdin);
+    getline(cin,m);
     system("cls");
     int count = 0;
     cout << endl;
     GoTo(5,2);
     cout << " Nhung Phim The Loai " << m;
     GoTo(0,5);
-    TieuDeCot();
     for(int i = 0; i < this->n; i++){
         if((this->p+i)->getTheLoai() == m){
-           (this->p + i)->Display();
            count++;
         }
     }
-    if(count == 0) cout << "Khong Co The Loai Phim Nay";
+    if(count == 0) {
+        cout << "Khong Co The Loai Phim Nay";
+        int chon;
+        cout << "1.Nhap lai" << endl;
+        cout << "2.Tro Ve" << endl;
+        cout << ">>"; cin >> chon;
+        switch (chon)
+        {
+        case 1:
+            this->XemDSPhimCuaTheLoai();
+            break;
+        default:
+            break;
+        }
+    }
+    else{
+        for (int i = 0; i < this->n; i++)
+        {
+            if(i==0) TieuDeCot();    
+            if((this->p+i)->getTheLoai() == m){
+            (this->p + i)->Display();
+            }
+        }
+    }
 }
 
 void QuanLyPhim::TimKiemPhim(){
     system("cls");
     string s;
     GoTo(0,3);
-    cout << "   Nhap Ten Phim Ban Muon Tim: ";  cin >> s;
+    cout << "   Nhap Ten Phim Ban Muon Tim: ";
+    fflush(stdin);
+    getline(cin,s);
     int k = 0;
     cout << endl;
     for (int i = 0; i < this->n; i++)

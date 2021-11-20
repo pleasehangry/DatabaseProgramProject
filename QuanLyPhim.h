@@ -1,6 +1,7 @@
 #include "Film.h"
 #include"DoHoa.h"
 #include<string>
+#include <cstring>
 #pragma once
 class QuanLyPhim
 {
