@@ -19,11 +19,9 @@ int main()
    DocFile(QLNV, QLP, QLLC, QLPC, QLV, CTM, SoKhach);
    system("cls");
    int chon;
-   cout << "Ban La: " << endl;
-   cout << "1.Khach" << endl;
-   cout << "2.Admin" << endl;
-   
-   cout << ">>"; cin >> chon;
+   GoTo(83,9); cout << "Ban La: " << endl;
+   vector<string> m = {"Khach","Admin"};
+   chon = menu(m);
    switch (chon)
    {
    case 1:

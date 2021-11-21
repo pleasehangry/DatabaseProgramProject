@@ -1,13 +1,5 @@
-<<<<<<< HEAD
-#include"DoHoa.h"
-#include"Film.h"
-#include "Time.h"
-#include "DocFile.h"
-
-=======
 
 #include "User.h"
->>>>>>> 027abd5e1ff73f2daed2c00f28540ebcb85df1c2
 QuanLyPhim QLP;
 QuanLyNhanVien QLNV;
 vector<Customer> CTM;
@@ -205,25 +197,15 @@ void User(int index)
     cout<<"Xin Chao ";
     SetColor(0,9);
     cout << CTM[index].HoTen;
-<<<<<<< HEAD
-=======
     SetColor(0,14);
-    cout<<"\n1.Xem Hom Nay Co Phim Gi:"<<endl;
-    cout<<"\n2.Tim Kiem Phim"<<endl;
-    cout<<"\n3.Tim Kiem Phim Theo The Loai:"<<endl;
-    cout<<"\n4.Doi Mat Khau"<<endl;
-    cout<<"\n5.Xem Thong Tin Ca Nhan" << endl;
-    cout<<"\n6.Dang Xuat" << endl;
->>>>>>> 027abd5e1ff73f2daed2c00f28540ebcb85df1c2
+    vector<string> m = {"Xem Hom Nay Co Phim Gi:", "Tim Kiem Phim", "Tim Kiem Phim Theo The Loai", "Doi Mat Khau", "Xem Thong Tin Ca Nhan", "Dang Xuat"};
     SetColor(0,7);
-    menu();
-    int ma;
-    cout<<"Nhap Lua Chon Cua Ban:"<<endl;
-    cout<<" "<<(char)16<<(char)16;
-    cin>>ma;
+    
+    int ma = menu(m);
     switch(ma)
     {   int lenh;
         case 1:
+        system("cls");
          QLP.Show();
          cout<<"\n1.Dat Ve"<<endl;
          cout<<"2.Tro Ve"<<endl;
@@ -247,24 +229,13 @@ void User(int index)
             cout<<"\n1.Tro Ve"<<endl;
             cout<<"2.Dat Ve"<<endl;
             SetColor(0,7);
-<<<<<<< HEAD
-            cout<<" "<<(char)16<<(char)16;
-            cin>>lenh;
-            if(lenh==1)
-=======
-            cout<<">>"; cin>>lenh2;
-            switch (lenh2)
->>>>>>> 027abd5e1ff73f2daed2c00f28540ebcb85df1c2
+            cout<<">>"; cin>>lenh;
+            switch (lenh)
             {
             case 1:
                 User(index);
-<<<<<<< HEAD
-            }
-            else if(lenh == 2){
-=======
                 break;
             case 2:
->>>>>>> 027abd5e1ff73f2daed2c00f28540ebcb85df1c2
                 DatVe(index);
                 break;
             default:
@@ -275,21 +246,6 @@ void User(int index)
             int Lenh4;
             QLP.XemTheloaiPhim();
             QLP.XemDSPhimCuaTheLoai();
-<<<<<<< HEAD
-            SetColor(0,14);
-            cout<<"\n1.Tro Ve"<<endl;
-            cout<<"2.Dat Ve"<<endl;
-            SetColor(0,7);
-            cout<<" "<<(char)16<<(char)16;
-            cin>>lenh;
-            if(lenh==1)
-            {
-                system("cls");
-                User(index);
-            }
-            else if(lenh == 2){
-                DatVe(index);
-=======
             cout<<"1.Tro Ve"<<endl;
             cout<<"2.Dat Ve"<<endl;
             SetColor(0,7);
@@ -305,7 +261,6 @@ void User(int index)
                 break;
             default:
                 break;
->>>>>>> 027abd5e1ff73f2daed2c00f28540ebcb85df1c2
             }
             break;
         case 4:
@@ -339,13 +294,13 @@ void User(int index)
 void DangNhap(){
     string gmail,mk;
     system("cls");
-    cout << "Nhap Gmail: " << endl;
-    cin >> gmail;
-    cout << "Nhap Mat Khau: " << endl;
-    cin >> mk;
+    cout << "Nhap Gmail: ";cin >> gmail;
+    
+    cout << "Nhap Mat Khau: ";cin >> mk;
+    
     int index = TimTaiKhoan(gmail,mk);
     if(gmail == "0"){
-        Menu_DangNhap();
+        DangNhap_Khach();
     }
     if(index == -1){
         system("cls");
@@ -384,7 +339,7 @@ void DangKy(){
         cout << "\nNhap Gmail Cua Ban: " << gmail << endl;
         cout << "Nhap Mat Khau:"; cin >> mk;
         if(mk == "0"){
-            Menu_DangNhap();
+            DangNhap_Khach();
         }
         cout << "Nhap Lai Mat Khau: ";cin >> mk2;
         
@@ -398,27 +353,7 @@ void DangKy(){
     cout << "\n\nDang Ky Thanh Cong"<< endl;
     cout << "Nhan Phim Bat Ky De Tro Ve";
     getch();
-    Menu_DangNhap();
-}
-
-void Menu_DangNhap(){
-    system("cls");
-    int chon;
-    cout << "1. Dang Nhap" << endl;
-    cout << "2. Dang Ky" << endl;
-    cout << "3. Thoat" << endl;
-    cout << ">>";cin >> chon;
-    switch (chon)
-    {
-    case 1:
-        DangNhap();
-        break;
-    case 2:
-        DangKy();
-        break;
-    default:
-        break;
-    }
+    DangNhap_Khach();
 }
 
 void DoiMatKhau(int index){
@@ -455,10 +390,9 @@ void DoiMatKhau(int index){
 
 void DangNhap_Khach(){
     int chon;
-    cout << "1.Dang Nhap" << endl;
-    cout << "2.Dang Ky" << endl;
     cout << "3.Thoat" << endl;
-    cout << ">>"; cin >> chon;
+    vector<string> m = {"Dang Nhap","Dang Ky","Thoat"};
+    chon = menu(m);
     switch (chon)
     {
     case 1:

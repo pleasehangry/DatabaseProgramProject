@@ -190,12 +190,11 @@ void QuanLyPhim::XemTheloaiPhim(){
 }
 
 void QuanLyPhim::XemDSPhimCuaTheLoai(){
-    fflush(stdin);
+    system("cls");
     string m;
     cout<<"Nhap the loai phim:"<<endl;
     fflush(stdin);
     getline(cin,m);
-    system("cls");
     int count = 0;
     cout << endl;
     GoTo(5,2);
@@ -207,7 +206,7 @@ void QuanLyPhim::XemDSPhimCuaTheLoai(){
         }
     }
     if(count == 0) {
-        cout << "Khong Co The Loai Phim Nay";
+        cout << "Khong Co Phim Nao Thuoc The Loai Nay";
         int chon;
         cout << "1.Nhap lai" << endl;
         cout << "2.Tro Ve" << endl;
@@ -234,25 +233,32 @@ void QuanLyPhim::XemDSPhimCuaTheLoai(){
 
 void QuanLyPhim::TimKiemPhim(){
     system("cls");
-    string s;
     GoTo(0,3);
     cout << "   Nhap Ten Phim Ban Muon Tim: ";
+    string s;
     fflush(stdin);
     getline(cin,s);
     int k = 0;
     cout << endl;
     for (int i = 0; i < this->n; i++)
     {
-        if(i == 0) TieuDeCot();
         if(strstr((this->p)->getTenPhim().c_str(),s.c_str())){ // chuoi s la con cua chuoi ten phim
-            (this->p+i)->Display();
             k++;
         }
     }
     if(k==0){
-        system("cls");
         cout << "Khong Tim Thay" << endl;
         getchar();
+    }
+    else{
+        for (int i = 0; i < this->n; i++)
+        {
+            if(i == 0) TieuDeCot();
+            if(strstr((this->p)->getTenPhim().c_str(),s.c_str())){ // chuoi s la con cua chuoi ten phim
+                (this->p+i)->Display();
+                k++;
+            }
+        }
     }
 }
 
