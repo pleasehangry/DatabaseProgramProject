@@ -23,7 +23,7 @@ int main()
    cout << "1.Khach" << endl;
    cout << "2.Admin" << endl;
    
-   cout << ">>"; cin >> chon;
+   cout << char(16); cin >> chon;
    switch (chon)
    {
    case 1:
@@ -36,5 +36,5 @@ int main()
    default:
       break;
    }
-   return 0;
+   
 }

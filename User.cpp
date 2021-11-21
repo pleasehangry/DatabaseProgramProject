@@ -204,15 +204,14 @@ void User(int index)
     cout<<"\n4.Doi Mat Khau"<<endl;
     cout<<"\n5.Xem Thong Tin Ca Nhan" << endl;
     cout<<"\n6.Dang Xuat" << endl;
-    SetColor(0,7);
-    menu();
-    int ma;
     cout<<"Nhap Lua Chon Cua Ban:"<<endl;
     cout<<" "<<(char)16<<(char)16;
+    int ma;
     cin>>ma;
     switch(ma)
     {   int lenh;
         case 1:
+        SetColor(0,15);
          QLP.Show();
          cout<<"\n1.Dat Ve"<<endl;
          cout<<"2.Tro Ve"<<endl;

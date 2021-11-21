@@ -38,31 +38,30 @@ void QuanLyPhim::Add_Film(const Film &f)
 }
 
 void QuanLyPhim::TieuDeCot(){
-    // cout << setw(10) << left << " Ma Phim" << "|";
-    // cout << setw(30) << left << " Ten Phim:" << "|";
-    // cout << setw(25) << left << " The loai:" << "|";
-    // cout << setw(15) << left << " Thoi Luong:" << "|";
-    // cout << setw(25) << left << " Dao Dien:" << "|";
-    // cout << setw(25) << left << " Dien Vien:" << endl;
+    cout << char(179)<< setw(9) << left << "Ma Phim"<<char(179);
+    cout << setw(29) << left <<"Ten Phim" <<char(179);
+    cout << setw(24) << left << "The loai"<< char(179);
+    cout << setw(14) << left << "Thoi luong"<< char(179);
+    cout << setw(24) << left <<"Dao dien"<< char(179);
+    cout << setw(27) << left <<"Dien vien"<< char(179)<<endl;
     
-    box(0,3,10,2,7,8,"Ma Phim");
-    box(10,3,30,2,7,8,"Ten Phim");
-    box(40,3,25,2,7,8,"The loai");
-    box(65,3,15,2,7,8,"Thoi Luong");
-    box(80,3,25,2,7,8,"Dao Dien");
-    box(105,3,25,2,7,8,"Dien Vien");
+    // box(10,3,30,2,7,8,"Ten Phim");
+    // box(40,3,25,2,7,8,"The loai");
+    // box(65,3,15,2,7,8,"Thoi Luong");
+    // box(80,3,25,2,7,8,"Dao Dien");
+    // box(105,3,25,2,7,8,"Dien Vien");
    
-    GoTo(10,3);cout<<char(194);
-    GoTo(10,5);cout<<char(193);
-    GoTo(40,3);cout<<char(194);
-    GoTo(40,5);cout<<char(193);
-    GoTo(65,3);cout<<char(194);
-    GoTo(65,5);cout<<char(193);
-    GoTo(80,3);cout<<char(194);
-    GoTo(80,5);cout<<char(193);
-    GoTo(105,3);cout<<char(194);
-    GoTo(105,5);cout<<char(193);
-    cout<<endl;
+    // GoTo(10,3);cout<<char(194);
+    // GoTo(10,5);cout<<char(193);
+    // GoTo(40,3);cout<<char(194);
+    // GoTo(40,5);cout<<char(193);
+    // GoTo(65,3);cout<<char(194);
+    // GoTo(65,5);cout<<char(193);
+    // GoTo(80,3);cout<<char(194);
+    // GoTo(80,5);cout<<char(193);
+    // GoTo(105,3);cout<<char(194);
+    // GoTo(105,5);cout<<char(193);
+    // cout<<endl;
 }
 
 void QuanLyPhim::Show()

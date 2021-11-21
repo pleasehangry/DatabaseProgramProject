@@ -91,7 +91,7 @@ void Film::Display()
     cout << setw(24) << left << this->theLoai << char(179);
     cout << setw(14) << left << this->thoiLuong << char(179);
     cout << setw(24) << left << this->daoDien << char(179);
-    cout << setw(24) << left << this->dienVien<< char(179)<<endl;
+    cout << setw(27) << left << this->dienVien<< char(179)<<endl;
 }
 
 
