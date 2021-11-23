@@ -1,33 +1,25 @@
 #include "LichChieu.h"
 #include "QLPhongChieu.h"
 #include "QuanLyPhim.h"
-#pragma once
-class QuanLyLichChieu
+#include "QuanLy.h"
+#pragma once 
+class QuanLyLichChieu : public QuanLy<LichChieu>
 {
 private:
-    LichChieu *p;
-    int n;
 public:
-    QuanLyLichChieu();
-    ~QuanLyLichChieu();
-
-    void Add_LichChieu(const LichChieu &f);
     void TieuDeCot();
     void Show();
-    int getSoLuong();
-    int checkMaLichChieu(string s);
-    void Update_LichChieu(string m);
-    void Delete_LichChieu(string m);
-    void setLichChieu();
+    int CheckMS(string s);
+    void Update(string m);
+
     friend void UpdateFile_LichChieu(QuanLyLichChieu& QLLC);
     friend void DatVe(int);
+
     void XemLichChieuCuaPhim(string);
-    // da nang hoa
-    LichChieu& operator[](const int&);
 
     // Menu
     void Menu();
-    void ThemLichChieu();
+    void setLichChieu();
     void CapNhatLichChieu();
     void XoaLichChieu();
 };

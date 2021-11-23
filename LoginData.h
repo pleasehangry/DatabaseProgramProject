@@ -28,6 +28,7 @@ public:
     bool CheckSoDu(int);
     void NapTien();
     void Show();
+    void Show2();
     Customer& operator=(const Customer&);
 };
 

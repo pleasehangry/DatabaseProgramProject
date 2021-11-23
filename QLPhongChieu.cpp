@@ -1,41 +1,10 @@
 #include "QLPhongChieu.h"
 #include<string>
-QLPhongChieu::QLPhongChieu(/* args */)
-{
-    this->p = NULL;
-    this->n = 0;
-}
-
-QLPhongChieu::~QLPhongChieu()
-{
-    delete[] this->p;
-    this->n = 0;
-}
 
 
-
-void QLPhongChieu::Add_PC(PhongChieu v){
-    if(this->n == 0){
-        this->p = new PhongChieu[this->n+1];
-        *(this->p + this->n) = v;
-    }
-    else{
-        PhongChieu *temp = new PhongChieu[this->n+1];
-        for(int i = 0; i < this->n; i++){
-            *(temp+i) = *(this->p+i);
-        }
-        delete[] this->p;
-        this->p = new PhongChieu[this->n+1];
-        for(int i = 0; i < this->n; i++){
-            *(this->p+i) = *(temp+i); 
-        }
-        delete[] temp;
-        *(this->p + n) = v;
-    }   
-    this->n++;
-}
 
 void QLPhongChieu::Show(){
+    GoTo(5, 3);
     cout << setw(25) << left << "Ma Phong Chieu" << "|";
     cout << setw(20) << left << " So Ghe:" << "|";
     cout << setw(20) << left << " May Chieu:" << "|";
@@ -44,11 +13,13 @@ void QLPhongChieu::Show(){
     cout << setw(20) << left << " Tinh Trang:" << "|";
     cout << setw(20) << left << " Ma Bao Ve:" << endl;
     for(int i= 0; i < this->n; i++){
+        CanLe();
         (p+i)->Display();
     }
+    cout << endl;
 }
 
-int QLPhongChieu::checkMSPC(string s)
+int QLPhongChieu::CheckMS(string s)
 {
     int index = -1;
     for (int i = 0; i < this->n; i++)
@@ -62,9 +33,9 @@ int QLPhongChieu::checkMSPC(string s)
     return index;
 }
 
-void QLPhongChieu::Update_PC(string m)
+void QLPhongChieu::Update(string m)
 {
-    int i = checkMSPC("m");
+    int i = CheckMS(m);
     if(i >= 0){
         if (m == (this->p + i)->getMaPhongChieu())
         {
@@ -103,51 +74,6 @@ void QLPhongChieu::Update_PC(string m)
     }
     else cout << "Khong Tim Thay Ma Phim Can Sua!";
     cout << endl;
-}
-
-void QLPhongChieu::Delete_PC(string m)
-{
-    int f = checkMSPC(m);
-    if (f >= 0)
-    {
-        if (this->n == 1)
-        {
-            delete[] this->p;
-            this->p = nullptr;
-        }
-        else
-        {
-            PhongChieu *temp = new PhongChieu[this->n];
-            for (int k = 0; k < this->n; k++)
-            {
-                *(temp + k) = *(this->p + k);
-            }
-            delete[] this->p;
-            this->p = new PhongChieu[this->n - 1];
-            for (int j = 0; j < this->n - 1; j++)
-            {
-                if (j < f)
-                {
-                    *(this->p + j) = *(temp + j);
-                }
-                else
-                {
-                    *(this->p + j) = *(temp + j + 1);
-                }
-            }
-            delete[] temp;
-        }
-    }
-    this->n--;
-}
-
-
-PhongChieu& QLPhongChieu::operator[](const int& index){
-    static PhongChieu temp;
-    if(index >=0 && index < this->n){
-        return *(this->p + index);
-    }
-    else return temp;
 }
 
 // Menu
@@ -205,7 +131,7 @@ void QLPhongChieu::ThemPhongChieu(){
     cout << "Them Mot PhongChieu: " << endl;
     PhongChieu temp;
     cin >> temp;
-    this->Add_PC(temp);    
+    this->Add(temp);    
     cout << "Them Thanh Cong" << endl;
     int chon;
     cout << "1.Them PhongChieu" << endl;
@@ -232,7 +158,7 @@ void QLPhongChieu::CapNhatPhongChieu(){
     string ma;
     cout << "Nhap Ma PhongChieu Ban Muon Cap Nhat: ";
     cin >> ma;
-    int index = checkMSPC(ma);
+    int index = CheckMS(ma);
     if(index == -1){
         cout << "Khong Co Ma PhongChieu Nao Trung Khop" << endl;
         int chon2;
@@ -248,7 +174,7 @@ void QLPhongChieu::CapNhatPhongChieu(){
         }
     }
     else {
-        this->Update_PC(ma);
+        this->Update(ma);
         cout << "Cap Nhat PhongChieu Thanh Cong!!\n" << endl;
         int chon3;
         cout << "1.Nhap Lai" << endl;
@@ -271,7 +197,7 @@ void QLPhongChieu::XoaPhongChieu(){
     string ma;
     cout << "Nhap Ma Phong Chieu Ban Muon Xoa: ";
     cin >> ma;
-    int index = checkMSPC(ma);
+    int index = CheckMS(ma);
     if(index == -1){
         cout << "Khong Co Ma Phong Chieu Nao Trung Khop" << endl;
         int chon2;
@@ -287,7 +213,7 @@ void QLPhongChieu::XoaPhongChieu(){
         }
     }
     else {
-        this->Delete_PC(ma);
+        this->Delete(ma);
         cout << "Xoa PhongChieu Thanh Cong!!\n" << endl;
         int chon3;
         cout << "1.Xoa PhongChieu" << endl;
@@ -308,7 +234,7 @@ void QLPhongChieu::XemThongTinPhongChieu(){
     string ma;
     cout << "Nhap Ma Phong Chieu Ban Muon Xem: ";
     cin >> ma;
-    int index = checkMSPC(ma);
+    int index = CheckMS(ma);
     if(index == -1){
         cout << "Khong Co Ma Phong Chieu Nao Trung Khop" << endl;
         int chon2;

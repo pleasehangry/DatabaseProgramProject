@@ -2,42 +2,11 @@
 #include "DocFile.h"
 
 
-QuanLyVe::QuanLyVe(/* args */)
-{
-    this->p = NULL;
-    this->n = 0;
-}
-
-QuanLyVe::~QuanLyVe()
-{
-    delete[] this->p;
-    this->n = 0;
-}
 
 
-
-void QuanLyVe::Add_Ve(Ve v){
-    if(this->n == 0){
-        this->p = new Ve[this->n+1];
-        *(this->p + this->n) = v;
-    }
-    else{
-        Ve *temp = new Ve[this->n+1];
-        for(int i = 0; i < this->n; i++){
-            *(temp+i) = *(this->p+i);
-        }
-        delete[] this->p;
-        this->p = new Ve[this->n+1];
-        for(int i = 0; i < this->n; i++){
-            *(this->p+i) = *(temp+i); 
-        }
-        delete[] temp;
-        *(this->p + n) = v;
-    }   
-    this->n++;
-}
 
 void QuanLyVe::Show(){
+    GoTo(5,3);
     cout << setw(15-1) << left <<  "Ma Ve: " <<   "| ";
     cout << setw(15-1) << left <<  "Ma Phim: " <<  "| ";
     cout << setw(20-1) << left <<  "Loai Khach Hang: "  <<  "| ";
@@ -46,11 +15,12 @@ void QuanLyVe::Show(){
     cout << setw(15-1) << left <<  "So Ve Da Ban: "  <<  "| ";
     cout << setw(15-1) << left <<  "Thanh Tien: " << endl;
     for(int i= 0; i < this->n; i++){
+        CanLe();
         (p+i)->Display();
     }
 }
 
-int QuanLyVe::checkMaVe(string s)
+int QuanLyVe::CheckMS(string s)
 {
     int index = -1;
     for (int i = 0; i < this->n; i++)
@@ -64,9 +34,9 @@ int QuanLyVe::checkMaVe(string s)
     return index;
 }
 
-void QuanLyVe::Update_Ve(string m)
+void QuanLyVe::Update(string m)
 {
-    int i = checkMaVe("m");
+    int i = CheckMS("m");
     if(i >= 0){
         if (m == (this->p + i)->getMaVe())
         {
@@ -102,41 +72,7 @@ void QuanLyVe::Update_Ve(string m)
     cout << endl;
 }
 
-void QuanLyVe::Delete_Ve(string m)
-{
-    int f = checkMaVe(m);
-    if (f >= 0)
-    {
-        if (this->n == 1)
-        {
-            delete[] this->p;
-            this->p = nullptr;
-        }
-        else
-        {
-            Ve *temp = new Ve[this->n];
-            for (int k = 0; k < this->n; k++)
-            {
-                *(temp + k) = *(this->p + k);
-            }
-            delete[] this->p;
-            this->p = new Ve[this->n - 1];
-            for (int j = 0; j < this->n - 1; j++)
-            {
-                if (j < f)
-                {
-                    *(this->p + j) = *(temp + j);
-                }
-                else
-                {
-                    *(this->p + j) = *(temp + j + 1);
-                }
-            }
-            delete[] temp;
-        }
-    }
-    this->n--;
-}
+
 
 void QuanLyVe::setLoaiVe(){
     QuanLyPhim QLP;
@@ -150,7 +86,7 @@ void QuanLyVe::setLoaiVe(){
     QLP.Show();
     cout << "Chon Ma Phim Ban Muon Tao Ve: ";
     cin >> maPhim;
-    while(QLP.checkMSFilm(maPhim)<0){
+    while(QLP.CheckMS(maPhim)<0){
         cout << "Ban Da Nhap Sai Ma Phim, Vui Long Nhap Lai: ";
         cin >> maPhim;
     }
@@ -159,7 +95,7 @@ void QuanLyVe::setLoaiVe(){
     cin >> loaiKhachHang;
     cout << "Nhap So Luong Ve: ";
     cin >> soLuongVe;
-    this->Add_Ve(temp);
+    this->Add(temp);
     cout << "Tao Ve Thanh Cong!" << endl;
 }
 
@@ -172,14 +108,6 @@ int QuanLyVe::GetMaVe(string maPhim, string loaiKhachHang){
         }
     }
     return idex;
-}
-
-Ve& QuanLyVe::operator[](const int& index){
-    static Ve temp;
-    if(index >=0 && index < this->n){
-        return *(this->p + index);
-    }
-    else return temp;
 }
 
 
@@ -261,7 +189,7 @@ void QuanLyVe::CapNhatVe(){
     string ma;
     cout << "Nhap Ma Ve Ban Muon Cap Nhat: ";
     cin >> ma;
-    int index = checkMaVe(ma);
+    int index = CheckMS(ma);
     if(index == -1){
         cout << "Khong Co Ma Ve Nao Trung Khop" << endl;
         int chon2;
@@ -277,7 +205,7 @@ void QuanLyVe::CapNhatVe(){
         }
     }
     else {
-        this->Update_Ve(ma);
+        this->Update(ma);
         cout << "Cap Nhat Ve Thanh Cong!!\n" << endl;
         int chon3;
         cout << "1.Nhap Lai" << endl;
@@ -300,7 +228,7 @@ void QuanLyVe::XoaVe(){
     string ma;
     cout << "Nhap Ma Ve Ban Muon Xoa: ";
     cin >> ma;
-    int index = checkMaVe(ma);
+    int index = CheckMS(ma);
     if(index == -1){
         cout << "Khong Co Ma Ve Nao Trung Khop" << endl;
         int chon2;
@@ -316,7 +244,7 @@ void QuanLyVe::XoaVe(){
         }
     }
     else {
-        this->Delete_Ve(ma);
+        this->Delete(ma);
         cout << "Xoa Ve Thanh Cong!!\n" << endl;
         int chon3;
         cout << "1.Xoa Ve" << endl;
@@ -337,7 +265,7 @@ void QuanLyVe::XemThongTinVe(){
     string ma;
     cout << "Nhap Ma Ve Ban Muon Xem: ";
     cin >> ma;
-    int index = checkMaVe(ma);
+    int index = CheckMS(ma);
     if(index == -1){
         cout << "Khong Co Ma Ve Nao Trung Khop" << endl;
         int chon2;
@@ -367,6 +295,5 @@ void QuanLyVe::XemThongTinVe(){
         }
     }
 }
-
 
 

@@ -40,7 +40,7 @@ void DocFile_Khach(vector<Customer>& CTM, int& SoKhach){
 void DocFile_Phim(QuanLyPhim& QLP){
     ifstream ip2;
     ip2.open("Phim.csv");
-    QLP.~QuanLyPhim();
+    QLP.Erase();
     while(ip2.peek()!= EOF){
         string ti,ye;
         string mp,tp,tl,dd,dds,qg;
@@ -53,7 +53,7 @@ void DocFile_Phim(QuanLyPhim& QLP){
         getline(ip2,ye,',');
         getline(ip2,qg,'\n');
         Film temp(mp,tp,tl,ti,dd,dds,ye,qg);
-        QLP.Add_Film(temp);
+        QLP.Add(temp);
     }
     ip2.close();
 }
@@ -61,7 +61,7 @@ void DocFile_Phim(QuanLyPhim& QLP){
 void DocFile_PC(QLPhongChieu& QLPC){
     ifstream ip3;
     ip3.open("PhongChieu.csv");
-    QLPC.~QLPhongChieu();
+    QLPC.Erase();
     while(ip3.peek()!= EOF){
         string maPC,socho,maychieu,amthanh,dientich,tinhtrang,maBV;
         getline(ip3,maPC,',');
@@ -75,7 +75,7 @@ void DocFile_PC(QLPhongChieu& QLPC){
         int nsocho = stoi(socho);
         float ndientich = stoi(dientich);
         PhongChieu temp(maPC,nsocho,maychieu,amthanh,ndientich,tinhtrang,maBV);
-        QLPC.Add_PC(temp);
+        QLPC.Add(temp);
     }
     ip3.close();
 }
@@ -83,7 +83,7 @@ void DocFile_PC(QLPhongChieu& QLPC){
 void DocFile_NV(QuanLyNhanVien& QLNV){
     ifstream ip4;
     ip4.open("NhanVien.csv");
-    QLNV.~QuanLyNhanVien();
+    QLNV.Erase();
     while(ip4.peek()!= EOF){
         string MaNV,HoTen,NgaySinh,QueQuan,SDT,SoCMT,ChucVu,PhanQuyen,TaiKhoan,MatKhau;
         getline(ip4,MaNV,',');
@@ -97,7 +97,7 @@ void DocFile_NV(QuanLyNhanVien& QLNV){
         getline(ip4,TaiKhoan,',');
         getline(ip4,MatKhau,'\n');
         NhanVien temp(MaNV,HoTen,NgaySinh,QueQuan,SDT,SoCMT,ChucVu,PhanQuyen,TaiKhoan,MatKhau);
-        QLNV.Add_NV(temp);
+        QLNV.Add(temp);
     }
     ip4.close();
 }
@@ -105,7 +105,7 @@ void DocFile_NV(QuanLyNhanVien& QLNV){
 void DocFile_LichChieu(QuanLyLichChieu& QLLC){
     ifstream ip5;
     ip5.open("LichChieu.csv");
-    QLLC.~QuanLyLichChieu();
+    QLLC.Erase();
     while(ip5.peek()!= EOF){
         string MaLichChieu,TenPhim,Ngay,Gio,PhongChieu;
         getline(ip5,MaLichChieu,',');
@@ -114,7 +114,7 @@ void DocFile_LichChieu(QuanLyLichChieu& QLLC){
         getline(ip5,Gio,',');
         getline(ip5,PhongChieu,'\n');
         LichChieu temp(MaLichChieu,TenPhim,Ngay,Gio,PhongChieu);
-        QLLC.Add_LichChieu(temp);
+        QLLC.Add(temp);
     }
     ip5.close();
 }
@@ -122,7 +122,7 @@ void DocFile_LichChieu(QuanLyLichChieu& QLLC){
 void DocFile_Ve(QuanLyVe& QLV){
     ifstream ip5;
     ip5.open("Ve.csv");
-    QLV.~QuanLyVe();
+    QLV.Erase();
     while(ip5.peek()!= EOF){
         string MaVe,MaPhim,LoaiKhachHang;
         string GiaLoaiVe1, SoLuong1, SoVeDaBan1;
@@ -139,7 +139,7 @@ void DocFile_Ve(QuanLyVe& QLV){
         int SoLuong = stoi(SoLuong1);
         int SoVeDaBan = stoi(SoVeDaBan1);
         Ve temp(MaVe,MaPhim,LoaiKhachHang,GiaLoaiVe,SoLuong,SoVeDaBan);
-        QLV.Add_Ve(temp);
+        QLV.Add(temp);
     }
     ip5.close();
 }

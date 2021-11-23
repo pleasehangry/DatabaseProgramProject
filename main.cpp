@@ -8,6 +8,7 @@
 using namespace std;
 int main()
 {
+   SetConsoleTitleA("Quan Ly Rap Chieu Phim");
    QuanLyPhim QLP;
    QuanLyNhanVien QLNV;
    vector<Customer> CTM;
@@ -19,7 +20,7 @@ int main()
    DocFile(QLNV, QLP, QLLC, QLPC, QLV, CTM, SoKhach);
    system("cls");
    int chon;
-   GoTo(83,9); cout << "Ban La: " << endl;
+   GoTo(83,4); cout << "Ban La: " << endl;
    vector<string> m = {"Khach","Admin"};
    chon = menu(m);
    switch (chon)

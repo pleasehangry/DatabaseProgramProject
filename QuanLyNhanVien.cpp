@@ -1,52 +1,22 @@
 #include"QuanLyNhanVien.h"
 #include<iomanip>
-int QuanLyNhanVien::ind = 0;
-
-QuanLyNhanVien::QuanLyNhanVien(){
-    this->p = NULL;
-    this->n = 0;
-    this->ind++;
-}
-
-QuanLyNhanVien::~QuanLyNhanVien(){
-    delete[] this->p;
-    this->n = 0;
-    this->ind--;
-}
-
-void QuanLyNhanVien::Add_NV(NhanVien v){
-    if(this->n == 0){
-        this->p = new NhanVien[this->n+1];
-        *(this->p + this->n) = v;
-    }
-    else{
-        NhanVien *temp = new NhanVien[this->n+1];
-        for(int i = 0; i < this->n; i++){
-            *(temp+i) = *(this->p+i);
-        }
-        delete[] this->p;
-        this->p = new NhanVien[this->n+1];
-        for(int i = 0; i < this->n; i++){
-            *(this->p+i) = *(temp+i); 
-        }
-        delete[] temp;
-        *(this->p + n) = v;
-    }   
-    this->n++;
-}
+int posx = 5, posy =3;
 
 void QuanLyNhanVien::Show(){
+    GoTo(posx, posy);
     cout << setw(15-1) << left << " ID:";
     cout << setw(30-1) << left << " Ho Ten:";
     cout << setw(10-1) << left << " STD:";
     cout << setw(9-1) << left << " CMND:";
     cout << setw(30-1) << left << " Chuc Vu:" << endl;
     for(int i= 0; i < this->n; i++){
-        (p+i)->Display();
+        CanLe();
+        (this->p+i)->Display();
     }
+    cout << endl;
 }
 
-int QuanLyNhanVien::checkMSNV(string s){
+int QuanLyNhanVien::CheckMS(string s){
     int index = -1;
     for(int i = 0; i < this->n; i++){
         if(s == (this->p + i)->getMaNV()){
@@ -57,9 +27,9 @@ int QuanLyNhanVien::checkMSNV(string s){
     return index;
 }
 
-void QuanLyNhanVien::Update_NV(string m)
+void QuanLyNhanVien::Update(string m)
 {
-    int i = checkMSNV(m);
+    int i = CheckMS(m);
     if(i >= 0){
         if (m == (this->p + i)->getMaNV())
         {
@@ -105,41 +75,7 @@ void QuanLyNhanVien::Update_NV(string m)
     else cout << "Khong Tim Thay Ma Phim Can Sua!";
     cout << endl;
 }
-void QuanLyNhanVien::Delete_NV(string m)
-{
-    int f = checkMSNV(m);
-    if (f >= 0)
-    {
-        if (this->n == 1)
-        {
-            delete[] this->p;
-            this->p = nullptr;
-        }
-        else
-        {
-            NhanVien *temp = new NhanVien[this->n];
-            for (int k = 0; k < this->n; k++)
-            {
-                *(temp + k) = *(this->p + k);
-            }
-            delete[] this->p;
-            this->p = new NhanVien[this->n - 1];
-            for (int j = 0; j < this->n - 1; j++)
-            {
-                if (j < f)
-                {
-                    *(this->p + j) = *(temp + j);
-                }
-                else
-                {
-                    *(this->p + j) = *(temp + j + 1);
-                }
-            }
-            delete[] temp;
-        }
-    }
-    this->n--;
-}
+
 
 int QuanLyNhanVien::TimTaiKhoan(string tk, string mk){
     int index = -1;
@@ -153,14 +89,6 @@ int QuanLyNhanVien::TimTaiKhoan(string tk, string mk){
     return index;
 }
 
-
-NhanVien& QuanLyNhanVien::operator[](const int& index){
-    static NhanVien temp;
-    if(index >=0 && index < this->n){
-        return *(this->p + index);
-    }
-    else return temp;
-}
 
 // Menu
 
@@ -203,7 +131,7 @@ void QuanLyNhanVien::ThemNhanVien(){
     cout << "Them Mot Nhan Vien: " << endl;
     NhanVien temp;
     cin >> temp;
-    this->Add_NV(temp);    
+    this->Add(temp);    
     cout << "Them Thanh Cong" << endl;
     int chon;
     cout << "1.Them Nhan Vien" << endl;
@@ -230,7 +158,7 @@ void QuanLyNhanVien::CapNhatNhanVien(){
     string ma;
     cout << "Nhap Ma Nhan Vien Ban Muon Cap Nhat: ";
     cin >> ma;
-    int index = checkMSNV(ma);
+    int index = CheckMS(ma);
     if(index == -1){
         cout << "Khong Co Ma Nhan Vien Nao Trung Khop" << endl;
         int chon2;
@@ -246,7 +174,7 @@ void QuanLyNhanVien::CapNhatNhanVien(){
         }
     }
     else {
-        this->Update_NV(ma);
+        this->Update(ma);
         cout << "Cap Nhat Nhan Vien Thanh Cong!!\n" << endl;
         int chon3;
         cout << "1.Nhap Lai" << endl;
@@ -269,7 +197,7 @@ void QuanLyNhanVien::XoaNhanVien(){
     string ma;
     cout << "Nhap Ma Nhan Vien Ban Muon Xoa: ";
     cin >> ma;
-    int index = checkMSNV(ma);
+    int index = CheckMS(ma);
     if(index == -1){
         cout << "Khong Co Ma Nhan Vien Nao Trung Khop" << endl;
         int chon2;
@@ -285,7 +213,7 @@ void QuanLyNhanVien::XoaNhanVien(){
         }
     }
     else {
-        this->Delete_NV(ma);
+        this->Delete(ma);
         cout << "Xoa Nhan Vien Thanh Cong!!\n" << endl;
         int chon3;
         cout << "1.Xoa Nhan Vien" << endl;
@@ -306,7 +234,7 @@ void QuanLyNhanVien::XemThongTinNhanVien(){
     string ma;
     cout << "Nhap Ma Nhan Vien Ban Muon Xem: ";
     cin >> ma;
-    int index = checkMSNV(ma);
+    int index = CheckMS(ma);
     if(index == -1){
         cout << "Khong Co Ma Nhan Vien Nao Trung Khop" << endl;
         int chon2;
@@ -335,4 +263,4 @@ void QuanLyNhanVien::XemThongTinNhanVien(){
             this->Show();
         }
     }
-}
+}   

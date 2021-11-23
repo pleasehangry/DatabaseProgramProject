@@ -17,11 +17,14 @@ int SoKhach;
 
 void thanhcong()
 {
+    CanLe();
 	cout << "------------------" << endl;
 	SetColor(0, 9);
+    CanLe();
 	cout << " Yeu cau cua ban da duoc thuc hien" << endl;
 	intime();
 	SetColor(0, 7);
+    CanLe();
 	cout << "------------------" << endl;
 }
 
@@ -49,25 +52,30 @@ void DatVe(int index){
     string maPhim,maXuatChieu;
     // DocFile(QLNV, QLP, QLLC, QLPC, QLV, CTM, SoKhach);
     int SoVe;
+    CanLe();
     cout << "Nhap Ma Phim Ban Muon Dat Ve: ";
     cin >> maPhim;
-    int indexMaphim = QLP.checkMSFilm(maPhim);
+    int indexMaphim = QLP.CheckMS(maPhim);
     while(indexMaphim<0){
+        CanLe();
         cout << "Khong Co Ma Phim Nao Trung Khop, Xin Nhap Lai: ";
         cin >> maPhim;
     }
     system("cls");
     QLLC.XemLichChieuCuaPhim(QLP[indexMaphim].getTenPhim());
+    CanLe();
     cout << "Nhap Ma Xuat Chieu: ";
     cin >> maXuatChieu;
-    while(QLLC.checkMaLichChieu(maXuatChieu) < 0){
+    while(QLLC.CheckMS(maXuatChieu) < 0){
+        CanLe();
         cout << "Khong Co Ma Xuat Chieu Nao Trung Khop, Xin Nhap Lai: ";
         cin >> maXuatChieu;
     }
-    int k = QLLC.checkMaLichChieu(maXuatChieu);
+    int k = QLLC.CheckMS(maXuatChieu);
     string a = QLLC[k].getPhongChieu();
-    int h = QLPC.checkMSPC(a);
+    int h = QLPC.CheckMS(a);
     system("cls");
+    GoTo(5,3);
     cout << "Ban Muon Dat Bao Nhieu Ve? ";
     cin >> SoVe;
     string loaikhachhang = CTM[index].LoaiKhachHang;
@@ -78,6 +86,7 @@ void DatVe(int index){
     vector<int> A;
     int ghe;
     for(int i = 0; i < SoVe; i++){
+        CanLe();
         cout << "Nhap Ghe Ma Ban Muon Dat: ";
         cin >> ghe;
         A.push_back(ghe);
@@ -87,29 +96,28 @@ void DatVe(int index){
     
     ThanhToan(index, indexmave, SoVe);
     system("cls");
+    GoTo(5,3);
     cout << "Ban Co Muon In Ve Khong?" << endl;
-    cout << "1.Co" << endl;
-    cout << "2.Khong" << endl;
-    int In;
-    cout << ">>"; cin >> In;
+    vector<string> m1 = {"Co","Khong"};
+    int In = menu2(m1);
     switch (In)
     {
     case 1:
         InVe(A,indexMaphim,h,k,indexmave);
         thanhcong();
+        CanLe();
         cout << "Hay Kiem Tra Ve Cua Ban O File Titket.txt" << endl;
         break;
     case 2:
+        CanLe();
         cout << "Cam On Ban Da Gop Phan Bao Ve Moi Truong <3" << endl;
     default:
         break;
     }
-    cout << "\nDat Ve Hoan Tat!!" << endl;
-    int chon2;
-    cout << "1.Dat Them Ve" << endl;
-    cout << "2.Tro Ve Man Hinh Chon" << endl;
-    cout<<"Ket thuc."<<endl;
-    cin >> chon2;
+    CanLe();
+    cout << "Dat Ve Hoan Tat!!" << endl;
+    vector<string> m2 = {"Dat Them Ve","Tro Ve Man Hinh Chon"};
+    int chon2 = menu2(m2);
     switch (chon2)
     {
     case 1:
@@ -125,34 +133,36 @@ void DatVe(int index){
 
 void ThanhToan(int index, int indexmave, int SoVe){
     DocFile_Khach(CTM,SoKhach);
+    CanLe();
     cout << "Ban Muon Thanh Toang Bang Gi: " << endl;
-    cout << "1. Thanh Toan Bang The" << endl;
-    cout << "2. Thanh Toan Bang Tien Mat" << endl;
-    int thanhtoan;
-    cin >> thanhtoan;
+    vector<string> m1 = {"Thanh Toan Bang The","Thanh Toan Bang Tien Mat"};
+
+    int thanhtoan = menu2(m1);
     switch (thanhtoan)
     {
     case 1:
         if(CTM[index].CheckSoDu(QLV[indexmave].getGiaLoaiVe()*SoVe)){
+            CanLe();
             cout << "Thanh Toan Thanh Cong!" << endl;
             UpdateFile_Khach(CTM,SoKhach);
         }
         else{
+            CanLe();
             cout << "So Du Cua Ban Khong Du!" << endl;
-            int thanhtoan2;
-            cout << "1. Nap Tien" << endl;
-            cout << "2. Thanh Toan Bang Tien Mat" << endl;
-            cout << "Nhap Lua Chon Cua Ban: "; cin >> thanhtoan2;
+            vector<string> m2 = {"Nap Tien","Thanh Toan Bang Tien Mat"};
+            int thanhtoan2 = menu2(m2);
             switch (thanhtoan2)
             {
             case 1:
                 CTM[index].NapTien();
                 if(CTM[index].CheckSoDu(QLV[indexmave].getGiaLoaiVe()*SoVe)){
+                    CanLe();
                     cout << "Thanh Toan Thanh Cong!" << endl;
                     UpdateFile_Khach(CTM,SoKhach);
                 }
                 break;
             case 2:
+                CanLe();
                 cout << "Da Thanh Toan Bang Tien Mat!" << endl;
                 break;
             default:
@@ -161,12 +171,13 @@ void ThanhToan(int index, int indexmave, int SoVe){
         }
         break;
     case 2:
-        Sleep(3000);    
+        CanLe();
         cout << "Da Thanh Toan Bang Tien Mat!" << endl;
         break;
     default:
         break;
     }
+    CanLe();
     cout << "Nhan Phim Ban Ki De Tiep Tuc" << endl;
     getch();
 }
@@ -190,52 +201,56 @@ int TimTaiKhoan(string tk, string mk){
 void User(int index)
 {
     DocFile(QLNV, QLP, QLLC, QLPC, QLV, CTM, SoKhach);
+    vector<string> me = {"Dat Ve","Tro Ve"};
+    vector<string> mm4 = {"Nap Tien","Tro Ve"};
     system("cls");
     SetColor(0,2);
+    GoTo(70,2);
     cout<<"Dang Nhap Thanh Cong!"<<endl;
     SetColor(0,7);
+    GoTo(70,3);
     cout<<"Xin Chao ";
     SetColor(0,9);
     cout << CTM[index].HoTen;
     SetColor(0,14);
-    vector<string> m = {"Xem Hom Nay Co Phim Gi:", "Tim Kiem Phim", "Tim Kiem Phim Theo The Loai", "Doi Mat Khau", "Xem Thong Tin Ca Nhan", "Dang Xuat"};
+    vector<string> m = {"Xem Hom Nay Co Phim Gi", "Tim Kiem Phim", "Tim Kiem Phim Theo The Loai", "Doi Mat Khau", "Xem Thong Tin Ca Nhan", "Dang Xuat"};
     SetColor(0,7);
-    
+
     int ma = menu(m);
     switch(ma)
-    {   int lenh;
+    {
         case 1:
+        int lenh;
         system("cls");
-         QLP.Show();
-         cout<<"\n1.Dat Ve"<<endl;
-         cout<<"2.Tro Ve"<<endl;
-         SetColor(0,7);
-         cout<<(char)16<<(char)16;
-         cin>>lenh;
-         if(lenh==2)
-         {
-             system("cls");
-             User(index);
-         }
-         if(lenh==1)
-         {
-             DatVe(index);
-         } 
-            break;
-        case 2:
-            QLP.TimKiemPhim();
-             cout<<"----------------------";
-            SetColor(0,14);
-            cout<<"\n1.Tro Ve"<<endl;
-            cout<<"2.Dat Ve"<<endl;
-            SetColor(0,7);
-            cout<<">>"; cin>>lenh;
+        QLP.Show();
+        lenh = menu2(me);
             switch (lenh)
             {
             case 1:
-                User(index);
+                DatVe(index);
                 break;
             case 2:
+                system("cls");
+                User(index);
+                break;
+            default:
+                break;
+            }
+        break;
+        case 2:
+            QLP.TimKiemPhim();
+            CanLe();
+             cout<<"----------------------" << endl;
+            SetColor(0,14);
+            int lenh2;
+            lenh2 = menu2(me);
+            SetColor(0,7);
+            switch (lenh2)
+            {
+            case 2:
+                User(index);
+                break;
+            case 1:
                 DatVe(index);
                 break;
             default:
@@ -246,17 +261,14 @@ void User(int index)
             int Lenh4;
             QLP.XemTheloaiPhim();
             QLP.XemDSPhimCuaTheLoai();
-            cout<<"1.Tro Ve"<<endl;
-            cout<<"2.Dat Ve"<<endl;
+            Lenh4 = menu2(me);
             SetColor(0,7);
-            cout<<">>";
-            cin>>Lenh4;
             switch (Lenh4)
             {
-            case 1:
+            case 2:
                 User(index);
                 break;
-            case 2:
+            case 1:
                 DatVe(index);
                 break;
             default:
@@ -267,11 +279,9 @@ void User(int index)
             DoiMatKhau(index);
             break;
         case 5:
-            CTM[index].Show();
+            CTM[index].Show2();
             int naptien;
-            cout << "1.Nap Tien" << endl;
-            cout << "2.Tro Ve" << endl;
-            cout << ">>"; cin >> naptien;
+            naptien = menu2(mm4);
                 switch (naptien)
                 {
                 case 1: 
@@ -294,8 +304,10 @@ void User(int index)
 void DangNhap(){
     string gmail,mk;
     system("cls");
+    GoTo(80,5);
     cout << "Nhap Gmail: ";cin >> gmail;
     
+    GoTo(80,7);
     cout << "Nhap Mat Khau: ";cin >> mk;
     
     int index = TimTaiKhoan(gmail,mk);
@@ -304,8 +316,9 @@ void DangNhap(){
     }
     if(index == -1){
         system("cls");
+        GoTo(80,9);
+        cout << "Tai Khoan Hoac Mat Khau Khong Dung!";
         DangNhap();
-        cout << "\nTai Khoan Hoac Mat Khau Khong Dung!";
     }
     else{
         User(index);
@@ -316,41 +329,55 @@ void DangKy(){
     system("cls");
     DocFile_Khach(CTM,SoKhach);
     string gmail, mk, mk2, ten;
+    GoTo(80,5);
     cout << "Nhap Gmail Cua Ban: ";cin >> gmail;
     
+    GoTo(80,7);
     cout << "Nhap Mat Khau: ";cin >> mk;
     
+    GoTo(80,9);
     cout << "Nhap Lai Mat khau: ";cin >> mk2;
     
     for (int i = 0; i < CTM.size(); i++)
     {
         if(gmail == CTM[i].getGmail()){
+            system("cls");
+            GoTo(80,7);
             cout << "Tai Khoan Da Ton Tai" << endl;
-            break;
             getch();
             DangKy();
+            break;
         }
     }
     
     while(mk!=mk2){
         system("cls");
+        GoTo(80,5);
         cout << "(Nhan 0 De Thoat)" << endl;
+        GoTo(80,7);
         cout << "Mat Khau Khong Trung Khop" << endl;
-        cout << "\nNhap Gmail Cua Ban: " << gmail << endl;
+        GoTo(80,9);
+        cout << "Nhap Gmail Cua Ban: " << gmail << endl;
+        GoTo(80,11);
         cout << "Nhap Mat Khau:"; cin >> mk;
         if(mk == "0"){
             DangNhap_Khach();
         }
+        GoTo(80,13);
         cout << "Nhap Lai Mat Khau: ";cin >> mk2;
         
     }
+    system("cls");
+    GoTo(80,7);
     cout << "Nhap Ho Ten Cua Ban: ";cin >> ten;
     
     Customer temp(gmail,mk,ten);
     CTM.push_back(temp);
     SoKhach++;
     UpdateFile_Khach(CTM, SoKhach);
-    cout << "\n\nDang Ky Thanh Cong"<< endl;
+    GoTo(80,9);
+    cout << "Dang Ky Thanh Cong"<< endl;
+    GoTo(80,11);
     cout << "Nhan Phim Bat Ky De Tro Ve";
     getch();
     DangNhap_Khach();
@@ -360,28 +387,38 @@ void DoiMatKhau(int index){
     system("cls");
     DocFile_Khach(CTM, SoKhach);
     string mkc,mkm,mkm2;
+    GoTo(5,3);
     cout << "Nhap Mat Khau Cu:";cin >> mkc;
     
+    CanLe();
     cout << "Nhap Mat Khau Moi:";cin >> mkm;
     
+    CanLe();
     cout << "Nhap Lai Mat Khau Moi:";cin >> mkm2;
     if(mkc != CTM[index].getMatKhau()){
+        CanLe();
         cout << "Mat Khau Cu Khong Chinh Xac!" << endl;
         getch();
         DoiMatKhau(index);
     } else{
         while(mkm!=mkm2){
+            CanLe();
             cout << "Mat Khau Moi Khong Trung Khop!" << endl;
             getch();
             system("cls");
+            CanLe();
             cout << "Nhap Mat Khau Cu: " << mkc << endl;
+            CanLe();
             cout << "Nhap Mat Khau Moi:";cin >> mkm;
+            CanLe();
             cout << "Nhap Lai Mat Khau Moi:";cin >> mkm2;
         }
     }
     CTM[index].setMatKhau(mkm);
     UpdateFile_Khach(CTM, SoKhach);
+    CanLe();
     cout << "Doi Mat Khau Thanh Cong!" << endl;
+    CanLe();
     cout << "Nhap Phim Bat Ky De Tro Ve" << endl;
     getch();
     User(index);
@@ -390,7 +427,7 @@ void DoiMatKhau(int index){
 
 void DangNhap_Khach(){
     int chon;
-    cout << "3.Thoat" << endl;
+    system("cls");
     vector<string> m = {"Dang Nhap","Dang Ky","Thoat"};
     chon = menu(m);
     switch (chon)
@@ -401,6 +438,8 @@ void DangNhap_Khach(){
     case 2:
         DangKy();
         break;
+    case 3:
+        exit(1);
     default:
         break;
     }

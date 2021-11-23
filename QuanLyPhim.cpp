@@ -1,43 +1,8 @@
 #include "QuanLyPhim.h"
-QuanLyPhim::QuanLyPhim()
-{
-    this->p = nullptr;
-    this->n = 0;
-}
 
-QuanLyPhim::~QuanLyPhim()
-{
-    delete[] this->p;
-    this->n = 0;
-}
-
-void QuanLyPhim::Add_Film(const Film &f)
-{
-    if (this->n == 0)
-    {
-        this->p = new Film[this->n + 1];
-        *(this->p + this->n) = f;
-    }
-    else
-    {
-        Film *temp = new Film[this->n];
-        for (int i = 0; i < this->n; i++)
-        {
-            *(temp + i) = *(this->p + i);
-        }
-        delete[] this->p;
-        this->p = new Film[this->n + 1];
-        for (int i = 0; i < this->n; i++)
-        {
-            *(this->p + i) = *(temp + i);
-        }
-        delete[] temp;
-        *(this->p + n) = f;
-    }
-    this->n++;
-}
 
 void QuanLyPhim::TieuDeCot(){
+    GoTo(5, 3);
     cout << setw(10) << left << " Ma Phim" << "|";
     cout << setw(30) << left << " Ten Phim:" << "|";
     cout << setw(25) << left << " The loai:" << "|";
@@ -70,11 +35,13 @@ void QuanLyPhim::Show()
     TieuDeCot();
     for (int i = 0; i < this->n; i++)
     {
+        CanLe();
         (p + i)->Display();
     }
+    cout << endl;
 }
 
-int QuanLyPhim::checkMSFilm(string s)
+int QuanLyPhim::CheckMS(string s)
 {
     int index = -1;
     for (int i = 0; i < this->n; i++)
@@ -93,9 +60,9 @@ string QuanLyPhim::getFimlName(int i){
 }
 
 
-void QuanLyPhim::Update_Film(string m)
+void QuanLyPhim::Update(string m)
 {
-    int i = checkMSFilm(m);
+    int i = CheckMS(m);
     if(i >= 0){
         if (m == (this->p + i)->getMaPhim())
         {
@@ -140,77 +107,41 @@ void QuanLyPhim::Update_Film(string m)
     else cout << "Khong Tim Thay Ma Phim Can Sua!";
     cout << endl;
 }
-void QuanLyPhim::Delete_Film(string m)
-{
-    int f = checkMSFilm(m);
-    if (f >= 0)
-    {
-        if (this->n == 1)
-        {
-            delete[] this->p;
-            this->p = nullptr;
-        }
-        else
-        {
-            Film *temp = new Film[this->n];
-            for (int k = 0; k < this->n; k++)
-            {
-                *(temp + k) = *(this->p + k);
-            }
-            delete[] this->p;
-            this->p = new Film[this->n - 1];
-            for (int j = 0; j < this->n - 1; j++)
-            {
-                if (j < f)
-                {
-                    *(this->p + j) = *(temp + j);
-                }
-                else
-                {
-                    *(this->p + j) = *(temp + j + 1);
-                }
-            }
-            delete[] temp;
-        }
-    }
-    this->n--;
-}
 
 void QuanLyPhim::XemTheloaiPhim(){
+    system("cls");
     cout << endl;
     SetColor(0,9);
+    CanLe();
     cout << (this->p)->getTheLoai() << endl;
     for (int i = 1; i < this->n; i++)
     {
-        if((this->p+i)->getTheLoai()!=(this->p+i-1)->getTheLoai())
-        
-        cout << (this->p+i)->getTheLoai() << endl;
+        if((this->p+i)->getTheLoai()!=(this->p+i-1)->getTheLoai()){
+            CanLe();
+            cout << (this->p+i)->getTheLoai() << endl;
+        }
     }
     SetColor(0,15);
 }
 
 void QuanLyPhim::XemDSPhimCuaTheLoai(){
-    system("cls");
     string m;
-    cout<<"Nhap the loai phim:"<<endl;
+    CanLe();
+    cout<<"Nhap the loai phim: ";
     fflush(stdin);
     getline(cin,m);
     int count = 0;
     cout << endl;
-    GoTo(5,2);
-    cout << " Nhung Phim The Loai " << m;
-    GoTo(0,5);
     for(int i = 0; i < this->n; i++){
         if((this->p+i)->getTheLoai() == m){
            count++;
         }
     }
     if(count == 0) {
+        CanLe();
         cout << "Khong Co Phim Nao Thuoc The Loai Nay";
-        int chon;
-        cout << "1.Nhap lai" << endl;
-        cout << "2.Tro Ve" << endl;
-        cout << ">>"; cin >> chon;
+        vector<string> a = {"Nhap Lai", "Tro Ve"};
+        int chon = menu2(a);
         switch (chon)
         {
         case 1:
@@ -221,11 +152,16 @@ void QuanLyPhim::XemDSPhimCuaTheLoai(){
         }
     }
     else{
+        system("cls");
+        GoTo(5,3);
+        cout << " Nhung Phim The Loai " << m;
+        GoTo(5,5);
+        TieuDeCot();   
         for (int i = 0; i < this->n; i++)
         {
-            if(i==0) TieuDeCot();    
             if((this->p+i)->getTheLoai() == m){
-            (this->p + i)->Display();
+                CanLe();
+                (this->p + i)->Display();
             }
         }
     }
@@ -233,43 +169,38 @@ void QuanLyPhim::XemDSPhimCuaTheLoai(){
 
 void QuanLyPhim::TimKiemPhim(){
     system("cls");
-    GoTo(0,3);
-    cout << "   Nhap Ten Phim Ban Muon Tim: ";
-    string s;
+    GoTo(5,3);
+    cout << "Nhap Ten Phim Ban Muon Tim: ";
+    string m;
     fflush(stdin);
-    getline(cin,s);
+    getline(cin,m);
     int k = 0;
     cout << endl;
     for (int i = 0; i < this->n; i++)
     {
-        if(strstr((this->p)->getTenPhim().c_str(),s.c_str())){ // chuoi s la con cua chuoi ten phim
+        if(strstr((this->p+i)->getTenPhim().c_str(),m.c_str())){ // chuoi m la con cua chuoi ten phim
             k++;
         }
     }
     if(k==0){
+        GoTo(5,5);
         cout << "Khong Tim Thay" << endl;
         getchar();
     }
     else{
+        system("cls");
+        GoTo(5,3);
+        TieuDeCot();
         for (int i = 0; i < this->n; i++)
         {
-            if(i == 0) TieuDeCot();
-            if(strstr((this->p)->getTenPhim().c_str(),s.c_str())){ // chuoi s la con cua chuoi ten phim
-                (this->p+i)->Display();
-                k++;
+            if(strstr((this->p+i)->getTenPhim().c_str(),m.c_str())){
+                CanLe();
+                (this->p + i)->Display();
             }
         }
     }
 }
 
-// Da Nang Hoa
-Film& QuanLyPhim::operator[](const int& index){
-    static Film temp;
-    if(index >=0 && index < this->n){
-        return *(this->p + index);
-    }
-    else return temp;
-}
 
 
 // Menu
@@ -325,7 +256,7 @@ void QuanLyPhim::ThemPhim(){
     cout << "Them Mot Phim: " << endl;
     Film temp;
     cin >> temp;
-    this->Add_Film(temp);    
+    this->Add(temp);    
     cout << "Them Thanh Cong" << endl;
     int chon;
     cout << "1.Them Phim" << endl;
@@ -352,7 +283,7 @@ void QuanLyPhim::CapNhatPhim(){
     string ma;
     cout << "Nhap Ma Phim Ban Muon Cap Nhat: ";
     cin >> ma;
-    int index = checkMSFilm(ma);
+    int index = CheckMS(ma);
     if(index == -1){
         cout << "Khong Co Ma Phim Nao Trung Khop" << endl;
         int chon2;
@@ -368,7 +299,7 @@ void QuanLyPhim::CapNhatPhim(){
         }
     }
     else {
-        this->Update_Film(ma);
+        this->Update(ma);
         cout << "Cap Nhat Phim Thanh Cong!!\n" << endl;
         int chon3;
         cout << "1.Nhap Lai" << endl;
@@ -391,7 +322,7 @@ void QuanLyPhim::XoaPhim(){
     string ma;
     cout << "Nhap Ma Phim Ban Muon Xoa: ";
     cin >> ma;
-    int index = checkMSFilm(ma);
+    int index = CheckMS(ma);
     if(index == -1){
         cout << "Khong Co Ma Phim Nao Trung Khop" << endl;
         int chon2;
@@ -407,7 +338,7 @@ void QuanLyPhim::XoaPhim(){
         }
     }
     else {
-        this->Delete_Film(ma);
+        this->Delete(ma);
         cout << "Xoa Phim Thanh Cong!!\n" << endl;
         int chon3;
         cout << "1.Xoa Phim" << endl;
@@ -428,7 +359,7 @@ void QuanLyPhim::XemThongTinPhim(){
     string ma;
     cout << "Nhap Ma Phim Ban Muon Xem: ";
     cin >> ma;
-    int index = checkMSFilm(ma);
+    int index = CheckMS(ma);
     if(index == -1){
         cout << "Khong Co Ma Phim Nao Trung Khop" << endl;
         int chon2;
@@ -458,6 +389,5 @@ void QuanLyPhim::XemThongTinPhim(){
         }
     }
 }
-
 
 

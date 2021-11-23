@@ -1,5 +1,6 @@
 #include "LoginData.h"
 #include<conio.h>
+#include "DoHoa.h"
 
 
 Customer::Customer(string Gmail, string MatKhau,string HoTen, int SoDu)
@@ -89,11 +90,20 @@ Customer& Customer::operator=(const Customer& c){
 
 
 void Customer::Show(){
-    cout << setw(30-1) << left << this->HoTen << "| ";
-    cout << setw(30-1) << left << this->Gmail << "| ";
-    cout << setw(20-1) << left << this->MatKhau << "| ";
-    cout << setw(10-1) << left << this->SoDu << "| ";
-    cout << setw(20-1) << left << this->LoaiKhachHang<< endl;
+    cout << setw(30-1) << left << this->HoTen << endl;
+    cout << setw(30-1) << left << this->Gmail << endl;
+    cout << setw(20-1) << left << this->MatKhau << endl;
+    cout << setw(10-1) << left << this->SoDu << endl;
+    cout << setw(20-1) << left << this->LoaiKhachHang << endl;
+}
+void Customer::Show2(){
+    system("cls");
+    GoTo(5,3);
+    cout<< "Ho Ten: " << this->HoTen << "| ";
+    cout<< "Gmail " << this->Gmail << "| ";
+    cout<< "Mat Khau: " << this->MatKhau << "| ";
+    cout<< "SoDu: " << this->SoDu << "| ";
+    cout<< "Loai Khach Hang: " << this->LoaiKhachHang<< endl;
 }
 
 
@@ -125,6 +135,7 @@ int CheckGmail(vector<Customer>& CTM, string m ){
 void Menu_Khach(vector<Customer>& CTM,int& SoKhach);
 
 void Display(vector<Customer>& CTM,int& SoKhach){
+    GoTo(5,3);
     cout << setw(30-1) << left << "Ho ten" << "| "; 
     cout << setw(30-1) << left << "Tai Khoan" << "| "; 
     cout << setw(20-1) << left << "Mat Khau" << "| "; 
@@ -132,8 +143,10 @@ void Display(vector<Customer>& CTM,int& SoKhach){
     cout << setw(20-1) << left << "Loai Khach Hang" << endl; 
     for (int i = 0; i < CTM.size(); i++)
     {
+        CanLe();
         CTM[i].Show();
     }
+    cout << endl;
 }
 
 void ThemNguoiDung(vector<Customer>& CTM,int& SoKhach){

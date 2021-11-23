@@ -1,32 +1,25 @@
 #include "Film.h"
 #include"DoHoa.h"
 #include<string>
+#include "QuanLy.h"
 #include <cstring>
 #pragma once
-class QuanLyPhim
+class QuanLyPhim : public QuanLy<Film>
 {
 private:
-    Film *p;
-    int n;
 public:
-    QuanLyPhim();
-    ~QuanLyPhim();
     void Show();
-    void Add_Film(const Film&);
     void TieuDeCot();
-    int checkMSFilm(string);
-    int IndexOf(string);
+    int CheckMS(string);
+    void Update(string);
     friend void UpdateFile_Phim(QuanLyPhim&);
-    void Update_Film(string);
-    void Delete_Film(string);
+
+
     void XemTheloaiPhim();
     void XemDSPhimCuaTheLoai();
     void TimKiemPhim();
-    void MenuChoKhach();
     string getFimlName(int);
     friend void XemLichChieuCuaPhim(string);
-    // da nang hoa
-    Film& operator[](const int&);
     // Menu
     void Menu();
     void ThemPhim();
