@@ -36,15 +36,26 @@ void QuanLyVe::Add_Ve(Ve v){
     }   
     this->n++;
 }
-
+void TieuDeCot()
+{
+    int t_color=1;
+    int b_color=0;
+    int x=whereX();
+    int y=whereY();
+    cout<<endl;
+    cout << setw(15) << left <<  " Ma Ve: "  <<char(179);
+    cout << setw(15-1) << left <<  "Ma Phim: "  <<char(179);
+    cout << setw(20-1) << left <<  "Loai Khach Hang: "<<char(179);
+    cout << setw(15-1) << left <<  "Gia Ve: " <<char(179);
+    cout << setw(15-1) << left <<  "So Luong: " <<char(179);
+    cout << setw(15-1) << left <<  "So Ve Da Ban: " <<char(179);
+    cout << setw(15-1) << left <<  "Thanh Tien: ";
+    int x1=whereX();
+    box(x,y,x1,2,t_color,b_color);
+    cout<<endl<<endl;
+}
 void QuanLyVe::Show(){
-    cout << setw(15-1) << left <<  "Ma Ve: " <<   "| ";
-    cout << setw(15-1) << left <<  "Ma Phim: " <<  "| ";
-    cout << setw(20-1) << left <<  "Loai Khach Hang: "  <<  "| ";
-    cout << setw(15-1) << left <<  "Gia Ve: " << "| ";
-    cout << setw(15-1) << left <<  "So Luong: "  <<  "| ";
-    cout << setw(15-1) << left <<  "So Ve Da Ban: "  <<  "| ";
-    cout << setw(15-1) << left <<  "Thanh Tien: " << endl;
+    TieuDeCot();
     for(int i= 0; i < this->n; i++){
         (p+i)->Display();
     }
@@ -74,6 +85,7 @@ void QuanLyVe::Update_Ve(string m)
             int d,e,f;
             system("cls");
             (this->p + i)->Display();
+            SetColor(0,3);
             cout << "Nhap Ma Ve Moi: ";
             fflush(stdin);
             getline(cin, a);
@@ -98,7 +110,9 @@ void QuanLyVe::Update_Ve(string m)
             (this->p + i)->ThanhTien();
         }
     }
-    else cout << "Khong Tim Thay Ma Phim Can Sua!";
+    else 
+    SetColor(0,4);
+    cout << "Khong Tim Thay Ma Phim Can Sua!";
     cout << endl;
 }
 
@@ -144,6 +158,7 @@ void QuanLyVe::setLoaiVe(){
     string maVe, maPhim, loaiKhachHang, soLuongVe;
     Ve temp;
     this->Show();
+    SetColor(0,3);
     cout << "Nhap Ma Ve: ";
     cin >> maVe;
     temp.setMaVe(maVe);
@@ -151,15 +166,18 @@ void QuanLyVe::setLoaiVe(){
     cout << "Chon Ma Phim Ban Muon Tao Ve: ";
     cin >> maPhim;
     while(QLP.checkMSFilm(maPhim)<0){
+        SetColor(0,4);
         cout << "Ban Da Nhap Sai Ma Phim, Vui Long Nhap Lai: ";
         cin >> maPhim;
     }
     temp.setMaPhim(maPhim);
+    SetColor(0,3);
     cout << "Nhap Loai Khach Hang: ";
     cin >> loaiKhachHang;
     cout << "Nhap So Luong Ve: ";
     cin >> soLuongVe;
     this->Add_Ve(temp);
+    SetColor(0,14);
     cout << "Tao Ve Thanh Cong!" << endl;
 }
 
@@ -186,22 +204,21 @@ Ve& QuanLyVe::operator[](const int& index){
 
 void QuanLyVe::Menu(){
     system("cls");
-
-    cout << endl;
-    cout << "1.Xem Danh Sach Phim" << endl;
-    cout << "2.Them Phim" << endl;
-    cout << "3.Xoa Phim" << endl;
-    cout << "4.Cap Nhat Phim" << endl;
-    int chon;
-    cout << "Nhap Lua Chon: ";
-    cin >> chon;
+    vector<string> m={
+     "1.Xem Danh Sach Phim",
+     "2.Them Phim",
+     "3.Xoa Phim",
+     "4.Cap Nhat Phim",
+     "5.Tro Ve Menu chinh"};
+    int chon=menu(m);
     switch (chon)
     {
     case 1:
         system("cls");
         this->Show();
         int chon2;
-        cout << "Xem Thong Tin Chi Tiet" << endl;
+        SetColor(0,7);
+        cout << "\n1.Xem Thong Tin Chi Tiet" << endl;
         cout << "2.Tro Ve" << endl;
         cout << ">>"; cin >> chon2;
             switch (chon2)
@@ -225,6 +242,7 @@ void QuanLyVe::Menu(){
         this->CapNhatVe();
         break;
     default:
+    system("cls");
         break;
     }
 }
@@ -232,15 +250,18 @@ void QuanLyVe::Menu(){
 void QuanLyVe::ThemVe(){
     system("cls");
     this->Show();
+    SetColor(0,3);
     cout << "Them Mot Ve: " << endl;
     Ve temp;
     setLoaiVe();
+    SetColor(0,14);
     cout << "Them Thanh Cong" << endl;
     int chon;
+    SetColor(0,15);
     cout << "1.Them Ve" << endl;
     cout << "2.Tro Ve" << endl;
     cout << "Nhap Lua Chon" << endl;
-    cin >> chon;
+    cout<<(char)16<<(char)16;cin >> chon;
     switch (chon)
     {
     case 1:
@@ -259,12 +280,16 @@ void QuanLyVe::CapNhatVe(){
     system("cls");
     this->Show();
     string ma;
+    SetColor(0,3);
     cout << "Nhap Ma Ve Ban Muon Cap Nhat: ";
+    SetColor(0,15);
     cin >> ma;
     int index = checkMaVe(ma);
     if(index == -1){
+        SetColor(0,4);
         cout << "Khong Co Ma Ve Nao Trung Khop" << endl;
         int chon2;
+        SetColor(0,15);
         cout << "1.Nhap Lai" << endl;
         cout << "2.Tro Ve" << endl;
         cout << ">> " << endl;
@@ -278,8 +303,10 @@ void QuanLyVe::CapNhatVe(){
     }
     else {
         this->Update_Ve(ma);
+        SetColor(0,14);
         cout << "Cap Nhat Ve Thanh Cong!!\n" << endl;
         int chon3;
+        SetColor(0,15);
         cout << "1.Nhap Lai" << endl;
         cout << "2.Tro Ve" << endl;
         cout << ">> " << endl;
@@ -298,12 +325,16 @@ void QuanLyVe::XoaVe(){
     system("cls");
     this->Show();
     string ma;
+    SetColor(0,3);
     cout << "Nhap Ma Ve Ban Muon Xoa: ";
+    SetColor(0,15);
     cin >> ma;
     int index = checkMaVe(ma);
     if(index == -1){
+        SetColor(0,4);
         cout << "Khong Co Ma Ve Nao Trung Khop" << endl;
         int chon2;
+        SetColor(0,15);
         cout << "1.Nhap Lai" << endl;
         cout << "2.Tro Ve" << endl;
         cout << ">> " << endl;
@@ -317,8 +348,10 @@ void QuanLyVe::XoaVe(){
     }
     else {
         this->Delete_Ve(ma);
+        SetColor(0,14);
         cout << "Xoa Ve Thanh Cong!!\n" << endl;
         int chon3;
+        SetColor(0,15);
         cout << "1.Xoa Ve" << endl;
         cout << "2.Tro Ve" << endl;
         cout << ">> " << endl;
@@ -335,12 +368,16 @@ void QuanLyVe::XemThongTinVe(){
     system("cls");
     this->Show();
     string ma;
+    SetColor(0,3);
     cout << "Nhap Ma Ve Ban Muon Xem: ";
+    SetColor(0,15);
     cin >> ma;
     int index = checkMaVe(ma);
     if(index == -1){
+        SetColor(0,4);
         cout << "Khong Co Ma Ve Nao Trung Khop" << endl;
         int chon2;
+        SetColor(0,15);
         cout << "1.Nhap Lai" << endl;
         cout << "2.Tro Ve" << endl;
         cout << ">> " << endl;
@@ -353,11 +390,14 @@ void QuanLyVe::XemThongTinVe(){
         }
     }
     else {
+        SetColor(0,3);
+        TieuDeCot();
         (this->p + index)->Display();
         int chon3;
-        cout << "1.Xem Thong Tin Ve" << endl;
+        SetColor(0,15);
+        cout << "\n\n1.Xem Thong Tin Ve" << endl;
         cout << "2.Tro Ve" << endl;
-        cout << ">> " << endl;
+        cout << ">> ";
         cin >> chon3;
         if(chon3 == 1){
             this->XemThongTinVe();

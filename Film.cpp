@@ -91,7 +91,7 @@ void Film::Display()
     cout << setw(24) << left << this->theLoai << char(179);
     cout << setw(14) << left << this->thoiLuong << char(179);
     cout << setw(24) << left << this->daoDien << char(179);
-    cout << setw(27) << left << this->dienVien<< char(179)<<endl;
+    cout << setw(39) << left << this->dienVien<< char(179)<<endl;
 }
 
 
@@ -122,27 +122,42 @@ istream& operator>>(istream& i, Film& e){
     system("cls");
     cout << "Nhap Ma Phim: ";
     fflush(stdin);
+    SetColor(0,2);
     getline(i,e.maPhim);
+    SetColor(0,9);
     cout << "Nhap Ten Phim: ";
     fflush(stdin);
+    SetColor(0,2);
     getline(i,e.tenPhim);
+    SetColor(0,9);
     cout << "Nhap The Loai: ";
     fflush(stdin);
+    SetColor(0,2);
     getline(i,e.theLoai);
+    SetColor(0,9);
     cout << "Nhap Thoi Luong: ";
     fflush(stdin);
+    SetColor(0,2);
     getline(i,e.thoiLuong);
+    SetColor(0,9);
     cout << "Nhap Dao Dien :";
     fflush(stdin);
+    SetColor(0,2);
     getline(i,e.daoDien);
+    SetColor(0,9);
     cout << "Nhap Dien Vien:";
     fflush(stdin);
+    SetColor(0,2);
     getline(i,e.dienVien);
+    SetColor(0,9);
     cout << "Nhap Nam Cong Chieu: ";
     fflush(stdin);
+    SetColor(0,2);
     getline(i,e.namCongChieu);
+    SetColor(0,9);
     cout << "Nhap Quoc Gia :";
     fflush(stdin);
+    SetColor(0,2);
     getline(i,e.quocGia);
     return i;
 }

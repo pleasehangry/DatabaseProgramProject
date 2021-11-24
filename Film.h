@@ -1,6 +1,7 @@
 #include<iostream>
 #include<iomanip>
 #include<string>
+#include"DoHoa.h"
 #pragma once
 using namespace std;
 

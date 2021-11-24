@@ -78,13 +78,13 @@ void PhongChieu::Display2(){
 }
 
 void PhongChieu::Display(){
-    cout << setw(25) << left << this->MaPhongChieu << "|";
-    cout << setw(20) << left << this->SoCho << "|";
-    cout << setw(20) << left << this->MayChieu << "|";
-    cout << setw(20) << left << this->AmThanh << "|";
-    cout << setw(20) << left << this->DienTich << "|";
-    cout << setw(20) << left << this->TinhTrang << "|";
-    cout << setw(20) << left << this->MaBaoVe << endl;
+    cout<<char(179)<< setw(25) << left << this->MaPhongChieu <<char(179);
+    cout << setw(20) << left << this->SoCho << char(179);
+    cout << setw(20) << left << this->MayChieu << char(179);
+    cout << setw(20) << left << this->AmThanh << char(179);
+    cout << setw(20) << left << this->DienTich << char(179);
+    cout << setw(20) << left << this->TinhTrang << char(179);
+    cout << setw(20) << left << this->MaBaoVe<<char(179)<< endl;
 }
 
 void PhongChieu::DocFileDatGhe(vector<int>& A){

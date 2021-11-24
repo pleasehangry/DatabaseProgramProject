@@ -13,7 +13,6 @@ void User(int);
 void thanhcong();
 void DatVe(int);
 void ThanhToan(int, int, int);
-void Menu_DangNhap();
 void DangKy();
 void DoiMatKhau(int);
 void DangNhap_Khach();

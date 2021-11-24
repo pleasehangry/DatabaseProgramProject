@@ -1,4 +1,5 @@
 #include "QuanLyPhim.h"
+
 QuanLyPhim::QuanLyPhim()
 {
     this->p = nullptr;
@@ -36,41 +37,35 @@ void QuanLyPhim::Add_Film(const Film &f)
     }
     this->n++;
 }
-
 void QuanLyPhim::TieuDeCot(){
-    cout << char(179)<< setw(9) << left << "Ma Phim"<<char(179);
-    cout << setw(29) << left <<"Ten Phim" <<char(179);
-    cout << setw(24) << left << "The loai"<< char(179);
-    cout << setw(14) << left << "Thoi luong"<< char(179);
-    cout << setw(24) << left <<"Dao dien"<< char(179);
-    cout << setw(27) << left <<"Dien vien"<< char(179)<<endl;
-    
-    // box(10,3,30,2,7,8,"Ten Phim");
-    // box(40,3,25,2,7,8,"The loai");
-    // box(65,3,15,2,7,8,"Thoi Luong");
-    // box(80,3,25,2,7,8,"Dao Dien");
-    // box(105,3,25,2,7,8,"Dien Vien");
-   
-    // GoTo(10,3);cout<<char(194);
-    // GoTo(10,5);cout<<char(193);
-    // GoTo(40,3);cout<<char(194);
-    // GoTo(40,5);cout<<char(193);
-    // GoTo(65,3);cout<<char(194);
-    // GoTo(65,5);cout<<char(193);
-    // GoTo(80,3);cout<<char(194);
-    // GoTo(80,5);cout<<char(193);
-    // GoTo(105,3);cout<<char(194);
-    // GoTo(105,5);cout<<char(193);
-    // cout<<endl;
+    int t_color=1;
+    int b_color=0;
+    int x=whereX();
+    int y=whereY();
+  	cout<<endl;
+     cout << setw(10) << left << " Ma Phim"<<char(179);
+     cout << setw(29) << left <<"Ten Phim" <<char(179);
+     cout << setw(24) << left << "The loai"<< char(179);
+     cout << setw(14) << left << "Thoi luong"<< char(179);
+     cout << setw(24) << left <<"Dao dien"<< char(179);
+     cout << setw(39) << left <<"Dien vien";
+     int x1=whereX();
+    box(x,y,x1,2,t_color,b_color);
+    cout<<endl;   
 }
 
 void QuanLyPhim::Show()
 {
     TieuDeCot();
+    int x1=whereX();
+    int y1=whereY();
+    cout<<endl;
     for (int i = 0; i < this->n; i++)
     {
         (p + i)->Display();
-    }
+    } 
+    int y=whereY();
+    box(x1,y1,145,y-2,1,0);  
 }
 
 int QuanLyPhim::checkMSFilm(string s)
@@ -102,29 +97,45 @@ void QuanLyPhim::Update_Film(string m)
             string g, h;
             system("cls");
             (this->p + i)->Display2();
+            SetColor(0,3);
             cout << "Nhap Ma Phim Moi: ";
             fflush(stdin);
+            SetColor(0,7);
             getline(cin, a);
+             SetColor(0,3);
             cout << "\nNhap Ten Phim Moi: ";
             fflush(stdin);
+            SetColor(0,7);
             getline(cin, b);
+             SetColor(0,3);
             cout << "\nNhap The Loai: ";
             fflush(stdin);
+            SetColor(0,7);
             getline(cin, c);
+             SetColor(0,3);
             cout << "\nNhap Thoi Luong: ";
             fflush(stdin);
+            SetColor(0,7);
             getline(cin, c);
+             SetColor(0,3);
             cout << "\nNhap Dao Dien: ";
             fflush(stdin);
+            SetColor(0,15);
             getline(cin, d);
+             SetColor(0,3);
             cout << "\nNhap Dien Vien: ";
             fflush(stdin);
+            SetColor(0,7);
             getline(cin, e);
+             SetColor(0,3);
             cout << "\nNhap Nam Cong Chieu: ";
             fflush(stdin);
+            SetColor(0,7);
             getline(cin, h);
+             SetColor(0,3);
             cout << "Nhap Quoc Gia: ";
             fflush(stdin);
+            SetColor(0,7);
             getline(cin, f);
             (this->p + i)->setMaPhim(a);
             (this->p + i)->setTenPhim(b);
@@ -136,7 +147,9 @@ void QuanLyPhim::Update_Film(string m)
             (this->p + i)->setNamCongChieu(h);
         }
     }
-    else cout << "Khong Tim Thay Ma Phim Can Sua!";
+    else 
+    SetColor(0,4);
+    cout << "Khong Tim Thay Ma Phim Can Sua!";
     cout << endl;
 }
 void QuanLyPhim::Delete_Film(string m)
@@ -189,14 +202,16 @@ void QuanLyPhim::XemTheloaiPhim(){
 }
 
 void QuanLyPhim::XemDSPhimCuaTheLoai(){
-    fflush(stdin);
-    string m;
-    cout<<"Nhap the loai phim:"<<endl;
-    getline(cin,m);
     system("cls");
+    string m;
+    SetColor(0,3);
+    cout<<"Nhap the loai phim:"<<endl;
+    fflush(stdin);
+    getline(cin,m);
     int count = 0;
     cout << endl;
     GoTo(5,2);
+    SetColor(0,9);
     cout << " Nhung Phim The Loai " << m;
     GoTo(0,5);
     for(int i = 0; i < this->n; i++){
@@ -205,9 +220,11 @@ void QuanLyPhim::XemDSPhimCuaTheLoai(){
         }
     }
     if(count == 0) {
-        cout << "Khong Co The Loai Phim Nay";
+        SetColor(0,4);
+        cout << "Khong Co Phim Nao Thuoc The Loai Nay";
         int chon;
-        cout << "1.Nhap lai" << endl;
+        SetColor(0,15);
+        cout << "\n1.Nhap lai" << endl;
         cout << "2.Tro Ve" << endl;
         cout << ">>"; cin >> chon;
         switch (chon)
@@ -232,25 +249,35 @@ void QuanLyPhim::XemDSPhimCuaTheLoai(){
 
 void QuanLyPhim::TimKiemPhim(){
     system("cls");
-    string s;
-    GoTo(0,3);
+    GoTo(0,9);
+    SetColor(0,3);
     cout << "   Nhap Ten Phim Ban Muon Tim: ";
+    string s;
     fflush(stdin);
+    SetColor(0,9);
     getline(cin,s);
     int k = 0;
     cout << endl;
     for (int i = 0; i < this->n; i++)
     {
-        if(i == 0) TieuDeCot();
         if(strstr((this->p)->getTenPhim().c_str(),s.c_str())){ // chuoi s la con cua chuoi ten phim
-            (this->p+i)->Display();
             k++;
         }
     }
     if(k==0){
-        system("cls");
+        SetColor(0,4);
         cout << "Khong Tim Thay" << endl;
         getchar();
+    }
+    else{
+        for (int i = 0; i < this->n; i++)
+        {
+            if(i == 0) TieuDeCot();
+            if(strstr((this->p)->getTenPhim().c_str(),s.c_str())){ // chuoi s la con cua chuoi ten phim
+                (this->p+i)->Display();
+                k++;
+            }
+        }
     }
 }
 
@@ -268,27 +295,28 @@ Film& QuanLyPhim::operator[](const int& index){
 
 void QuanLyPhim::Menu(){
     system("cls");
-
-    cout << endl;
-    cout << "1.Xem Danh Sach Phim" << endl;
-    cout << "2.Them Phim" << endl;
-    cout << "3.Xoa Phim" << endl;
-    cout << "4.Cap Nhat Phim" << endl;
-    int chon;
-    cout << "Nhap Lua Chon: ";
-    cin >> chon;
+    vector<string>  m={ 
+     "1.Xem Danh Sach Phim",
+     "2.Them Phim",
+     "3.Xoa Phim",
+     "4.Cap Nhat Phim",
+     "5.Tro Ve Menu chinh"};
+     SetColor(0,7);
+    int chon=menu(m);
     switch (chon)
     {
     case 1:
         system("cls");
         this->Show();
         int chon2;
-        cout << "Xem Thong Tin Chi Tiet" << endl;
+        SetColor(0,8);
+        cout << "\n1.Xem Thong Tin Chi Tiet" << endl;
         cout << "2.Tro Ve" << endl;
-        cout << ">>"; cin >> chon2;
+        cout << (char)16<<(char)16; cin >> chon2;
             switch (chon2)
             {
             case 1:
+            SetColor(0,1);
                 XemThongTinPhim();
                 break;
             case 2:
@@ -307,6 +335,7 @@ void QuanLyPhim::Menu(){
         this->CapNhatPhim();
         break;
     default:
+        system("cls");
         break;
     }
 }
@@ -314,16 +343,20 @@ void QuanLyPhim::Menu(){
 void QuanLyPhim::ThemPhim(){
     system("cls");
     this->Show();
+    SetColor(0,3);
     cout << "Them Mot Phim: " << endl;
     Film temp;
     cin >> temp;
-    this->Add_Film(temp);    
+    this->Add_Film(temp); 
+    SetColor(0,14);   
     cout << "Them Thanh Cong" << endl;
     int chon;
-    cout << "1.Them Phim" << endl;
+    SetColor(0,15);
+    cout << "\n1.Them Phim" << endl;
     cout << "2.Tro Ve" << endl;
+    SetColor(0,9);
     cout << "Nhap Lua Chon" << endl;
-    cin >> chon;
+    cout<<(char)16<<(char)16;cin >> chon;
     switch (chon)
     {
     case 1:
@@ -342,15 +375,19 @@ void QuanLyPhim::CapNhatPhim(){
     system("cls");
     this->Show();
     string ma;
+    SetColor(0,3);
+    cout<<"--------------------------------"<<endl;
     cout << "Nhap Ma Phim Ban Muon Cap Nhat: ";
     cin >> ma;
     int index = checkMSFilm(ma);
     if(index == -1){
+        SetColor(0,4);
         cout << "Khong Co Ma Phim Nao Trung Khop" << endl;
         int chon2;
+        SetColor(0,15);
         cout << "1.Nhap Lai" << endl;
         cout << "2.Tro Ve" << endl;
-        cout << ">> " << endl;
+        cout << (char)16<<(char)16 << endl;
         cin >> chon2;
         if(chon2 == 1){
             this->CapNhatPhim();
@@ -361,9 +398,11 @@ void QuanLyPhim::CapNhatPhim(){
     }
     else {
         this->Update_Film(ma);
+        SetColor(0,14);
         cout << "Cap Nhat Phim Thanh Cong!!\n" << endl;
         int chon3;
-        cout << "1.Nhap Lai" << endl;
+        SetColor(0,15);
+        cout << "\n1.Nhap Lai" << endl;
         cout << "2.Tro Ve" << endl;
         cout << ">> " << endl;
         cin >> chon3;
@@ -381,13 +420,17 @@ void QuanLyPhim::XoaPhim(){
     system("cls");
     this->Show();
     string ma;
+    SetColor(0,3);
+    cout<<"----------------------------"<<endl;
     cout << "Nhap Ma Phim Ban Muon Xoa: ";
     cin >> ma;
     int index = checkMSFilm(ma);
     if(index == -1){
+        SetColor(0,4);
         cout << "Khong Co Ma Phim Nao Trung Khop" << endl;
         int chon2;
-        cout << "1.Nhap Lai" << endl;
+        SetColor(0,15);
+        cout << "\n1.Nhap Lai" << endl;
         cout << "2.Tro Ve" << endl;
         cout << ">> " << endl;
         cin >> chon2;
@@ -400,9 +443,11 @@ void QuanLyPhim::XoaPhim(){
     }
     else {
         this->Delete_Film(ma);
+        SetColor(0,14);
         cout << "Xoa Phim Thanh Cong!!\n" << endl;
         int chon3;
-        cout << "1.Xoa Phim" << endl;
+        SetColor(0,15);
+        cout << "\n1.Xoa Phim" << endl;
         cout << "2.Tro Ve" << endl;
         cout << ">> " << endl;
         cin >> chon3;
@@ -418,17 +463,21 @@ void QuanLyPhim::XemThongTinPhim(){
     system("cls");
     this->Show();
     string ma;
-    cout << "Nhap Ma Phim Ban Muon Xem: ";
+    SetColor(0,3);
+    cout << "\nNhap Ma Phim Ban Muon Xem: ";
     cin >> ma;
     int index = checkMSFilm(ma);
     if(index == -1){
+        SetColor(0,4);
         cout << "Khong Co Ma Phim Nao Trung Khop" << endl;
         int chon2;
-        cout << "1.Nhap Lai" << endl;
+        SetColor(0,15);
+        cout << "\n1.Nhap Lai" << endl;
         cout << "2.Tro Ve" << endl;
         cout << ">> " << endl;
         cin >> chon2;
         if(chon2 == 1){
+            SetColor(0,3);
             this->XemThongTinPhim();
         }
         else if(chon2 == 2){
@@ -438,9 +487,10 @@ void QuanLyPhim::XemThongTinPhim(){
     else {
         (this->p + index)->Display2();
         int chon3;
-        cout << "1.Xem Thong Tin Phim" << endl;
+        SetColor(0,15);
+        cout << "\n1.Xem Thong Tin Phim" << endl;
         cout << "2.Tro Ve" << endl;
-        cout << ">> " << endl;
+        cout << ">> ";
         cin >> chon3;
         if(chon3 == 1){
             this->XemThongTinPhim();

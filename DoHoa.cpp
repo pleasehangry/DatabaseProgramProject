@@ -4,14 +4,12 @@
 #define KEY_NONE -1
 using namespace std;
 
-int x = 1;
-int y = 3;
+int x = 70;
+int y = 10;
 int h = 2;
 int w = 40;
-int t_color =11;
-int b_color = 1;
 int b_color_sang = 75;
-int row = 6;
+int row = 4;
 int col = 4;
 
 void ShowCur(bool CursorVisibility)
@@ -20,10 +18,10 @@ void ShowCur(bool CursorVisibility)
 	CONSOLE_CURSOR_INFO cursor = {1, CursorVisibility};
 	SetConsoleCursorInfo(handle, &cursor);
 }
-void GoTo(int x, int y)
+void GoTo(int posX, int posY)
 {
 	HANDLE hConsoleOutput;
-	COORD Cursor_an_Pos = {x, y};
+	COORD Cursor_an_Pos = {posX, posY};
 	hConsoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleCursorPosition(hConsoleOutput, Cursor_an_Pos);
 }
@@ -58,18 +56,18 @@ void textcolor(int x)
 }
 void box(int x, int y, int w, int h, int t_color, int b_color)
 {
-	textcolor(b_color);
-	for (int iy = y + 1; iy <= y + h - 1; iy++)
-	{
-		for (int ix = x + 1; ix <= x + w - 1; ix++)
-		{
-			GoTo(ix, iy);
-			cout << " ";
-		}
-	}
+	// textcolor(b_color);
+	// for (int iy = y + 1; iy <= y + h - 1; iy++)
+	// {
+	// 	for (int ix = x + 1; ix <= x + w - 1; ix++)
+	// 	{
+	// 		GoTo(ix, iy);
+	// 		cout << " ";
+	// 	}
+	// }
 	//============= ve vien =============
 	textcolor(1);
-	SetColor(0, t_color); //update
+	SetColor(0, t_color); // update
 	if (h <= 1 || w <= 1)
 		return;
 	for (int ix = x; ix <= x + w; ix++)
@@ -94,24 +92,18 @@ void box(int x, int y, int w, int h, int t_color, int b_color)
 	cout << char(192);
 	GoTo(x + w, y + h);
 	cout << char(217);
+	GoTo(x+1,y+1);
 }
 void box(int x, int y, int w, int h, int t_color, int b_color, string nd)
 {
-	textcolor(b_color);
-	for (int iy = y + 1; iy <= y + h - 1; iy++)
-	{
-		for (int ix = x + 1; ix <= x + w - 1; ix++)
-		{
-			GoTo(ix, iy);
-			cout << " ";
-		}
-	}
+	// textcolor(b_color);
+	// w=whereX();
 	SetColor(0, 7);
 	GoTo(x + 1, y + 1);
 	cout << nd;
 	//============= ve vien =============
 	textcolor(1);
-	SetColor(b_color, t_color); //update
+	SetColor(b_color, t_color); // update
 	if (h <= 1 || w <= 1)
 		return;
 	for (int ix = x; ix <= x + w; ix++)
@@ -141,7 +133,7 @@ void n_box_ngang(int x, int y, int w, int h, int t_color, int b_color, int col)
 {
 	for (int i = 0; i < col; i++)
 	{
-		box(x + (i * w), y, w, h, t_color, b_color); //i = 0 => x,y, i = 1: x,y+2
+		box(x + (i * w), y, w, h, t_color, b_color); // i = 0 => x,y, i = 1: x,y+2
 		if (i != 0)
 		{
 			GoTo(x + (i * w), y);
@@ -155,7 +147,7 @@ void n_box(int x, int y, int w, int h, int t_color, int b_color, int row)
 {
 	for (int i = 0; i < row; i++)
 	{
-		box(x, y + (i * 2), w, h, t_color, b_color); //i = 0 => x,y, i = 1: x,y+2
+		box(x, y + (i * 2), w, h, t_color, b_color); // i = 0 => x,y, i = 1: x,y+2
 		if (i != 0)
 		{
 			GoTo(x, y + (i * 2));
@@ -190,15 +182,15 @@ void thanh_sang(int x, int y, int w, int h, int b_color)
 		GoTo(x + w - 2, iy);
 		cout << " ";
 	}
+	SetColor(0,15);
 }
-int menu()
-{
-	int index = 1;
-	string a[6] = {"1.Xem Hom Nay Co Phim Gi:", "2.Tim Kiem Phim", "3.Tim Kiem Phim Theo The Loai", 
-	"4.Doi Mat Khau","5.Xem thong tin ca nhan","6.Dang xuat"};
+int menu(vector<string>& a)
+{  int t_color=1,b_color=0;
+
+	int index = 10;
 	ShowCur(0);
 	//----- setting ----
-
+	int row = a.size();
 	n_box(x, y, w, h, t_color, b_color, row);
 	for (int i = 0; i < row; i++)
 	{
@@ -208,7 +200,7 @@ int menu()
 
 	//-------------
 	int xp = x;
-	int yp = y; //toa do thanh sang
+	int yp = y; // toa do thanh sang
 	int xcu = xp;
 	int ycu = yp;
 	bool kt = true;
@@ -219,7 +211,7 @@ int menu()
 		{
 			//----- back space ----
 			GoTo(xcu, ycu);
-			thanh_sang(xcu, ycu, w, h, b_color); //rs thanh sang cu
+			thanh_sang(xcu, ycu, w, h, b_color); // rs thanh sang cu
 			xcu = xp;
 			ycu = yp;
 			//-------------
@@ -232,9 +224,11 @@ int menu()
 			int i = (yp - y) / h + 1;
 			char c = _getch();
 			if (c == 13)
-				{  
-					return i;
-				}
+			{
+				GoTo(x, y + row * h + 1);
+				SetColor(0, 1);
+				return i;
+			}
 
 			//---- speed ----
 

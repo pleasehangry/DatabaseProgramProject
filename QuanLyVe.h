@@ -10,6 +10,7 @@ private:
 public:
     QuanLyVe(/* args */);
     ~QuanLyVe();
+    void TieudeCot();
     void Show();
     void Add_Ve(Ve);
     int checkMaVe(string);

@@ -44,11 +44,11 @@ string LichChieu::getPhongChieu(){
 
 
 void LichChieu::Display(){
-    cout << " " << setw(20-1) << left << this->MaLichChieu << "| ";
-    cout << setw(30-1) << left << this->TenPhim << "| ";
-    cout << setw(20-1) << left << this->Ngay << "| ";
-    cout << setw(20-1) << left << this->Gio << "| ";
-    cout << setw(20-1) << left << this->PhongChieu << endl;
+    cout <<char(179)<< setw(20-1) << left << this->MaLichChieu<<char(179);
+    cout << setw(30-1) << left << this->TenPhim <<char(179);
+    cout << setw(20-1) << left << this->Ngay <<char(179);
+    cout << setw(20-1) << left << this->Gio <<char(179);
+    cout << setw(20-1) << left << this->PhongChieu <<char(179)<< endl;
 }
 
 LichChieu::~LichChieu()
@@ -58,20 +58,29 @@ LichChieu::~LichChieu()
 
 istream& operator>>(istream& i, LichChieu& e){
     system("cls");
+    SetColor(0,3);
     cout << "Nhap Ma Lich Chieu: ";
     fflush(stdin);
+     SetColor(0,15);
     getline(i,e.MaLichChieu);
+     SetColor(0,15);
     cout << "Nhap Ten Phim: ";
     fflush(stdin);
+     SetColor(0,15);
     getline(i,e.TenPhim);
+     SetColor(0,15);
     cout << "Nhap Que Quan: ";
     fflush(stdin);
+     SetColor(0,15);
     getline(i,e.Ngay);
+     SetColor(0,15);
     cout << "Nhap Ngay: ";
     fflush(stdin);
+     SetColor(0,15);
     getline(i,e.Gio);
     cout << "Nhap Gio :";
     fflush(stdin);
+     SetColor(0,15);
     getline(i,e.PhongChieu);
     return i;
 }

@@ -63,11 +63,11 @@ int Ve::ThanhTien(){
 
 
 void Ve::Display(){
-    cout << setw(15-1) << left << this->MaVe <<   "| ";
-    cout << setw(15-1) << left << this->MaPhim <<  "| ";
-    cout << setw(20-1) << left << this->LoaiKhachHang <<  "| ";
-    cout << setw(15-1) << left << this->GiaLoaiVe << "| ";
-    cout << setw(15-1) << left << this->SoLuong <<  "| ";
-    cout << setw(15-1) << left << this->SoVeDaBan <<  "| ";
-    cout << setw(15-1) << left << this->ThanhTien() <<  endl;
+    cout<<char(179)<< setw(15-1) << left << this->MaVe <<char(179);
+    cout << setw(15-1) << left << this->MaPhim << char(179);
+    cout << setw(20-1) << left << this->LoaiKhachHang << char(179);
+    cout << setw(15-1) << left << this->GiaLoaiVe <<char(179);
+    cout << setw(15-1) << left << this->SoLuong << char(179);
+    cout << setw(15-1) << left << this->SoVeDaBan << char(179);
+    cout << setw(15-1) << left << this->ThanhTien() << char(179)<<  endl;
 }

@@ -45,15 +45,15 @@ void DangNhap_Admin( QuanLyPhim& QLP, QuanLyNhanVien& QLNV,vector<Customer>& CTM
 void Admin( QuanLyPhim& QLP, QuanLyNhanVien& QLNV,vector<Customer>& CTM, QLPhongChieu& QLPC, QuanLyLichChieu& QLLC, QuanLyVe& QLV, int& SoKhach){
     DocFile(QLNV, QLP, QLLC, QLPC, QLV, CTM, SoKhach);
     cout << "UNG DUNG QUAN LY RAP PHIM\n\n\n";
-    cout << "1.Quan Ly Phim" << endl;
-    cout << "2.Quan Ly Lich Chieu" << endl;
-    cout << "3.Quan Ly Ve" << endl;
-    cout << "4.Quan Ly Nhan Vien" << endl;
-    cout << "5.Quan Ly Nguoi Dung" << endl;
-    cout << "6.Quan Ly Phong Chieu" << endl;
-    cout << "7.Thoat" << endl;
-    int chon;
-    cout << ">>"; cin >> chon;
+     vector<string> m={
+        "1.Quan Ly Phim" ,
+        "2.Quan Ly Lich Chieu" ,
+        "3.Quan Ly Ve" ,
+        "4.Quan Ly Nhan Vien" ,
+        "5.Quan Ly Nguoi Dung" ,
+        "6.Quan Ly Phong Chieu" ,
+        "7.Thoat"};
+    int chon=menu(m);
     switch (chon)
     {
     case 1:
@@ -67,7 +67,7 @@ void Admin( QuanLyPhim& QLP, QuanLyNhanVien& QLNV,vector<Customer>& CTM, QLPhong
     case 3:
         QLV.Menu();
         Admin(QLP, QLNV,CTM, QLPC, QLLC, QLV, SoKhach);
-
+        break;
     case 4:
         QLNV.Menu();
         Admin(QLP, QLNV,CTM, QLPC, QLLC, QLV, SoKhach);

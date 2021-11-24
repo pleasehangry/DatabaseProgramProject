@@ -97,15 +97,16 @@ NhanVien::~NhanVien(){
     }
     
 void NhanVien::Display(){
-    cout << setw(15-1) << this->MaNhanVien << "| ";
-    cout << setw(30-1) << left << this->HoTen << "| ";
-    cout << setw(10-1) << left << this->SoDienThoai << "| ";
-    cout << setw(9-1) << left << this->SoCMT << "| ";
-    cout << setw(30-1) << left << this->ChucVu << endl;
+    cout <<char(179)<< setw(15-1) << this->MaNhanVien <<char(179);
+    cout << setw(30-1) << left << this->HoTen <<char(179);
+    cout << setw(10-1) << left << this->SoDienThoai <<char(179);
+    cout << setw(9-1) << left << this->SoCMT <<char(179);
+    cout << setw(30-1) << left << this->ChucVu <<char(179)<< endl;
 }
 
 void NhanVien::Display2(){
-    cout << "Ma Nhan Vien: " << this->MaNhanVien << endl;
+    SetColor(0,3);
+    cout << "Ma Nhan Vien: "<< this->MaNhanVien << endl;
     cout << "Ho Ten: " << this->HoTen << endl;
     cout << "Ngay Sinh: " << this->NgaySinh << endl;
     cout << "Que Quan: " << this->QueQuan << endl;
@@ -124,32 +125,50 @@ void NhanVien::Display2(){
 
 istream& operator>>(istream& i, NhanVien& e){
     system("cls");
+    SetColor(0,3);
     cout << "Nhap Ten Moi: ";
     fflush(stdin);
+    SetColor(0,7);
     getline(i,e.HoTen);
+    SetColor(0,3);
     cout << "Nhap Ngay Sinh: ";
     fflush(stdin);
+    SetColor(0,7);
     getline(i,e.NgaySinh);
+    SetColor(0,3);
     cout << "Nhap Que Quan: ";
     fflush(stdin);
+    SetColor(0,7);
     getline(i,e.QueQuan);
+    SetColor(0,3);
     cout << "Nhap SDT: ";
     fflush(stdin);
+    SetColor(0,7);
     getline(i,e.SoDienThoai);
+    SetColor(0,3);
     cout << "Nhap CMND :";
     fflush(stdin);
+    SetColor(0,7);
     getline(i,e.SoCMT);
+    SetColor(0,3);
     cout << "Nhap Chuc Vu :";
     fflush(stdin);
+    SetColor(0,7);
     getline(i,e.ChucVu);
+    SetColor(0,3);
     cout << "Nhap Phan Quyen: ";
     fflush(stdin);
+    SetColor(0,7);
     getline(i,e.PhanQuyen);
+    SetColor(0,3);
     cout << "Nhap Tai Khoan :";
     fflush(stdin);
+    SetColor(0,7);
     getline(i,e.TaiKhoan);
+    SetColor(0,3);
     cout << "Nhap Mat Khau ";
     fflush(stdin);
+    SetColor(0,7);
     getline(i,e.MatKhau);
     return i;
 }

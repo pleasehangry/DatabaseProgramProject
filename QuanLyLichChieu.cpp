@@ -46,15 +46,23 @@ void QuanLyLichChieu::Add_LichChieu(const LichChieu &f)
 }
 
 void QuanLyLichChieu::TieuDeCot(){
-    cout << setw(20) << left << " Ma Lich Chieu" << "|";
-    cout << setw(30) << left << " Ten LichChieu:" << "|";
-    cout << setw(20) << left << " Ngay:" << "|";
-    cout << setw(20) << left << " Gio:" << "|";
-    cout << setw(20) << left << " Phong Chieu:";
+    int t_color=1;
+    int b_color=0;
+    int x=whereX();
+    int y=whereY();
+    cout<<endl;
+    cout << setw(20) << left << " Ma Lich Chieu" <<char(179);
+    cout << setw(30-1) << left << " Ten LichChieu:" <<char(179);
+    cout << setw(20-1) << left << " Ngay:" <<char(179);
+    cout << setw(20-1) << left << " Gio:" <<char(179);
+    cout << setw(20-1) << left << " Phong Chieu:" ;
+    int x1=whereX();
+    box(x,y,x1,2,t_color,b_color);
+    cout<<endl<<endl;
 }
 
 void QuanLyLichChieu::Show()
-{
+{   system("cls");
     TieuDeCot();
     for (int i = 0; i < this->n; i++)
     {
@@ -85,20 +93,30 @@ void QuanLyLichChieu::Update_LichChieu(string m)
             string a,b,c,d,e;
             system("cls");
             (this->p + i)->Display();
+            SetColor(0,3);
             cout << "Nhap Ma Lich Chieu Moi: ";
             fflush(stdin);
+            SetColor(0,15);
             getline(cin, a);
+            SetColor(0,3);
             cout << "\nNhap Ten LichChieu Moi: ";
             fflush(stdin);
+            SetColor(0,15);
             getline(cin, b);
+            SetColor(0,3);
             cout << "\nNhap Ngay: ";
             fflush(stdin);
+            SetColor(0,15);
             getline(cin, c);
+            SetColor(0,3);
             cout << "\nNhap Gio: ";
             fflush(stdin);
+            SetColor(0,15);
             getline(cin, d);
+            SetColor(0,3);
             cout << "\nNhap Phong Chieu: ";
             fflush(stdin);
+            SetColor(0,15);
             getline(cin, e);
             (this->p + i)->setMaLichChieu(a);
             (this->p + i)->setTenPhim(b);
@@ -107,7 +125,9 @@ void QuanLyLichChieu::Update_LichChieu(string m)
             (this->p + i)->setPhongChieu(e);
         }
     }
-    else cout << "Khong Tim Thay Ma Lich Chieu Can Sua!";
+    else 
+    SetColor(0,4);
+    cout << "Khong Tim Thay Ma Lich Chieu Can Sua!";
     cout << endl;
 }
 
@@ -154,6 +174,7 @@ void QuanLyLichChieu::setLichChieu(){
     DocFile_PC(QLPC);
     LichChieu temp;
     string ngay, gio, phongchieu,MsPhim, maLichChieu;
+    SetColor(0,3);
     cout << "Nhap Ma Lich Chieu:";
     cin >> maLichChieu;
     temp.setMaLichChieu(maLichChieu);
@@ -171,6 +192,7 @@ void QuanLyLichChieu::setLichChieu(){
     int h = QLPC.checkMSPC(phongchieu);
     if(h < 0){
         do{
+            SetColor(0,4);
             cout << "Da Nhap Sai Ma Phong, Vui Long Nhap Lai: ";
             cin >> phongchieu;
             h = QLPC.checkMSPC(phongchieu);
@@ -178,6 +200,7 @@ void QuanLyLichChieu::setLichChieu(){
         while(h > 0);
     } else{
         temp.setPhongChieu(phongchieu);
+        SetColor(0,14);
         cout << "Len Lich Thanh Cong";
         cout << endl;
     }
@@ -185,6 +208,7 @@ void QuanLyLichChieu::setLichChieu(){
 }
 
 void QuanLyLichChieu::XemLichChieuCuaPhim(string m){
+    TieuDeCot();
     for (int i = 0; i < this->n; i++)
     {
         if((this->p + i)->getTenPhim() == m){
@@ -208,15 +232,13 @@ LichChieu& QuanLyLichChieu::operator[](const int& index){
 
 void QuanLyLichChieu::Menu(){
     system("cls");
-
-    cout << endl;
-    cout << "1.Xem Danh Sach Lich Chieu" << endl;
-    cout << "2.Them Lich Chieu" << endl;
-    cout << "3.Xoa Lich Chieu" << endl;
-    cout << "4.Cap Nhat Lich Chieu" << endl;
-    cout << "5.Tro Ve Man Hinh Chinh" << endl;
-    int chon;
-    cout << "Nhap Lua Chon: "; cin >> chon;
+    vector<string> m={
+     "1.Xem Danh Sach Lich Chieu",
+     "2.Them Lich Chieu",
+     "3.Xoa Lich Chieu",
+     "4.Cap Nhat Lich Chieu",
+     "5.Tro Ve Man Hinh Chinh"};
+   int chon =menu(m);
     switch (chon)
     {
     case 1:
@@ -233,6 +255,7 @@ void QuanLyLichChieu::Menu(){
         this->CapNhatLichChieu();
         break;
     default:
+    system("cls");
         break;
     }
 }
@@ -240,15 +263,18 @@ void QuanLyLichChieu::Menu(){
 void QuanLyLichChieu::ThemLichChieu(){
     system("cls");
     this->Show();
+    SetColor(0,3);
     cout << "Them Mot Lich Chieu: " << endl;
     LichChieu temp;
     cin >> temp;
-    this->Add_LichChieu(temp);    
+    this->Add_LichChieu(temp);  
+    SetColor(0,14);  
     cout << "Them Thanh Cong" << endl;
     int chon;
-    cout << "1.Them Lich Chieu" << endl;
+    SetColor(0,15);
+    cout << "\n1.Them Lich Chieu" << endl;
     cout << "2.Tro Ve" << endl;
-    cout << "Nhap Lua Chon"; cin >> chon;
+    cout << ">>"; cin >> chon;
     switch (chon)
     {
     case 1:
@@ -267,16 +293,20 @@ void QuanLyLichChieu::CapNhatLichChieu(){
     system("cls");
     this->Show();
     string ma;
-    cout << "Nhap Ma LichChieu Ban Muon Cap Nhat: ";
+    SetColor(0,3);
+    cout << "Nhap Ma Lich Chieu Ban Muon Cap Nhat: ";
+    SetColor(0,15);
     cin >> ma;
     int index = checkMaLichChieu(ma);
     if(index == -1){
+        SetColor(0,4);
         cout << "Khong Co Ma Lich Chieu Nao Trung Khop" << endl;
         int chon2;
+        SetColor(0,15);
         cout << "1.Nhap Lai" << endl;
         cout << "2.Tro Ve" << endl;
-        cout << ">> " << endl;
-        cin >> chon2;
+        cout << ">> ";cin >> chon2;
+        
         if(chon2 == 1){
             this->CapNhatLichChieu();
         }
@@ -286,8 +316,10 @@ void QuanLyLichChieu::CapNhatLichChieu(){
     }
     else {
         this->Update_LichChieu(ma);
+        SetColor(0,14);
         cout << "Cap Nhat Lich Chieu Thanh Cong!!\n" << endl;
         int chon3;
+        SetColor(0,15);
         cout << "1.Nhap Lai" << endl;
         cout << "2.Tro Ve" << endl;
         cout << ">> " << endl;
@@ -306,16 +338,19 @@ void QuanLyLichChieu::XoaLichChieu(){
     system("cls");
     this->Show();
     string ma;
+    SetColor(0,3);
     cout << "Nhap Ma Lich Chieu Ban Muon Xoa: ";
     cin >> ma;
     int index = checkMaLichChieu(ma);
     if(index == -1){
+        SetColor(0,4);
         cout << "Khong Co Ma Lich Chieu Nao Trung Khop" << endl;
         int chon2;
+        SetColor(0,15);
         cout << "1.Nhap Lai" << endl;
         cout << "2.Tro Ve" << endl;
-        cout << ">> " << endl;
-        cin >> chon2;
+        cout << ">> ";cin >> chon2;
+        
         if(chon2 == 1){
             this->XoaLichChieu();
         }
@@ -325,8 +360,10 @@ void QuanLyLichChieu::XoaLichChieu(){
     }
     else {
         this->Delete_LichChieu(ma);
+        SetColor(0,14);
         cout << "Xoa Lich Chieu Thanh Cong!!\n" << endl;
         int chon3;
+        SetColor(0,15);
         cout << "1.Xoa Lich Chieu" << endl;
         cout << "2.Tro Ve" << endl;
         cout << ">> " << endl; cin >> chon3;

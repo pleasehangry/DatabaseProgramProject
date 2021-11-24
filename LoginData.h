@@ -5,6 +5,7 @@
 #include<vector>
 #include<map>
 #include <cstring>
+#include"DoHoa.h"
 using namespace std;
 
 class Customer

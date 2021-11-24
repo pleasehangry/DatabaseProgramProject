@@ -2,6 +2,7 @@
 #include <iostream>
 #include <windows.h>
 #include <stdlib.h>
+#include <vector>
 #include <string>   
 using namespace std;
 #include <stdio.h>
@@ -19,6 +20,6 @@ void textcolor(int x);
 void box(int x, int y,int w,int h,int t_color,int b_color);
 void box(int x, int y,int w,int h,int t_color,int b_color,string nd);
 void n_box(int x, int y, int w, int h, int t_color, int b_color, int row);
-int menu();
+int menu(vector<string>&);
 void thanh_sang(int x, int y, int w, int h, int b_color);
 void n_box_ngang(int x, int y,int w,int h,int t_color,int b_color, int col);

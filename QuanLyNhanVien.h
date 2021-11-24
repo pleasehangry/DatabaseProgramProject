@@ -1,4 +1,5 @@
 #include"NhanVien.h"
+#include"DoHoa.h"
 #pragma once
 class QuanLyNhanVien
 {

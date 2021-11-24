@@ -36,11 +36,19 @@ void QuanLyNhanVien::Add_NV(NhanVien v){
 }
 
 void QuanLyNhanVien::Show(){
-    cout << setw(15-1) << left << " ID:";
-    cout << setw(30-1) << left << " Ho Ten:";
-    cout << setw(10-1) << left << " STD:";
-    cout << setw(9-1) << left << " CMND:";
-    cout << setw(30-1) << left << " Chuc Vu:" << endl;
+    int t_color=1;
+    int b_color=0;
+    int x=whereX();
+    int y=whereY();
+    cout<<endl;
+    cout << setw(15) << left << " ID:"<<char(179);
+    cout << setw(30-1) << left << " Ho Ten:"<<char(179);
+    cout << setw(10-1) << left << " STD:"<<char(179);
+    cout << setw(9-1) << left << " CMND:"<<char(179);
+    cout << setw(30-1) << left << " Chuc Vu:";
+    int x1=whereX();
+    box(x,y,x1,2,t_color,b_color);
+    cout<<endl<<endl;
     for(int i= 0; i < this->n; i++){
         (p+i)->Display();
     }
@@ -166,22 +174,34 @@ NhanVien& QuanLyNhanVien::operator[](const int& index){
 
 void QuanLyNhanVien::Menu(){
     system("cls");
-
-    cout << endl;
-    cout << "1.Xem Danh Sach Nhan Vien" << endl;
-    cout << "2.Them Nhan Vien" << endl;
-    cout << "3.Xoa Nhan Vien" << endl;
-    cout << "4.Cap Nhat Nhan Vien" << endl;
-    int chon;
-    cout << "Nhap Lua Chon: ";
-    cin >> chon;
+    vector <string> m={
+     "1.Xem Danh Sach Nhan Vien" ,
+     "2.Them Nhan Vien" ,
+     "3.Xoa Nhan Vien" ,
+     "4.Cap Nhat Nhan Vien" ,
+     "5.Tro Ve Menu Chinh"};
+    int chon=menu(m);
     switch (chon)
     {
     case 1:
         system("cls");
         this->Show();
-        XemThongTinNhanVien();
-        cout << "3.Tro Ve Menu Chinh" << endl;
+        int chon2;
+        SetColor(0,8);
+        cout << "\n1.Xem Thong Tin Chi Tiet" << endl;
+        cout << "2.Tro Ve" << endl;
+        cout << (char)16<<(char)16; cin >> chon2;
+            switch (chon2)
+            {
+            case 1:
+            SetColor(0,1);
+            XemThongTinNhanVien();
+            break;
+            case 2:
+            this->Menu();
+            default:
+            break;
+            }
         break;
     case 2:
         this->ThemNhanVien();
@@ -193,6 +213,7 @@ void QuanLyNhanVien::Menu(){
         this->CapNhatNhanVien();
         break;
     default:
+    system("cls");
         break;
     }
 }
@@ -200,14 +221,18 @@ void QuanLyNhanVien::Menu(){
 void QuanLyNhanVien::ThemNhanVien(){
     system("cls");
     this->Show();
+    SetColor(0,3);
     cout << "Them Mot Nhan Vien: " << endl;
     NhanVien temp;
     cin >> temp;
-    this->Add_NV(temp);    
+    this->Add_NV(temp); 
+    SetColor(0,14);
     cout << "Them Thanh Cong" << endl;
     int chon;
+    SetColor(0,15);
     cout << "1.Them Nhan Vien" << endl;
     cout << "2.Tro Ve" << endl;
+    SetColor(0,1);
     cout << "Nhap Lua Chon" << endl;
     cin >> chon;
     switch (chon)
@@ -228,12 +253,15 @@ void QuanLyNhanVien::CapNhatNhanVien(){
     system("cls");
     this->Show();
     string ma;
+    SetColor(0,3);
     cout << "Nhap Ma Nhan Vien Ban Muon Cap Nhat: ";
     cin >> ma;
     int index = checkMSNV(ma);
     if(index == -1){
+        SetColor(0,4);
         cout << "Khong Co Ma Nhan Vien Nao Trung Khop" << endl;
         int chon2;
+        SetColor(0,15);
         cout << "1.Nhap Lai" << endl;
         cout << "2.Tro Ve" << endl;
         cout << ">> " << endl;
@@ -247,9 +275,11 @@ void QuanLyNhanVien::CapNhatNhanVien(){
     }
     else {
         this->Update_NV(ma);
+        SetColor(0,14);
         cout << "Cap Nhat Nhan Vien Thanh Cong!!\n" << endl;
         int chon3;
-        cout << "1.Nhap Lai" << endl;
+        SetColor(0,15);
+        cout << "\n1.Nhap Lai" << endl;
         cout << "2.Tro Ve" << endl;
         cout << ">> " << endl;
         cin >> chon3;
@@ -267,13 +297,17 @@ void QuanLyNhanVien::XoaNhanVien(){
     system("cls");
     this->Show();
     string ma;
+    SetColor(0,3);
     cout << "Nhap Ma Nhan Vien Ban Muon Xoa: ";
+    SetColor(0,15);
     cin >> ma;
     int index = checkMSNV(ma);
     if(index == -1){
+        SetColor(0,4);
         cout << "Khong Co Ma Nhan Vien Nao Trung Khop" << endl;
         int chon2;
-        cout << "1.Nhap Lai" << endl;
+        SetColor(0,15);
+        cout << "\n1.Nhap Lai" << endl;
         cout << "2.Tro Ve" << endl;
         cout << ">> " << endl;
         cin >> chon2;
@@ -286,8 +320,10 @@ void QuanLyNhanVien::XoaNhanVien(){
     }
     else {
         this->Delete_NV(ma);
+        SetColor(0,14);
         cout << "Xoa Nhan Vien Thanh Cong!!\n" << endl;
         int chon3;
+        SetColor(0,15);
         cout << "1.Xoa Nhan Vien" << endl;
         cout << "2.Tro Ve" << endl;
         cout << ">> " << endl;
@@ -304,17 +340,22 @@ void QuanLyNhanVien::XemThongTinNhanVien(){
     system("cls");
     this->Show();
     string ma;
-    cout << "Nhap Ma Nhan Vien Ban Muon Xem: ";
+    SetColor(0,3);
+    cout << "\nNhap Ma Nhan Vien Ban Muon Xem: ";
+    SetColor(0,15);
     cin >> ma;
     int index = checkMSNV(ma);
     if(index == -1){
+        SetColor(0,4);
         cout << "Khong Co Ma Nhan Vien Nao Trung Khop" << endl;
         int chon2;
+        SetColor(0,15);
         cout << "1.Nhap Lai" << endl;
         cout << "2.Tro Ve" << endl;
         cout << ">> " << endl;
         cin >> chon2;
         if(chon2 == 1){
+            SetColor(0,2);
             this->XemThongTinNhanVien();
         }
         else if(chon2 == 2){
@@ -324,7 +365,8 @@ void QuanLyNhanVien::XemThongTinNhanVien(){
     else {
         (this->p + index)->Display2();
         int chon3;
-        cout << "1.Xem Thong Tin Nhan Vien" << endl;
+        SetColor(0,15);
+        cout << "\n1.Xem Thong Tin Nhan Vien" << endl;
         cout << "2.Tro Ve" << endl;
         cout << ">> " << endl;
         cin >> chon3;
