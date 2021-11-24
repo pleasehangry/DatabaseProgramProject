@@ -1,5 +1,5 @@
 #include "Time.h"
-
+#include "DoHoa.h"
 string get_time()
 {
 	time_t now = time(0);
@@ -14,6 +14,8 @@ string get_day()
 }
 void intime()
 {
+	CanLe();
 	cout << " Thoi gian: " << get_time() << endl;
+	CanLe();
 	cout << " Ngay: " << get_day() << endl;
 }

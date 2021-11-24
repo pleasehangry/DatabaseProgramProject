@@ -1,27 +1,22 @@
 #include "Ve.h"
 #include<string>
 #include<iomanip>
+#include "QuanLy.h"
 #pragma once
-class QuanLyVe
+class QuanLyVe : public QuanLy<Ve>
 {
 private:
-    Ve *p;
-    int n;
 public:
-    QuanLyVe(/* args */);
-    ~QuanLyVe();
-    void TieudeCot();
+    void TieuDeCot();
     void Show();
-    void Add_Ve(Ve);
-    int checkMaVe(string);
-    void Update_Ve(string);
-    void Delete_Ve(string);
-    void setLoaiVe();
+    int CheckMS(string);
+    void Update(string);
+
     int GetMaVe(string = "Unknown", string = "Member");
+    void setLoaiVe();
     friend void DatVe(int);
     friend void UpdateFile_Ve(QuanLyVe&);
-    // da nang hoa
-    Ve& operator[](const int&);
+
     void Menu();
     void ThemVe();
     void CapNhatVe();

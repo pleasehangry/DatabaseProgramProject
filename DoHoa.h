@@ -9,7 +9,7 @@ using namespace std;
 #include <conio.h>
 #include<ctime> /* thu vi?n h? tr? v? th?i gian th?c */
 #define KEY_NONE	-1
-void GoTo(int posX, int posY); 
+void GoTo(SHORT posX, SHORT posY); 
 //void draw(int a,int b,int c, int d);
 void SetColor(int backgound_color, int text_color);
 int whereX();
@@ -23,3 +23,5 @@ void n_box(int x, int y, int w, int h, int t_color, int b_color, int row);
 int menu(vector<string>&);
 void thanh_sang(int x, int y, int w, int h, int b_color);
 void n_box_ngang(int x, int y,int w,int h,int t_color,int b_color, int col);
+int menu2(vector<string>&);
+void CanLe(int x = 5, int y = whereY());

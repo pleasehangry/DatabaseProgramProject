@@ -1,60 +1,41 @@
 #include"QuanLyNhanVien.h"
 #include<iomanip>
-int QuanLyNhanVien::ind = 0;
+int posx = 5, posy =3;
 
-QuanLyNhanVien::QuanLyNhanVien(){
-    this->p = NULL;
-    this->n = 0;
-    this->ind++;
-}
-
-QuanLyNhanVien::~QuanLyNhanVien(){
-    delete[] this->p;
-    this->n = 0;
-    this->ind--;
-}
-
-void QuanLyNhanVien::Add_NV(NhanVien v){
-    if(this->n == 0){
-        this->p = new NhanVien[this->n+1];
-        *(this->p + this->n) = v;
-    }
-    else{
-        NhanVien *temp = new NhanVien[this->n+1];
-        for(int i = 0; i < this->n; i++){
-            *(temp+i) = *(this->p+i);
-        }
-        delete[] this->p;
-        this->p = new NhanVien[this->n+1];
-        for(int i = 0; i < this->n; i++){
-            *(this->p+i) = *(temp+i); 
-        }
-        delete[] temp;
-        *(this->p + n) = v;
-    }   
-    this->n++;
-}
-
-void QuanLyNhanVien::Show(){
+void QuanLyNhanVien::TieuDeCot(){
     int t_color=1;
     int b_color=0;
     int x=whereX();
     int y=whereY();
-    cout<<endl;
+  	cout<<endl;
+    GoTo(5,3);
     cout << setw(15) << left << " ID:"<<char(179);
     cout << setw(30-1) << left << " Ho Ten:"<<char(179);
     cout << setw(10-1) << left << " STD:"<<char(179);
-    cout << setw(9-1) << left << " CMND:"<<char(179);
+    cout << setw(10-1) << left << " CMND:"<<char(179);
     cout << setw(30-1) << left << " Chuc Vu:";
+     int x1=whereX();
+    box(x,y,x1-5,2,t_color,b_color);
+    cout<<endl;   
+}
+void QuanLyNhanVien::Show(){
+    TieuDeCot();
+    CanLe();
     int x1=whereX();
-    box(x,y,x1,2,t_color,b_color);
-    cout<<endl<<endl;
-    for(int i= 0; i < this->n; i++){
-        (p+i)->Display();
-    }
+    int y1=whereY();
+    cout<<endl;
+    for (int i = 0; i < this->n; i++)
+    {
+        CanLe();
+        (p + i)->Display();
+    } 
+    int y=whereY();
+    box(x1,y1,95,y-5,1,0);
+    GoTo(x1,y+1); 
+   
 }
 
-int QuanLyNhanVien::checkMSNV(string s){
+int QuanLyNhanVien::CheckMS(string s){
     int index = -1;
     for(int i = 0; i < this->n; i++){
         if(s == (this->p + i)->getMaNV()){
@@ -65,9 +46,9 @@ int QuanLyNhanVien::checkMSNV(string s){
     return index;
 }
 
-void QuanLyNhanVien::Update_NV(string m)
+void QuanLyNhanVien::Update(string m)
 {
-    int i = checkMSNV(m);
+    int i = CheckMS(m);
     if(i >= 0){
         if (m == (this->p + i)->getMaNV())
         {
@@ -113,41 +94,7 @@ void QuanLyNhanVien::Update_NV(string m)
     else cout << "Khong Tim Thay Ma Phim Can Sua!";
     cout << endl;
 }
-void QuanLyNhanVien::Delete_NV(string m)
-{
-    int f = checkMSNV(m);
-    if (f >= 0)
-    {
-        if (this->n == 1)
-        {
-            delete[] this->p;
-            this->p = nullptr;
-        }
-        else
-        {
-            NhanVien *temp = new NhanVien[this->n];
-            for (int k = 0; k < this->n; k++)
-            {
-                *(temp + k) = *(this->p + k);
-            }
-            delete[] this->p;
-            this->p = new NhanVien[this->n - 1];
-            for (int j = 0; j < this->n - 1; j++)
-            {
-                if (j < f)
-                {
-                    *(this->p + j) = *(temp + j);
-                }
-                else
-                {
-                    *(this->p + j) = *(temp + j + 1);
-                }
-            }
-            delete[] temp;
-        }
-    }
-    this->n--;
-}
+
 
 int QuanLyNhanVien::TimTaiKhoan(string tk, string mk){
     int index = -1;
@@ -161,14 +108,6 @@ int QuanLyNhanVien::TimTaiKhoan(string tk, string mk){
     return index;
 }
 
-
-NhanVien& QuanLyNhanVien::operator[](const int& index){
-    static NhanVien temp;
-    if(index >=0 && index < this->n){
-        return *(this->p + index);
-    }
-    else return temp;
-}
 
 // Menu
 
@@ -198,8 +137,10 @@ void QuanLyNhanVien::Menu(){
             XemThongTinNhanVien();
             break;
             case 2:
+            system("cls");
             this->Menu();
             default:
+            system("cls");
             break;
             }
         break;
@@ -225,7 +166,7 @@ void QuanLyNhanVien::ThemNhanVien(){
     cout << "Them Mot Nhan Vien: " << endl;
     NhanVien temp;
     cin >> temp;
-    this->Add_NV(temp); 
+    this->Add(temp); 
     SetColor(0,14);
     cout << "Them Thanh Cong" << endl;
     int chon;
@@ -256,7 +197,7 @@ void QuanLyNhanVien::CapNhatNhanVien(){
     SetColor(0,3);
     cout << "Nhap Ma Nhan Vien Ban Muon Cap Nhat: ";
     cin >> ma;
-    int index = checkMSNV(ma);
+    int index = CheckMS(ma);
     if(index == -1){
         SetColor(0,4);
         cout << "Khong Co Ma Nhan Vien Nao Trung Khop" << endl;
@@ -274,7 +215,7 @@ void QuanLyNhanVien::CapNhatNhanVien(){
         }
     }
     else {
-        this->Update_NV(ma);
+        this->Update(ma);
         SetColor(0,14);
         cout << "Cap Nhat Nhan Vien Thanh Cong!!\n" << endl;
         int chon3;
@@ -301,7 +242,7 @@ void QuanLyNhanVien::XoaNhanVien(){
     cout << "Nhap Ma Nhan Vien Ban Muon Xoa: ";
     SetColor(0,15);
     cin >> ma;
-    int index = checkMSNV(ma);
+    int index = CheckMS(ma);
     if(index == -1){
         SetColor(0,4);
         cout << "Khong Co Ma Nhan Vien Nao Trung Khop" << endl;
@@ -319,7 +260,7 @@ void QuanLyNhanVien::XoaNhanVien(){
         }
     }
     else {
-        this->Delete_NV(ma);
+        this->Delete(ma);
         SetColor(0,14);
         cout << "Xoa Nhan Vien Thanh Cong!!\n" << endl;
         int chon3;
@@ -344,7 +285,7 @@ void QuanLyNhanVien::XemThongTinNhanVien(){
     cout << "\nNhap Ma Nhan Vien Ban Muon Xem: ";
     SetColor(0,15);
     cin >> ma;
-    int index = checkMSNV(ma);
+    int index = CheckMS(ma);
     if(index == -1){
         SetColor(0,4);
         cout << "Khong Co Ma Nhan Vien Nao Trung Khop" << endl;
@@ -377,4 +318,4 @@ void QuanLyNhanVien::XemThongTinNhanVien(){
             this->Show();
         }
     }
-}
+}   

@@ -1,27 +1,19 @@
 #include"NhanVien.h"
 #include"DoHoa.h"
 #pragma once
-class QuanLyNhanVien
+#include "QuanLy.h"
+#include "DoHoa.h"
+class QuanLyNhanVien : public QuanLy<NhanVien>
 {
 private:
-    NhanVien *p;
-    static int ind;
-    int n;
+
 public:
-    QuanLyNhanVien();
-    ~QuanLyNhanVien();
+    void TieuDeCot();
     void Show();
-    void Add_NV(NhanVien);
-    int checkMSNV(string);
-    int IndexOf(string);
-    void Update_NV(string);
-    void Delete_NV(string);
+    int CheckMS(string);
+    void Update(string);
     friend void UpdateFile_NV(QuanLyNhanVien&);
-
-    //Da nang hoa
-    NhanVien& operator[](const int&);
     
-
     //Ham Cho Menu:
     int TimTaiKhoan(string, string);
     void Menu();

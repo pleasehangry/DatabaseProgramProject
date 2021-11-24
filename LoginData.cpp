@@ -1,5 +1,6 @@
 #include "LoginData.h"
 #include<conio.h>
+#include "DoHoa.h"
 
 
 Customer::Customer(string Gmail, string MatKhau,string HoTen, int SoDu)
@@ -95,6 +96,15 @@ void Customer::Show(){
     cout << setw(10-1) << left << this->SoDu <<(char)197;
     cout << setw(20-1) << left << this->LoaiKhachHang<<(char)197<< endl;
 }
+void Customer::Show2(){
+    system("cls");
+    GoTo(5,3);
+    cout<< "Ho Ten: " << this->HoTen << "| ";
+    cout<< "Gmail " << this->Gmail << "| ";
+    cout<< "Mat Khau: " << this->MatKhau << "| ";
+    cout<< "SoDu: " << this->SoDu << "| ";
+    cout<< "Loai Khach Hang: " << this->LoaiKhachHang<< endl;
+}
 
 
 
@@ -123,25 +133,39 @@ int CheckGmail(vector<Customer>& CTM, string m ){
 // void TimKiemNguoiDung(vector<Customer>& CTM,int& SoKhach);
 
 void Menu_Khach(vector<Customer>& CTM,int& SoKhach);
-
-void Display(vector<Customer>& CTM,int& SoKhach){
+void TieuDeCot()
+{
     int t_color=1;
     int b_color=0;
     int x=whereX();
     int y=whereY();
-    cout<<endl;
+  	cout<<endl;
+    CanLe();
     cout << setw(30) << left << " Ho ten" << (char)197; 
     cout << setw(30-1) << left << "Tai Khoan" << (char)197; 
     cout << setw(20-1) << left << "Mat Khau" << (char)197;
     cout << setw(10-1) << left << "So Du" << (char)197;
     cout << setw(20-1) << left << "Loai Khach Hang"; 
     int x1=whereX();
-    box(x,y,x1,2,t_color,b_color);
-    cout<<endl<<endl;
+    box(x,y,x1-5,2,t_color,b_color);
+    cout<<endl; 
+
+}
+void Display(vector<Customer>& CTM,int& SoKhach){
+    GoTo(5,3);
+    TieuDeCot();
+    CanLe();
+    int x1=whereX();
+    int y1=whereY();
+    cout<<endl;
     for (int i = 0; i < CTM.size(); i++)
     {
+        CanLe();
         CTM[i].Show();
     }
+    int y=whereY();
+    box(x1,y1,110,y-5,1,0);
+    GoTo(x1,y+1); 
 }
 
 void ThemNguoiDung(vector<Customer>& CTM,int& SoKhach){
@@ -367,6 +391,8 @@ void TimKiemNguoiDung(vector<Customer>& CTM,int& SoKhach){
     for (int i = 0; i < CTM.size(); i++)
     {
         if(strstr(CTM[i].HoTen.c_str(),s.c_str())){
+            CanLe();
+            SetColor(0,3);
             CTM[i].Show();
             k++;
         }
@@ -378,6 +404,7 @@ void TimKiemNguoiDung(vector<Customer>& CTM,int& SoKhach){
     }
         int chon2;
         SetColor(0,15);
+        CanLe();
         cout << "\n\n1.Tim Kiem Nguoi Dung" << endl;
         cout << "2.Tro ve" << endl;
         cout << ">>"; cin >> chon2;
@@ -415,7 +442,7 @@ void Menu_Khach(vector<Customer>& CTM,int& SoKhach){
         Display(CTM,SoKhach);
         int chon3;
         SetColor(0,15);
-        cout << "\n\n1.Tem Kiem Nguoi Dung" << endl;
+        cout << "\n\n1.Tim Kiem Nguoi Dung" << endl;
         cout << "2.Tro Ve" << endl;
         cout << ">>"; cin >> chon3;
         switch (chon3)

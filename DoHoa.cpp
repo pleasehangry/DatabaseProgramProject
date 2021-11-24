@@ -5,10 +5,12 @@
 using namespace std;
 
 int x = 70;
-int y = 10;
+int y = 5;
 int h = 2;
 int w = 40;
 int b_color_sang = 75;
+int t_color=7;
+int b_color=8;
 int row = 4;
 int col = 4;
 
@@ -18,7 +20,7 @@ void ShowCur(bool CursorVisibility)
 	CONSOLE_CURSOR_INFO cursor = {1, CursorVisibility};
 	SetConsoleCursorInfo(handle, &cursor);
 }
-void GoTo(int posX, int posY)
+void GoTo(SHORT posX, SHORT posY)
 {
 	HANDLE hConsoleOutput;
 	COORD Cursor_an_Pos = {posX, posY};
@@ -258,4 +260,83 @@ int menu(vector<string>& a)
 		}
 	}
 	return index;
+}
+int menu2(vector<string>& a)
+{
+	int index = 10;
+	ShowCur(0);
+	//----- setting ----
+	int row = a.size();
+	int x = 5;
+	int y = whereY();
+	n_box(x, y, w + 2, h, t_color, b_color, row);
+	for (int i = 0; i < row; i++)
+	{
+		GoTo(x + 1, y + (i * h) + 1);
+		cout << a[i];
+	}
+
+	//-------------
+	int xp = x;
+	int yp = y; // toa do thanh sang
+	int xcu = xp;
+	int ycu = yp;
+	bool kt = true;
+	while (true)
+	{
+		//------ in ----
+		if (kt == true)
+		{
+			//----- back space ----
+			GoTo(xcu, ycu);
+			thanh_sang(xcu, ycu, w, h, b_color); // rs thanh sang cu
+			xcu = xp;
+			ycu = yp;
+			//-------------
+			thanh_sang(xp, yp, w, h, b_color_sang);
+			kt = false;
+		}
+		//----- dieu khien ---- //----- di chuyen ----
+		if (_kbhit())
+		{
+			int i = (yp - y) / h + 1;
+			char c = _getch();
+			if (c == 13)
+			{
+				GoTo(x, y + row * h + 1);
+				SetColor(0, 1);
+				return i;
+			}
+
+			//---- speed ----
+
+			if (c == -32)
+			{
+				kt = true; // d? b?m
+				c = _getch();
+				if (c == 72)
+				{
+					if (yp != y)
+						yp -= 2;
+					else
+					{
+						yp = y + h * (row - 1);
+					}
+				}
+				else if (c == 80)
+				{
+					if (yp != y + h * (row - 1))
+						yp += 2;
+					else
+					{
+						yp = y;
+					}
+				}
+			}
+		}
+	}
+	return index;
+}
+void CanLe(int x, int y){
+	GoTo(x,y);
 }

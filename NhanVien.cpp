@@ -97,7 +97,7 @@ NhanVien::~NhanVien(){
     }
     
 void NhanVien::Display(){
-    cout <<char(179)<< setw(15-1) << this->MaNhanVien <<char(179);
+    cout <<char(179)<< setw(15-1) << left<< this->MaNhanVien <<char(179);
     cout << setw(30-1) << left << this->HoTen <<char(179);
     cout << setw(10-1) << left << this->SoDienThoai <<char(179);
     cout << setw(9-1) << left << this->SoCMT <<char(179);

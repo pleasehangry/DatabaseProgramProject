@@ -100,6 +100,7 @@ void PhongChieu::DocFileDatGhe(vector<int>& A){
 
 void PhongChieu::DatGhe(int n){
     for(int i = 0; i < n; i++){
+        CanLe();
         cout << "Nhap Ghe Ma Ban Muon Dat: ";
         int ghe;
         cin >> ghe;
@@ -140,43 +141,56 @@ void PhongChieu::DisplayTable(){
     {   
         Ghe[i] = i;
     }
-    
+    GoTo(60,whereY());
     cout <<"\t\t  Man Hinh Chieu" << endl;
     cout << "       ";
-    for(int i = 0; i < 5; i++) cout << "________";
-    cout << endl;
+    GoTo(60,whereY());
+    for(int i = 0; i < 6; i++) cout << "________";
+    GoTo(60,whereY()+3);
     for(int i = 0; i < this->SoCho/10; i++){
+            GoTo(60,whereY());
         for(int j = 1; j <= 10; j++){
             if(this->isReserved(A,i*10 + j)){
                 SetColor(0,5);
                 cout << setw(5) << Ghe[i*10 + j];
                 SetColor(0,7);
             }
-            else cout << setw(5) << Ghe[i*10 + j];
+            else {
+                cout << setw(5) << Ghe[i*10 + j];
+            }
         }
         cout << endl;
         cout << endl;
     }
+    CanLe();
     cout << "Mau Tim: Da Dat Truoc" << endl;
+    CanLe();
     cout << "Mau Trang: Co The Dat Ghe" << endl;
 }
 
 istream& operator>>(istream& i, PhongChieu& e){
     system("cls");
+    CanLe();
     cout << "Nhap Ma Phong Chieu: ";
     fflush(stdin);
     getline(i,e.MaPhongChieu);
+    CanLe();
     cout << "Nhap So Ghe: "; i >> e.SoCho;
+    CanLe();
     cout << "Nhap Loai May Chieu: ";
     fflush(stdin);
     getline(i,e.MayChieu);
+    CanLe();
     cout << "Nhap Loai Am Thanh: ";
     fflush(stdin);
     getline(i,e.AmThanh);
+    CanLe();
     cout << "Nhap Dien Tich Phong Chieu:"; i >> e.DienTich;
+    CanLe();
     cout << "Nhap Tinh Trang Phong Chieu:";
     fflush(stdin);
     getline(i,e.TinhTrang);
+    CanLe();
     cout << "Nhap Ma Bao Ve: ";
     fflush(stdin);
     getline(i,e.MaBaoVe);

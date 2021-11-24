@@ -1,46 +1,15 @@
 #include "QLPhongChieu.h"
 #include<string>
-QLPhongChieu::QLPhongChieu(/* args */)
+
+
+void QLPhongChieu::TieuDeCot()
 {
-    this->p = NULL;
-    this->n = 0;
-}
-
-QLPhongChieu::~QLPhongChieu()
-{
-    delete[] this->p;
-    this->n = 0;
-}
-
-
-
-void QLPhongChieu::Add_PC(PhongChieu v){
-    if(this->n == 0){
-        this->p = new PhongChieu[this->n+1];
-        *(this->p + this->n) = v;
-    }
-    else{
-        PhongChieu *temp = new PhongChieu[this->n+1];
-        for(int i = 0; i < this->n; i++){
-            *(temp+i) = *(this->p+i);
-        }
-        delete[] this->p;
-        this->p = new PhongChieu[this->n+1];
-        for(int i = 0; i < this->n; i++){
-            *(this->p+i) = *(temp+i); 
-        }
-        delete[] temp;
-        *(this->p + n) = v;
-    }   
-    this->n++;
-}
-
-void QLPhongChieu::Show(){
     int t_color=1;
     int b_color=0;
     int x=whereX();
     int y=whereY();
   	cout<<endl;
+    CanLe();
     cout << setw(26) << left << " Ma Phong Chieu" <<char(179);
     cout << setw(20) << left << " So Ghe:" <<char(179);
     cout << setw(20) << left << " May Chieu:" <<char(179);
@@ -49,14 +18,27 @@ void QLPhongChieu::Show(){
     cout << setw(20) << left << " Tinh Trang:" <<char(179);
     cout << setw(20) << left << " Ma Bao Ve:";
     int x1=whereX();
-    box(x,y,x1,2,t_color,b_color);
-    cout<<endl<<endl;
-    for(int i= 0; i < this->n; i++){
-        (p+i)->Display();
-    }
+    box(x,y,x1-5,2,t_color,b_color);
+    cout<<endl;  
+}
+void QLPhongChieu::Show(){
+    GoTo(5,3);
+    TieuDeCot();
+    CanLe();
+    int x1=whereX();
+    int y1=whereY();
+    cout<<endl;
+    for (int i = 0; i < this->n; i++)
+    {
+        CanLe();
+        (p + i)->Display();
+    } 
+    int y=whereY();
+    box(x1,y1,152,y-5,1,0);
+    GoTo(x1,y+1); 
 }
 
-int QLPhongChieu::checkMSPC(string s)
+int QLPhongChieu::CheckMS(string s)
 {
     int index = -1;
     for (int i = 0; i < this->n; i++)
@@ -70,9 +52,9 @@ int QLPhongChieu::checkMSPC(string s)
     return index;
 }
 
-void QLPhongChieu::Update_PC(string m)
+void QLPhongChieu::Update(string m)
 {
-    int i = checkMSPC("m");
+    int i = CheckMS(m);
     if(i >= 0){
         if (m == (this->p + i)->getMaPhongChieu())
         {
@@ -111,51 +93,6 @@ void QLPhongChieu::Update_PC(string m)
     }
     else cout << "Khong Tim Thay Ma Phim Can Sua!";
     cout << endl;
-}
-
-void QLPhongChieu::Delete_PC(string m)
-{
-    int f = checkMSPC(m);
-    if (f >= 0)
-    {
-        if (this->n == 1)
-        {
-            delete[] this->p;
-            this->p = nullptr;
-        }
-        else
-        {
-            PhongChieu *temp = new PhongChieu[this->n];
-            for (int k = 0; k < this->n; k++)
-            {
-                *(temp + k) = *(this->p + k);
-            }
-            delete[] this->p;
-            this->p = new PhongChieu[this->n - 1];
-            for (int j = 0; j < this->n - 1; j++)
-            {
-                if (j < f)
-                {
-                    *(this->p + j) = *(temp + j);
-                }
-                else
-                {
-                    *(this->p + j) = *(temp + j + 1);
-                }
-            }
-            delete[] temp;
-        }
-    }
-    this->n--;
-}
-
-
-PhongChieu& QLPhongChieu::operator[](const int& index){
-    static PhongChieu temp;
-    if(index >=0 && index < this->n){
-        return *(this->p + index);
-    }
-    else return temp;
 }
 
 // Menu
@@ -215,7 +152,7 @@ void QLPhongChieu::ThemPhongChieu(){
     PhongChieu temp;
     SetColor(0,5);
     cin >> temp;
-    this->Add_PC(temp); 
+    this->Add(temp); 
     SetColor(0,14);   
     cout << "Them Thanh Cong" << endl;
     int chon;
@@ -247,7 +184,7 @@ void QLPhongChieu::CapNhatPhongChieu(){
     cout << "Nhap Ma PhongChieu Ban Muon Cap Nhat: ";
     SetColor(0,5);
     cin >> ma;
-    int index = checkMSPC(ma);
+    int index = CheckMS(ma);
     if(index == -1){
         SetColor(0,4);
         cout << "Khong Co Ma PhongChieu Nao Trung Khop" << endl;
@@ -265,7 +202,7 @@ void QLPhongChieu::CapNhatPhongChieu(){
         }
     }
     else {
-        this->Update_PC(ma);
+        this->Update(ma);
         SetColor(0,14);
         cout << "Cap Nhat PhongChieu Thanh Cong!!\n" << endl;
         int chon3;
@@ -292,7 +229,7 @@ void QLPhongChieu::XoaPhongChieu(){
     cout << "Nhap Ma Phong Chieu Ban Muon Xoa: ";
     SetColor(0,8);
     cin >> ma;
-    int index = checkMSPC(ma);
+    int index = CheckMS(ma);
     if(index == -1){
         SetColor(0,14);
         cout << "Khong Co Ma Phong Chieu Nao Trung Khop" << endl;
@@ -310,7 +247,7 @@ void QLPhongChieu::XoaPhongChieu(){
         }
     }
     else {
-        this->Delete_PC(ma);
+        this->Delete(ma);
         SetColor(0,14);
         cout << "Xoa PhongChieu Thanh Cong!!\n" << endl;
         int chon3;
@@ -335,7 +272,7 @@ void QLPhongChieu::XemThongTinPhongChieu(){
     cout << "Nhap Ma Phong Chieu Ban Muon Xem: ";
     SetColor(0,8);
     cin >> ma;
-    int index = checkMSPC(ma);
+    int index = CheckMS(ma);
     if(index == -1){
         SetColor(0,4);
         cout << "Khong Co Ma Phong Chieu Nao Trung Khop" << endl;
