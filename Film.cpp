@@ -97,13 +97,22 @@ void Film::Display()
 
 // display2 de xem chi tiet phim
 void Film::Display2(){
+    system("cls");
+    GoTo(5,3);
     cout << "Ma Phim: " << this->maPhim << endl;
+    CanLe();
     cout << "Ten Phim: " << this->tenPhim << endl;
+    CanLe();
     cout << "The Loai: " << this->theLoai << endl;
+    CanLe();
     cout << "Thoi Luong: " <<this->thoiLuong << endl;
+    CanLe();
     cout << "Dao Dien: " << this->daoDien << endl;
+    CanLe();
     cout << "Dien Vien: " << this->dienVien << endl;
+    CanLe();
     cout << "Nam Cong Chieu: " << this->namCongChieu << endl;
+    CanLe();
     cout << "Quoc Gia: " << this->quocGia << endl;
 }
 
@@ -119,42 +128,49 @@ ostream& operator<<(ostream& o, const Film& f){
 }
 
 istream& operator>>(istream& i, Film& e){
-    system("cls");
+    CanLe();
     cout << "Nhap Ma Phim: ";
     fflush(stdin);
     SetColor(0,2);
     getline(i,e.maPhim);
     SetColor(0,9);
+    CanLe();
     cout << "Nhap Ten Phim: ";
     fflush(stdin);
     SetColor(0,2);
     getline(i,e.tenPhim);
     SetColor(0,9);
+    CanLe();
     cout << "Nhap The Loai: ";
     fflush(stdin);
     SetColor(0,2);
     getline(i,e.theLoai);
     SetColor(0,9);
+    CanLe();
     cout << "Nhap Thoi Luong: ";
     fflush(stdin);
     SetColor(0,2);
     getline(i,e.thoiLuong);
     SetColor(0,9);
+    CanLe();
     cout << "Nhap Dao Dien :";
     fflush(stdin);
     SetColor(0,2);
     getline(i,e.daoDien);
     SetColor(0,9);
+    CanLe();
     cout << "Nhap Dien Vien:";
     fflush(stdin);
     SetColor(0,2);
     getline(i,e.dienVien);
     SetColor(0,9);
+    CanLe();
     cout << "Nhap Nam Cong Chieu: ";
     fflush(stdin);
     SetColor(0,2);
     getline(i,e.namCongChieu);
     SetColor(0,9);
+    CanLe();
     cout << "Nhap Quoc Gia :";
     fflush(stdin);
     SetColor(0,2);

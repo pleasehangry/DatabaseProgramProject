@@ -63,22 +63,29 @@ void QLPhongChieu::Update(string m)
             float e;
             system("cls");
             (this->p + i)->Display();
+            CanLe();
             cout << "Nhap Ma Phong Chieu: ";
             fflush(stdin);
             getline(cin, a);
+            CanLe();
             cout << "Nhap So Ghe: ";
             cin >> b;
+            CanLe();
             cout << "Nhap Loai May Chieu: ";
             fflush(stdin);
             getline(cin, c);
+            CanLe();
             cout << "Nhap Loai Am Thanh: ";
             fflush(stdin);
             getline(cin, c);
+            CanLe();
             cout << "Nhap Dien Tich Phong Chieu: ";
             cin >> e;
+            CanLe();
             cout << "Nhap Tinh Trang: ";
             fflush(stdin);
             getline(cin, f);
+            CanLe();
             cout << "Nhap Ma Bao Ve: ";
             fflush(stdin);
             getline(cin, g);
@@ -91,7 +98,9 @@ void QLPhongChieu::Update(string m)
             (this->p + i)->setMaBaoVe(g);
         }
     }
-    else cout << "Khong Tim Thay Ma Phim Can Sua!";
+    else{
+        return;
+    }
     cout << endl;
 }
 
@@ -100,7 +109,10 @@ void QLPhongChieu::Update(string m)
 
 void QLPhongChieu::Menu(){
     system("cls");
-
+    vector<string> m2={
+        "1.Nhap Lai",
+        "2.Tro ve"
+    };
     vector<string> m={
      "1.Xem Danh Sach Phong Chieu",
      "2.Them Phong Chieu",
@@ -115,9 +127,7 @@ void QLPhongChieu::Menu(){
         this->Show();
         int chon2;
         SetColor(0,3);
-        cout << "\n\n1.Xem Thong Tin Chi Tiet" << endl;
-        cout << "2.Tro Ve" << endl;
-        cout << ">>"; cin >> chon2;
+        chon2 = menu2(m2);
             switch (chon2)
             {
             case 1:
@@ -148,20 +158,22 @@ void QLPhongChieu::ThemPhongChieu(){
     system("cls");
     this->Show();
     SetColor(0,3);
+    CanLe();
     cout << "Them Mot PhongChieu: " << endl;
     PhongChieu temp;
     SetColor(0,5);
     cin >> temp;
     this->Add(temp); 
-    SetColor(0,14);   
+    SetColor(0,14);
+    CanLe();   
     cout << "Them Thanh Cong" << endl;
     int chon;
     SetColor(0,15);
-    cout << "1.Them PhongChieu" << endl;
-    cout << "2.Tro Ve" << endl;
-    SetColor(0,9);
-    cout << "Nhap Lua Chon";cin >> chon;
-    
+    vector<string> m2={
+        "Them Phong Chieu",
+        "Tro ve"
+    };
+    chon = menu2(m2);
     switch (chon)
     {
     case 1:
@@ -180,20 +192,23 @@ void QLPhongChieu::CapNhatPhongChieu(){
     system("cls");
     this->Show();
     string ma;
+    vector<string> m2={
+        "Nhap Lai",
+        "Tro ve"
+    };
     SetColor(0,3);
-    cout << "Nhap Ma PhongChieu Ban Muon Cap Nhat: ";
+    CanLe();   
+    cout << "Nhap Ma Phong hieu Ban Muon Cap Nhat: ";
     SetColor(0,5);
     cin >> ma;
     int index = CheckMS(ma);
     if(index == -1){
         SetColor(0,4);
-        cout << "Khong Co Ma PhongChieu Nao Trung Khop" << endl;
+        CanLe();   
+        cout << "Khong Co Ma Phong Chieu Nao Trung Khop" << endl;
         int chon2;
         SetColor(0,15);
-        cout << "1.Nhap Lai" << endl;
-        cout << "2.Tro Ve" << endl;
-        cout << ">> " << endl;
-        cin >> chon2;
+        chon2 = menu2(m2);
         if(chon2 == 1){
             this->CapNhatPhongChieu();
         }
@@ -204,13 +219,11 @@ void QLPhongChieu::CapNhatPhongChieu(){
     else {
         this->Update(ma);
         SetColor(0,14);
+        CanLe();   
         cout << "Cap Nhat PhongChieu Thanh Cong!!\n" << endl;
         int chon3;
         SetColor(0,15);
-        cout << "1.Nhap Lai" << endl;
-        cout << "2.Tro Ve" << endl;
-        cout << ">> ";cin >> chon3;
-        
+        chon3 = menu2(m2);
         if(chon3 == 1){
             this->CapNhatPhongChieu();
         }
@@ -224,21 +237,23 @@ void QLPhongChieu::CapNhatPhongChieu(){
 void QLPhongChieu::XoaPhongChieu(){
     system("cls");
     this->Show();
-    string ma;
+    string ma;vector<string> m2={
+        "Nhap Lai",
+        "Tro ve"
+    };
     SetColor(0,3);
+    CanLe();   
     cout << "Nhap Ma Phong Chieu Ban Muon Xoa: ";
     SetColor(0,8);
     cin >> ma;
     int index = CheckMS(ma);
     if(index == -1){
         SetColor(0,14);
+        CanLe();   
         cout << "Khong Co Ma Phong Chieu Nao Trung Khop" << endl;
         int chon2;
         SetColor(0,15);
-        cout << "1.Nhap Lai" << endl;
-        cout << "2.Tro Ve" << endl;
-        cout << ">> ";cin >> chon2;
-        
+        chon2 = menu2(m2);
         if(chon2 == 1){
             this->XoaPhongChieu();
         }
@@ -249,13 +264,11 @@ void QLPhongChieu::XoaPhongChieu(){
     else {
         this->Delete(ma);
         SetColor(0,14);
+        CanLe();   
         cout << "Xoa PhongChieu Thanh Cong!!\n" << endl;
         int chon3;
         SetColor(0,15);
-        cout << "\n1.Xoa PhongChieu" << endl;
-        cout << "2.Tro Ve" << endl;
-        cout << ">> " << endl;
-        cin >> chon3;
+        chon3 = menu2(m2);
         if(chon3 == 1){
             this->XoaPhongChieu();
         }
@@ -268,20 +281,23 @@ void QLPhongChieu::XemThongTinPhongChieu(){
     system("cls");
     this->Show();
     string ma;
+    vector<string> m2={
+        "Nhap Lai",
+        "Tro ve"
+    };
     SetColor(0,3);
+    CanLe();
     cout << "Nhap Ma Phong Chieu Ban Muon Xem: ";
     SetColor(0,8);
     cin >> ma;
     int index = CheckMS(ma);
     if(index == -1){
         SetColor(0,4);
+        CanLe();
         cout << "Khong Co Ma Phong Chieu Nao Trung Khop" << endl;
         int chon2;
         SetColor(0,15);
-        cout << "1.Nhap Lai" << endl;
-        cout << "2.Tro Ve" << endl;
-        cout << ">> ";
-        cin >> chon2;
+        chon2 = menu2(m2);
         if(chon2 == 1){
             this->XemThongTinPhongChieu();
         }
@@ -293,10 +309,7 @@ void QLPhongChieu::XemThongTinPhongChieu(){
         (this->p + index)->Display2();
         int chon3;
         SetColor(0,15);
-        cout << "1.Xem Thong Tin PhongChieu" << endl;
-        cout << "2.Tro Ve" << endl;
-        cout << ">> "; cin >> chon3;
-        
+        chon3 = menu2(m2);
         if(chon3 == 1){
             this->XemThongTinPhongChieu();
         }

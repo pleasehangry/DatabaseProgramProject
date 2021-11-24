@@ -162,14 +162,18 @@ void PhongChieu::DisplayTable(){
         cout << endl;
         cout << endl;
     }
-    CanLe();
-    cout << "Mau Tim: Da Dat Truoc" << endl;
-    CanLe();
+    GoTo(5,10);
+    SetColor(0,7);
     cout << "Mau Trang: Co The Dat Ghe" << endl;
+    GoTo(5,11);
+    SetColor(0,5);
+    cout << "Mau Tim: Da Dat Truoc" << endl;
+    SetColor(0,7);
+    cout << endl;
+    
 }
 
 istream& operator>>(istream& i, PhongChieu& e){
-    system("cls");
     CanLe();
     cout << "Nhap Ma Phong Chieu: ";
     fflush(stdin);

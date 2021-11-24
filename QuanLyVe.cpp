@@ -60,21 +60,28 @@ void QuanLyVe::Update(string m)
             string a,b,c;
             int d,e,f;
             system("cls");
+            GoTo(5,3);
             (this->p + i)->Display();
             SetColor(0,3);
+            CanLe();
             cout << "Nhap Ma Ve Moi: ";
             fflush(stdin);
             getline(cin, a);
+            CanLe();
             cout << "Nhap Ma Phim: ";
             fflush(stdin);
             getline(cin, b);
+            CanLe();
             cout << "Nhap Loai Khach Hang: ";
             fflush(stdin);
             getline(cin, c);
+            CanLe();
             cout << "Nhap Gia Ve: ";
             cin >> d;
+            CanLe();
             cout << "Nhap So Luong: ";
             cin >> e;
+            CanLe();
             cout << "Nhap So Ve Da Ban: ";
             cin >> f;
             (this->p + i)->setMaVe(a);
@@ -86,9 +93,11 @@ void QuanLyVe::Update(string m)
             (this->p + i)->ThanhTien();
         }
     }
-    else 
-    SetColor(0,4);
-    cout << "Khong Tim Thay Ma Phim Can Sua!";
+    else {
+        SetColor(0,4);
+        CanLe();
+        cout << "Khong Tim Thay Ma Phim Can Sua!";
+    }
     cout << endl;
 }
 
@@ -97,29 +106,39 @@ void QuanLyVe::Update(string m)
 void QuanLyVe::setLoaiVe(){
     QuanLyPhim QLP;
     DocFile_Phim(QLP);
-    string maVe, maPhim, loaiKhachHang, soLuongVe;
+    string maVe, maPhim, loaiKhachHang;
+    int soLuongVe;
     Ve temp;
     this->Show();
     SetColor(0,3);
-    cout << "Nhap Ma Ve: ";
-    cin >> maVe;
+    CanLe();
+    cout << "Nhap Ma Ve: "; cin >> maVe;
     temp.setMaVe(maVe);
+    system("cls");
     QLP.Show();
+    CanLe();
     cout << "Chon Ma Phim Ban Muon Tao Ve: ";
     cin >> maPhim;
     while(QLP.CheckMS(maPhim)<0){
         SetColor(0,4);
+        CanLe();
         cout << "Ban Da Nhap Sai Ma Phim, Vui Long Nhap Lai: ";
         cin >> maPhim;
+        SetColor(0,15);
     }
     temp.setMaPhim(maPhim);
     SetColor(0,3);
+    CanLe();
     cout << "Nhap Loai Khach Hang: ";
     cin >> loaiKhachHang;
+    temp.setLoaiKhachHang(loaiKhachHang);
+    CanLe();
     cout << "Nhap So Luong Ve: ";
     cin >> soLuongVe;
+    temp.setSoLuong(soLuongVe);
     this->Add(temp);
     SetColor(0,14);
+    CanLe();
     cout << "Tao Ve Thanh Cong!" << endl;
 }
 
@@ -139,14 +158,14 @@ int QuanLyVe::GetMaVe(string maPhim, string loaiKhachHang){
 void QuanLyVe::Menu(){
     system("cls");
     vector<string> m={
-     "1.Xem Danh Sach Phim",
-     "2.Them Phim",
-     "3.Xoa Phim",
-     "4.Cap Nhat Phim",
-     "5.Tro Ve Menu chinh"};
+     "Xem Danh Sach Ve",
+     "Them Ve",
+     "Xoa Ve",
+     "Cap Nhat Ve",
+     "Tro Ve Menu chinh"};
      vector<string> m2={
-         "1.Xem Thong Tin Chi Tiet",
-         "2.Tro Ve"
+         "Xem Thong Tin Chi Tiet",
+         "Tro Ve"
      };
     int chon=menu(m);
     switch (chon)
@@ -162,7 +181,6 @@ void QuanLyVe::Menu(){
                 XemThongTinVe();
                 break;
             case 2:
-                system("cls");
                 this->Menu();
             default:
                 system("cls");
@@ -188,17 +206,16 @@ void QuanLyVe::ThemVe(){
     system("cls");
     this->Show();
     SetColor(0,3);
+    CanLe();
     cout << "Them Mot Ve: " << endl;
     Ve temp;
     setLoaiVe();
     SetColor(0,14);
+    CanLe();
     cout << "Them Thanh Cong" << endl;
-    int chon;
     SetColor(0,15);
-    cout << "1.Them Ve" << endl;
-    cout << "2.Tro Ve" << endl;
-    cout << "Nhap Lua Chon" << endl;
-    cout<<(char)16<<(char)16;cin >> chon;
+    vector<string> m2 = {"Them Ve", "Tro ve"};
+    int chon = menu2(m2);
     switch (chon)
     {
     case 1:
@@ -218,17 +235,22 @@ void QuanLyVe::CapNhatVe(){
     this->Show();
     string ma;
     SetColor(0,3);
+    CanLe();
     cout << "Nhap Ma Ve Ban Muon Cap Nhat: ";
     SetColor(0,15);
     cin >> ma;
     int index = CheckMS(ma);
     if(index == -1){
         SetColor(0,4);
+        CanLe();
         cout << "Khong Co Ma Ve Nao Trung Khop" << endl;
         int chon2;
         SetColor(0,15);
+        CanLe();
         cout << "1.Nhap Lai" << endl;
+        CanLe();
         cout << "2.Tro Ve" << endl;
+        CanLe();
         cout << ">> " << endl;
         cin >> chon2;
         if(chon2 == 1){
@@ -241,11 +263,15 @@ void QuanLyVe::CapNhatVe(){
     else {
         this->Update(ma);
         SetColor(0,14);
+        CanLe();
         cout << "Cap Nhat Ve Thanh Cong!!\n" << endl;
         int chon3;
         SetColor(0,15);
+        CanLe();
         cout << "1.Nhap Lai" << endl;
+        CanLe();
         cout << "2.Tro Ve" << endl;
+        CanLe();
         cout << ">> " << endl;
         cin >> chon3;
         if(chon3 == 1){
@@ -271,12 +297,14 @@ void QuanLyVe::XoaVe(){
     this->Show();
     string ma;
     SetColor(0,3);
+    CanLe();
     cout << "Nhap Ma Ve Ban Muon Xoa: ";
     SetColor(0,15);
     cin >> ma;
     int index = CheckMS(ma);
     if(index == -1){
         SetColor(0,4);
+        CanLe();
         cout << "Khong Co Ma Ve Nao Trung Khop" << endl;
         int chon2;
         chon2=menu2(m2);
@@ -291,7 +319,9 @@ void QuanLyVe::XoaVe(){
         this->Delete(ma);
         SetColor(0,14);
         CanLe();
+        CanLe();
         cout << "Xoa Ve Thanh Cong!!\n" << endl;
+        UpdateFile_Ve(*this);
         int chon3;
         chon3=menu2(m);
         if(chon3 == 1){
@@ -308,10 +338,15 @@ void QuanLyVe::XemThongTinVe(){
         "1.Xem Thong Tin Ve",
         "2.Tro Ve"
     };
+    vector<string> m2={
+        "1.Nhap Lai",
+        "2.Tro Ve"
+    };
     CanLe();
     this->Show();
     string ma;
     SetColor(0,3);
+    CanLe();
     cout << "Nhap Ma Ve Ban Muon Xem: ";
     SetColor(0,15);
     cin >> ma;
@@ -322,9 +357,7 @@ void QuanLyVe::XemThongTinVe(){
         cout << "Khong Co Ma Ve Nao Trung Khop" << endl;
         int chon2;
         SetColor(0,15);
-        cout << "1.Nhap Lai" << endl;
-        cout << "2.Tro Ve" << endl;
-        cout << ">> " << endl;
+        chon2 = menu2(m2);
         cin >> chon2;
         if(chon2 == 1){
             this->XemThongTinVe();

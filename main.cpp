@@ -19,7 +19,7 @@ int main()
    DocFile(QLNV, QLP, QLLC, QLPC, QLV, CTM, SoKhach);
    system("cls");
    int chon;
-   GoTo(83,9); cout << "Ban La: " << endl;
+   GoTo(70,4); cout << "Ban La: " << endl;
    vector<string> m = {"Khach","Admin"};
    chon = menu(m);
    switch (chon)
@@ -29,9 +29,7 @@ int main()
       break;
    case 2:
       DangNhap_Admin(QLP, QLNV,CTM, QLPC, QLLC, QLV, SoKhach);
-      Update(QLNV, QLP, QLLC, QLPC, QLV, CTM, SoKhach);
       break;
-      
    default:
       break;
    }

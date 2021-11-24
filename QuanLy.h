@@ -106,23 +106,31 @@ void QuanLy<T>::Resize(int newlength){
 template<class T>
 void QuanLy<T>::Delete(string m){
     int index = CheckMS(m);
-    assert(index >= 0 && index < this->n);
-    if(this->n == 1){
-        Erase();
-        return; 
+    if(index >= 0){
+        if(this->n == 1){
+            delete[] this->p;
+            this->p = nullptr;
+        }
+        else{
+            T *temp = new T[n];
+            for(int i = 0; i < this->n; i++){
+                *(temp + i) = *(this->p + i);
+            }
+            delete[] this->p;
+            this->p = new T[n-1];
+            for(int i = 0 ; i < this->n-1; i++){
+                if(i < index){
+                    *(this->p +i) = *(temp + i);
+                }
+                else{
+                    *(this->p + i) =  *(temp + i + 1);
+                }
+            }
+            delete[] temp;
+        }
+    this->n--;
     }
-    T *data = new T[this->n - 1];
-    for (int i = 0; i < index; i++)
-    {
-        data[i] = (*this)[i];
-    }
-    for (int j = index; j < this->n; j++)
-    {
-        data[j-1] = (*this)[j];
-    }
-    delete[] this->p;
-    this->p = data;
-    --this->n;
+    else return;
 }
 
 template<class T>

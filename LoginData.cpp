@@ -56,16 +56,20 @@ bool Customer::CheckSoDu(int giave){
 void Customer::NapTien(){
     int SoTaiKhoan;
     int SoTien;
+    CanLe();
     cout << "Nhap So Tai Khoan Ngan Hang: ";
     cin >> SoTaiKhoan;
+    CanLe();
     cout << "Nhap So Tien Ban Muon Nap: ";
     cin >> SoTien;
-    if(SoTien <0) cout << "So Tien Khong Hop Le" << endl;
+    if(SoTien <0) cout << "So Tien Khong Hop Le\n" << endl;
     else {
         this->SoDu += SoTien;
+        CanLe();
         cout << "Nap Tien Thanh Cong!" << endl;
     }
-    cout << "\nNhan Phim Bat Ky De Tro Ve";
+    CanLe();
+    cout << "Nhan Phim Bat Ky De Tro Ve";
     getch();
 }
 
@@ -99,10 +103,15 @@ void Customer::Show(){
 void Customer::Show2(){
     system("cls");
     GoTo(5,3);
-    cout<< "Ho Ten: " << this->HoTen << "| ";
-    cout<< "Gmail " << this->Gmail << "| ";
-    cout<< "Mat Khau: " << this->MatKhau << "| ";
-    cout<< "SoDu: " << this->SoDu << "| ";
+    CanLe();
+    cout<< "Ho Ten: " << this->HoTen << endl;
+    CanLe();
+    cout<< "Gmail " << this->Gmail << endl;
+    CanLe();
+    cout<< "Mat Khau: " << this->MatKhau << endl;
+    CanLe();
+    cout<< "SoDu: " << this->SoDu << endl;
+    CanLe();
     cout<< "Loai Khach Hang: " << this->LoaiKhachHang<< endl;
 }
 
@@ -171,15 +180,19 @@ void Display(vector<Customer>& CTM,int& SoKhach){
 void ThemNguoiDung(vector<Customer>& CTM,int& SoKhach){
     system("cls");
     string gmail, mk, mk2, ten;
+    GoTo(5,3);
     cout << " Nhap Gmail Cua Ban: ";
     cin >> gmail;
+    CanLe();
     cout << " Nhap Mat Khau: ";
     cin >> mk;
+    CanLe();
     cout << " Nhap Lai Mat khau: ";
     cin >> mk2;
     for (int i = 0; i < CTM.size(); i++)
     {
         if(gmail == CTM[i].getGmail()){
+            CanLe();
             cout << "Tai Khoan Da Ton Tai" << endl;
             break;
             getch();
@@ -189,19 +202,25 @@ void ThemNguoiDung(vector<Customer>& CTM,int& SoKhach){
     
     while(mk!=mk2){
         system("cls");
+        GoTo(5,3);
         cout << "(Nhan 0 De Thoat)" << endl;
+        CanLe();
         cout << "Mat Khau Khong Trung Khop" << endl;
+        CanLe();
         cout << "\nNhap Gmail Cua Ban: " << gmail << endl;
+        CanLe();
         cout << "Nhap Mat Khau:(Nhan 0 De Thoat)";
         if(mk == "0"){
             Menu_Khach(CTM, SoKhach);
         }
         cin >> mk;
         SetColor(0,7);
+        CanLe();
         cout << "Nhap Lai Mat Khau: ";
         cin >> mk2;
     }
     SetColor(0,15);
+    CanLe();
     cout << "Nhap Ho Ten Cua Ban: ";
     SetColor(0,8);
     cin >> ten;
@@ -210,12 +229,12 @@ void ThemNguoiDung(vector<Customer>& CTM,int& SoKhach){
     SoKhach++;
     SetColor(0,14);
     SetColor(0,14);
+    CanLe();
     cout << "Them Thanh Cong! " << endl;
+    vector<string> m2 = {"Them Nguoi Dung", "Tro Ve"};
     SetColor(0,15);
-    cout << "1.Them Nguoi Dung" << endl;
-    cout << "2.Tro ve" << endl;
-    int chon2;
-    cout << ">>"; cin >> chon2;
+    CanLe();
+    int chon2 = menu2(m2);
     switch (chon2)
     {
     case 1:
@@ -231,19 +250,21 @@ void ThemNguoiDung(vector<Customer>& CTM,int& SoKhach){
 
 
 void XoaNguoiDung(vector<Customer>& CTM,int& SoKhach){
+    system("cls");
     Display(CTM,SoKhach);
     string ma;
+    vector<string> m2 = {"Nhap lai", "Tro Ve"};
     SetColor(0,3);
-    cout << "Nhap Tai Khoan Gmail Ban Muon Xoa"; cin >> ma;
+    CanLe();
+    cout << "Nhap Tai Khoan Gmail Ban Muon Xoa: "; cin >> ma;
     int k = CheckGmail(CTM,ma);
     if(k == -1){
         SetColor(0,4);
+        CanLe();
         cout << "Khong Co Tai Khoan Nao Trung Khop" << endl;
         int chon;
         SetColor(0,15);
-        cout << "1.Nhap Lai" << endl;
-        cout << "2.Tro ve" << endl;
-        cout << ">>"; cin >> chon;
+        chon = menu2(m2);
         switch (chon)
         {
         case 1:
@@ -260,11 +281,10 @@ void XoaNguoiDung(vector<Customer>& CTM,int& SoKhach){
         SoKhach--;
         int chon2;
         SetColor(0,14);
+        CanLe();
         cout << "Xoa Thanh Cong" << endl;
         SetColor(0,15);
-        cout << "1.Xoa Nguoi Dung" << endl;
-        cout << "2.Tro ve" << endl;
-        cout << ">>"; cin >> chon2;
+        chon2 = menu2(m2);
         switch (chon2)
         {
         case 1:
@@ -277,21 +297,23 @@ void XoaNguoiDung(vector<Customer>& CTM,int& SoKhach){
     }
 }
 void CapNhatNguoiDung(vector<Customer>& CTM,int& SoKhach){
+    system("cls");
     Display(CTM,SoKhach);
+    vector<string> m2 = {"Nhap lai", "Tro Ve"};
     string ma;
     SetColor(0,3);
+    CanLe();
     cout << "Nhap Tai Khoan Gmail Ban Muon Sua Doi"; 
     SetColor(0,15);
     cin >> ma;
     int k = CheckGmail(CTM,ma);
     if(k == -1){
         SetColor(0,4);
+        CanLe();
         cout << "Khong Co Tai Khoan Nao Trung Khop" << endl;
         int chon;
         SetColor(0,15);
-        cout << "1.Nhap Lai" << endl;
-        cout << "2.Tro ve" << endl;
-        cout << ">>"; cin >> chon;
+        chon = menu2(m2);
         switch (chon)
         {
         case 1:
@@ -307,6 +329,16 @@ void CapNhatNguoiDung(vector<Customer>& CTM,int& SoKhach){
     else{
         string gmail, mk, hoten, loaikhachhang;
         int sodu;
+        CanLe();
+        cout << "Nhap Gmail Moi: "; cin >> gmail;
+        CanLe();
+        cout << "Nhap Mat Khau Moi: "; cin >> mk;
+        CanLe();
+        cout << "Nhap Loai Khach Hang: "; cin >> loaikhachhang;
+        CanLe();
+        cout << "Nhap Ho Ten: "; cin >> hoten;
+        CanLe();
+        cout << "Nhap So Du Moi: "; cin >> sodu;
         CTM[k].setGmail(gmail);
         CTM[k].setMatKhau(mk);
         CTM[k].setSoDu(sodu);
@@ -316,11 +348,10 @@ void CapNhatNguoiDung(vector<Customer>& CTM,int& SoKhach){
         SoKhach--;
         int chon2;
         SetColor(0,14);
+        CanLe();
         cout << "Sua Doi Thong Tin Nguoi Dung Thanh Cong" << endl;
         SetColor(0,15);
-        cout << "1.Xoa Nguoi Dung" << endl;
-        cout << "2.Tro ve" << endl;
-        cout << ">>"; cin >> chon2;
+        chon2 = menu2(m2);
         switch (chon2)
         {
         case 1:
@@ -333,21 +364,23 @@ void CapNhatNguoiDung(vector<Customer>& CTM,int& SoKhach){
     }
 }
 void NapTienNguoiDung(vector<Customer>& CTM,int& SoKhach){
+    system("cls");
     Display(CTM,SoKhach);
     string ma;
+    vector<string> m2 = {"Nhap lai", "Tro Ve"};
     SetColor(0,3);
+    CanLe();
     cout << "Nhap Tai Khoan Gmail Ban Muon Nap Tien"; 
     SetColor(0,15);
     cin >> ma;
     int k = CheckGmail(CTM,ma);
     if(k == -1){
         SetColor(0,4);
+        CanLe();
         cout << "Khong Co Tai Khoan Nao Trung Khop" << endl;
         int chon;
         SetColor(0,15);
-        cout << "1.Nhap Lai" << endl;
-        cout << "2.Tro ve" << endl;
-        cout << ">>"; cin >> chon;
+        chon = menu2(m2);
         switch (chon)
         {
         case 1:
@@ -364,9 +397,7 @@ void NapTienNguoiDung(vector<Customer>& CTM,int& SoKhach){
         CTM[k].NapTien();
         int chon2;
         SetColor(0,15);
-        cout << "1.Nap Tien Nguoi Dung" << endl;
-        cout << "2.Tro ve" << endl;
-        cout << ">>"; cin >> chon2;
+        chon2 = menu2(m2);
         switch (chon2)
         {
         case 1:
@@ -382,8 +413,10 @@ void TimKiemNguoiDung(vector<Customer>& CTM,int& SoKhach){
     system("cls");
     Display(CTM,SoKhach);
     string s;
+    vector<string> m2 = {"Tim Kiem Nguoi Dung", "Tro Ve"};
     SetColor(0,3);
-    cout << "   Nhap Ten Nguoi Dung Ban Muon Tim: "; 
+    CanLe();
+    cout << "Nhap Ten Nguoi Dung Ban Muon Tim: "; 
     SetColor(0,15);
      cin >> s;
     cout << endl;
@@ -400,14 +433,24 @@ void TimKiemNguoiDung(vector<Customer>& CTM,int& SoKhach){
     if(k==0){
         system("cls");
         SetColor(0,4);
+        CanLe();
+        int chon1;
         cout << "Khong Tim Thay" << endl;
+        chon1 = menu2(m2);
+        switch (chon1)
+        {
+        case 1:
+            TimKiemNguoiDung(CTM, SoKhach);
+            break;
+        default:
+            Menu_Khach(CTM, SoKhach);
+            break;
+        }
     }
         int chon2;
         SetColor(0,15);
         CanLe();
-        cout << "\n\n1.Tim Kiem Nguoi Dung" << endl;
-        cout << "2.Tro ve" << endl;
-        cout << ">>"; cin >> chon2;
+        chon2 = menu2(m2);
         switch (chon2)
         {
         case 1:
@@ -422,7 +465,7 @@ void TimKiemNguoiDung(vector<Customer>& CTM,int& SoKhach){
 
 void Menu_Khach(vector<Customer>& CTM,int& SoKhach){
     system("cls");
-
+    vector<string> m2 = {"Tim Kiem Nguoi Dung", "Tro Ve"};
     cout << endl;
     vector<string> m =
      {"1.Xem Danh Sach Nguoi Dung",
@@ -442,9 +485,7 @@ void Menu_Khach(vector<Customer>& CTM,int& SoKhach){
         Display(CTM,SoKhach);
         int chon3;
         SetColor(0,15);
-        cout << "\n\n1.Tim Kiem Nguoi Dung" << endl;
-        cout << "2.Tro Ve" << endl;
-        cout << ">>"; cin >> chon3;
+        chon3 = menu2(m2);
         switch (chon3)
         {
         case 1:

@@ -65,41 +65,41 @@ void QuanLyPhim::Update(string m)
             system("cls");
             (this->p + i)->Display2();
             SetColor(0,3);
+            CanLe();
             cout << "Nhap Ma Phim Moi: ";
             fflush(stdin);
             SetColor(0,7);
             getline(cin, a);
-             SetColor(0,3);
-            cout << "\nNhap Ten Phim Moi: ";
+            CanLe();
+            cout << "Nhap Ten Phim Moi: ";
             fflush(stdin);
             SetColor(0,7);
             getline(cin, b);
-             SetColor(0,3);
-            cout << "\nNhap The Loai: ";
+            CanLe();
+            cout << "Nhap The Loai: ";
             fflush(stdin);
             SetColor(0,7);
             getline(cin, c);
-             SetColor(0,3);
-            cout << "\nNhap Thoi Luong: ";
+            CanLe();
+            cout << "Nhap Thoi Luong: ";
             fflush(stdin);
             SetColor(0,7);
             getline(cin, c);
-             SetColor(0,3);
-            cout << "\nNhap Dao Dien: ";
+            CanLe();
+            cout << "Nhap Dao Dien: ";
             fflush(stdin);
             SetColor(0,15);
             getline(cin, d);
-             SetColor(0,3);
-            cout << "\nNhap Dien Vien: ";
+            CanLe();
+            cout << "Nhap Dien Vien: ";
             fflush(stdin);
             SetColor(0,7);
             getline(cin, e);
-             SetColor(0,3);
-            cout << "\nNhap Nam Cong Chieu: ";
+            CanLe();
+            cout << "Nhap Nam Cong Chieu: ";
             fflush(stdin);
             SetColor(0,7);
             getline(cin, h);
-             SetColor(0,3);
             cout << "Nhap Quoc Gia: ";
             fflush(stdin);
             SetColor(0,7);
@@ -114,9 +114,12 @@ void QuanLyPhim::Update(string m)
             (this->p + i)->setNamCongChieu(h);
         }
     }
-    else 
-    SetColor(0,4);
-    cout << "Khong Tim Thay Ma Phim Can Sua!";
+    else {
+        SetColor(0,4);
+        CanLe();
+        cout << "Khong Tim Thay Ma Phim Can Sua!";
+        SetColor(0,7);
+    }
     cout << endl;
 }
 
@@ -169,7 +172,11 @@ void QuanLyPhim::XemDSPhimCuaTheLoai(){
         GoTo(5,3);
         cout << " Nhung Phim The Loai " << m;
         GoTo(5,5);
-        TieuDeCot();   
+        TieuDeCot();
+        CanLe();
+        int x1=whereX();
+        int y1=whereY();
+        cout << endl;
         for (int i = 0; i < this->n; i++)
         {
             if((this->p+i)->getTheLoai() == m){
@@ -177,6 +184,9 @@ void QuanLyPhim::XemDSPhimCuaTheLoai(){
                 (this->p + i)->Display();
             }
         }
+        int y=whereY();
+        box(x1,y1,145,y-5,1,0);
+        GoTo(x1,y+1); 
     }
 }
 
@@ -205,6 +215,10 @@ void QuanLyPhim::TimKiemPhim(){
         system("cls");
         GoTo(5,3);
         TieuDeCot();
+        CanLe();
+        int x1=whereX();
+        int y1=whereY();
+        cout << endl;
         for (int i = 0; i < this->n; i++)
         {
             if(strstr((this->p+i)->getTenPhim().c_str(),m.c_str())){
@@ -212,6 +226,9 @@ void QuanLyPhim::TimKiemPhim(){
                 (this->p + i)->Display();
             }
         }
+        int y=whereY();
+        box(x1,y1,145,y-5,1,0);
+        GoTo(x1,y+1); 
     }
 }
 
@@ -243,12 +260,12 @@ void QuanLyPhim::Menu(){
             switch (chon2)
             {
             case 1:
-            SetColor(0,1);
+                SetColor(0,1);
                 XemThongTinPhim();
                 break;
             case 2:
-                system("cls");
                 this->Menu();
+                break;
             default:
                 system("cls");
                 break;
@@ -278,14 +295,15 @@ void QuanLyPhim::ThemPhim(){
     this->Show();
     SetColor(0,3);
     CanLe();
-    cout << "Them Mot Phim: " << endl;
+    cout << "Them Mot Phim: \n" << endl;
     Film temp;
     cin >> temp;
     this->Add(temp); 
     SetColor(0,14);  
     CanLe(); 
     cout << "Them Thanh Cong" << endl;
-    int chon=menu(m);
+    UpdateFile_Phim(*this);
+    int chon=menu2(m);
     switch (chon)
     {
     case 1:
@@ -394,7 +412,7 @@ void QuanLyPhim::XemThongTinPhim(){
     string ma;
     SetColor(0,3);
     CanLe();
-    cout << "\nNhap Ma Phim Ban Muon Xem: ";
+    cout << "Nhap Ma Phim Ban Muon Xem: ";
     cin >> ma;
     int index = CheckMS(ma);
     if(index == -1){

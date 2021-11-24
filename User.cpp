@@ -316,8 +316,9 @@ void DangNhap(){
     }
     if(index == -1){
         system("cls");
-        GoTo(80,9);
+        GoTo(80,3);
         cout << "Tai Khoan Hoac Mat Khau Khong Dung!";
+        getch();
         DangNhap();
     }
     else{
