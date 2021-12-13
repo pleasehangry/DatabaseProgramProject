@@ -5,7 +5,7 @@
 using namespace std;
 
 int x = 70;
-int y = 5;
+int y = 13;
 int h = 2;
 int w = 40;
 int b_color_sang = 75;

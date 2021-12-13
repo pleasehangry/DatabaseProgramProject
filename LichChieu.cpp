@@ -55,6 +55,14 @@ LichChieu::~LichChieu()
 {
 }
 
+string LichChieu::Xuat(){
+    string l;
+    if(this->getGio() == "9:00 PM") l = "xuat3";
+    else if(this->getGio() == "5:00 PM") l = "xuat1";
+    else if(this->getGio() == "7:00 PM") l = "xuat2";
+    return l;
+}
+
 
 istream& operator>>(istream& i, LichChieu& e){
     system("cls");

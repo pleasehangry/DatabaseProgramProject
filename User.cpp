@@ -82,7 +82,7 @@ void DatVe(int index){
     int indexmave = QLV.GetMaVe(maPhim, loaikhachhang);
     QLV[indexmave].ThemSoVeDaBan(SoVe);
     UpdateFile_Ve(QLV);
-    QLPC[h].DisplayTable();
+    QLPC[h].DisplayTable(maXuatChieu);
     vector<int> A;
     int ghe;
     for(int i = 0; i < SoVe; i++){
@@ -90,7 +90,7 @@ void DatVe(int index){
         cout << "Nhap Ghe Ma Ban Muon Dat: ";
         cin >> ghe;
         A.push_back(ghe);
-        QLPC[h].GhiFileDatGhe(ghe);
+        QLPC[h].GhiFileDatGhe(ghe,maXuatChieu);
     }
     // QLPC[h].DatGhe(SoVe);
     
@@ -125,7 +125,9 @@ void DatVe(int index){
         DatVe(index);
         break;
     case 2:
+        system("cls");
         User(index);
+        break;
     default:
         break;
     }

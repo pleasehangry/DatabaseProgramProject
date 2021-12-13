@@ -87,9 +87,9 @@ void PhongChieu::Display(){
     cout << setw(20) << left << this->MaBaoVe<<char(179)<< endl;
 }
 
-void PhongChieu::DocFileDatGhe(vector<int>& A){
+void PhongChieu::DocFileDatGhe(vector<int>& A,string xuatchieu){
     ifstream ip2;
-    ip2.open(this->getMaPhongChieu() + ".txt", ios::in);
+    ip2.open("./LichChieu/" + xuatchieu + "/" + this->getMaPhongChieu() + ".txt", ios::in);
     int check;
     while(ip2.peek()!= EOF){
         ip2 >> check;
@@ -97,8 +97,7 @@ void PhongChieu::DocFileDatGhe(vector<int>& A){
     }
     ip2.close();
 }
-
-void PhongChieu::DatGhe(int n){
+void PhongChieu::DatGhe(int n,string xuatchieu){
     for(int i = 0; i < n; i++){
         CanLe();
         cout << "Nhap Ghe Ma Ban Muon Dat: ";
@@ -108,12 +107,12 @@ void PhongChieu::DatGhe(int n){
             cout << "Vui Long Nhap Lai: ";
             cin >> ghe;
         }
-        this->GhiFileDatGhe(ghe);
+        this->GhiFileDatGhe(ghe,xuatchieu);
     }
 }
-void PhongChieu::GhiFileDatGhe(int ghe){
+void PhongChieu::GhiFileDatGhe(int ghe,string xuatchieu){
     fstream ip1;
-    ip1.open(this->getMaPhongChieu() + ".txt", ios::app);
+    ip1.open("./LichChieu/" + xuatchieu + "/" + this->getMaPhongChieu() + ".txt", ios::app);
     if(ip1.is_open()){
         ip1.seekp(0,ios::end);
         ip1 << endl;
@@ -133,9 +132,9 @@ bool PhongChieu::isReserved(vector<int>& A, int k){
     return false;
 }
 
-void PhongChieu::DisplayTable(){
+void PhongChieu::DisplayTable(string xuatchieu){
     vector<int> A;
-    DocFileDatGhe(A);
+    DocFileDatGhe(A,xuatchieu);
     int Ghe[1000];
     for (int i = 1; i <= this->SoCho; i++)
     {   

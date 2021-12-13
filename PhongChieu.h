@@ -40,12 +40,12 @@ public:
 
     bool isReserved(vector<int>&, int);
 
-    void DatGhe(int);
+    void DatGhe(int,string);
 
 
-    void DocFileDatGhe(vector<int>&);
-    void GhiFileDatGhe(int);
-    void DisplayTable();
+    void DocFileDatGhe(vector<int>&,string);
+    void GhiFileDatGhe(int,string);
+    void DisplayTable(string);
 
     void Display2();
     ~PhongChieu();

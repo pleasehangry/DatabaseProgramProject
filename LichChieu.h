@@ -23,7 +23,7 @@ public:
     void setNgay(string);
     void setGio(string);
     void setPhongChieu(string);
-
+    string Xuat();
     string getMaLichChieu();
     string getTenPhim();
     string getNgay();

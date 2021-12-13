@@ -148,6 +148,7 @@ void QuanLyLichChieu::setLichChieu(){
             SetColor(0,4);
             CanLe();
             cout << "Da Nhap Sai Ma Phong, Vui Long Nhap Lai: ";
+            SetColor(0,15);
             cin >> phongchieu;
             h = QLPC.CheckMS(phongchieu);
         }

@@ -418,9 +418,15 @@ void TimKiemNguoiDung(vector<Customer>& CTM,int& SoKhach){
     CanLe();
     cout << "Nhap Ten Nguoi Dung Ban Muon Tim: "; 
     SetColor(0,15);
-     cin >> s;
+    fflush(stdin);
+    getline(cin,s);
     cout << endl;
     int k = 0;
+    CanLe();
+    TieuDeCot();
+    int x1=whereX();
+    int y1=whereY();
+    cout << endl;
     for (int i = 0; i < CTM.size(); i++)
     {
         if(strstr(CTM[i].HoTen.c_str(),s.c_str())){
@@ -429,7 +435,7 @@ void TimKiemNguoiDung(vector<Customer>& CTM,int& SoKhach){
             CTM[i].Show();
             k++;
         }
-    }
+    } 
     if(k==0){
         system("cls");
         SetColor(0,4);
