@@ -56,43 +56,61 @@ void QuanLyNhanVien::Update(string m)
     if (i >= 0)
     {
         if (m == (this->p + i)->getMaNV())
-        {
+        {   system("cls");
             string HoTen, NgaySinh, QueQuan, SoDienThoai, SoCMT, ChucVu, PhanQuyen, TaiKhoan, MatKhau;
             GoTo(5,3);
+            SetColor(0,7);
             cout << "Nhap Ten Moi: ";
             fflush(stdin);
+            SetColor(0,2);
             getline(cin, HoTen);
             CanLe();
+            SetColor(0,7);
             cout << "Nhap Ngay Sinh: ";
             fflush(stdin);
+            SetColor(0,2);
             getline(cin, NgaySinh);
             CanLe();
+            SetColor(0,7);
             cout << "Nhap Que Quan: ";
             fflush(stdin);
+            SetColor(0,2);
             getline(cin, QueQuan);
             CanLe();
+            SetColor(0,7);
             cout << "Nhap SDT: ";
             fflush(stdin);
+            SetColor(0,2);
             getline(cin, SoDienThoai);
             CanLe();
+            SetColor(0,7);
             cout << "Nhap CMND :";
             fflush(stdin);
+            SetColor(0,2);
             getline(cin, SoCMT);
             CanLe();
+            SetColor(0,7);
             cout << "Nhap Chuc Vu :";
             fflush(stdin);
+            SetColor(0,2);
             getline(cin, ChucVu);
             CanLe();
+            SetColor(0,7);
             cout << "Nhap Phan Quyen: ";
             fflush(stdin);
+            SetColor(0,2);
             getline(cin, PhanQuyen);
             CanLe();
+            SetColor(0,7);
             cout << "Nhap Tai Khoan :";
             fflush(stdin);
+            SetColor(0,2);
             getline(cin, TaiKhoan);
             CanLe();
+            SetColor(0,7);
             cout << "Nhap Mat Khau ";
             fflush(stdin);
+            SetColor(0,2);
             getline(cin, MatKhau);
             (this->p + i)->setHoTen(HoTen);
             (this->p + i)->setNgaySinh(NgaySinh);
@@ -322,9 +340,10 @@ void QuanLyNhanVien::XemThongTinNhanVien()
         cout << "Khong Co Ma Nhan Vien Nao Trung Khop" << endl;
         int chon2;
         SetColor(0, 15);
+        cout<<endl;
         chon2 = menu2(m2);
         if (chon2 == 1)
-        {
+        {   CanLe();
             SetColor(0, 2);
             this->XemThongTinNhanVien();
         }

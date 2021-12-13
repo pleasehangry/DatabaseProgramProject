@@ -48,7 +48,8 @@ void DangNhap_Admin( QuanLyPhim& QLP, QuanLyNhanVien& QLNV,vector<Customer>& CTM
 void Admin( QuanLyPhim& QLP, QuanLyNhanVien& QLNV,vector<Customer>& CTM, QLPhongChieu& QLPC, QuanLyLichChieu& QLLC, QuanLyVe& QLV, int& SoKhach){
     DocFile(QLNV, QLP, QLLC, QLPC, QLV, CTM, SoKhach);
     system("cls");
-    CanLe(80,whereY()+1);
+    CanLe(78,whereY()+1);
+    SetColor(0,6);
     cout << "UNG DUNG QUAN LY RAP PHIM\n\n\n";
      vector<string> m={
         "1.Quan Ly Phim" ,

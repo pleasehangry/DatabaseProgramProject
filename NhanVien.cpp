@@ -101,32 +101,22 @@ void NhanVien::Display(){
     cout << setw(30-1) << left << this->HoTen <<char(179);
     cout << setw(15-1) << left << this->SoDienThoai <<char(179);
     cout << setw(15-1) << left << this->SoCMT <<char(179);
-    cout << setw(35-1) << left << this->ChucVu<< endl;
+    cout << setw(35-1) << left << this->ChucVu <<char(179)<< endl;
 }
 
 void NhanVien::Display2(){
     SetColor(0,3);
-    CanLe();
     cout << "Ma Nhan Vien: "<< this->MaNhanVien << endl;
-    CanLe();
     cout << "Ho Ten: " << this->HoTen << endl;
-    CanLe();
     cout << "Ngay Sinh: " << this->NgaySinh << endl;
-    CanLe();
     cout << "Que Quan: " << this->QueQuan << endl;
-    CanLe();
     cout << "SDT: " << this->SoDienThoai << endl;
-    CanLe();
     cout << "CMND: " << this->SoCMT << endl;
-    CanLe();
     cout << "Chuc Vu: " << this->ChucVu << endl;
-    CanLe();
     cout << "Phan Quyen: " << this->PhanQuyen << endl;
-    CanLe();
     cout << "Tai Khoan: " << this->TaiKhoan << endl;
-    CanLe();
     cout << "Mat Khau: " << this->MatKhau << endl;
-    cout << "\n\n       Nhan Phim Bat Ki De Tro Ve";
+    cout << "\n\n Nhan Phim Bat Ki De Tro Ve";
     getch();
 }
 
@@ -134,62 +124,48 @@ void NhanVien::Display2(){
 // Da Nang Hoa
 
 istream& operator>>(istream& i, NhanVien& e){
+    system("cls");
     SetColor(0,3);
-    CanLe();
-    cout << "Nhap Ma Nhan Vien: ";
-    fflush(stdin);
-    SetColor(0,7);
-    getline(i,e.MaNhanVien);
-    SetColor(0,3);
-    CanLe();
-    cout << "Nhap Ten: ";
+    cout << "Nhap Ten Moi: ";
     fflush(stdin);
     SetColor(0,7);
     getline(i,e.HoTen);
     SetColor(0,3);
-    CanLe();
     cout << "Nhap Ngay Sinh: ";
     fflush(stdin);
     SetColor(0,7);
     getline(i,e.NgaySinh);
     SetColor(0,3);
-    CanLe();
     cout << "Nhap Que Quan: ";
     fflush(stdin);
     SetColor(0,7);
     getline(i,e.QueQuan);
     SetColor(0,3);
-    CanLe();
     cout << "Nhap SDT: ";
     fflush(stdin);
     SetColor(0,7);
     getline(i,e.SoDienThoai);
     SetColor(0,3);
-    CanLe();
     cout << "Nhap CMND :";
     fflush(stdin);
     SetColor(0,7);
     getline(i,e.SoCMT);
     SetColor(0,3);
-    CanLe();
     cout << "Nhap Chuc Vu :";
     fflush(stdin);
     SetColor(0,7);
     getline(i,e.ChucVu);
     SetColor(0,3);
-    CanLe();
     cout << "Nhap Phan Quyen: ";
     fflush(stdin);
     SetColor(0,7);
     getline(i,e.PhanQuyen);
     SetColor(0,3);
-    CanLe();
     cout << "Nhap Tai Khoan :";
     fflush(stdin);
     SetColor(0,7);
     getline(i,e.TaiKhoan);
     SetColor(0,3);
-    CanLe();
     cout << "Nhap Mat Khau ";
     fflush(stdin);
     SetColor(0,7);
