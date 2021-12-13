@@ -58,7 +58,6 @@ void QuanLyLichChieu::Update(string m)
         if (m == (this->p + i)->getMaLichChieu())
         {
             string a,b,c,d,e;
-            system("cls");
             GoTo(5,3);
             (this->p + i)->Display();
             SetColor(0,3);

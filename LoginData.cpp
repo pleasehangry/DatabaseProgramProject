@@ -336,7 +336,9 @@ void CapNhatNguoiDung(vector<Customer>& CTM,int& SoKhach){
         CanLe();
         cout << "Nhap Loai Khach Hang: "; cin >> loaikhachhang;
         CanLe();
-        cout << "Nhap Ho Ten: "; cin >> hoten;
+        cout << "Nhap Ho Ten: ";
+        fflush(stdin);
+        getline(cin,hoten);
         CanLe();
         cout << "Nhap So Du Moi: "; cin >> sodu;
         CTM[k].setGmail(gmail);

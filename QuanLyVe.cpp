@@ -60,21 +60,28 @@ void QuanLyVe::Update(string m)
             string a,b,c;
             int d,e,f;
             system("cls");
+            GoTo(5,3);
             (this->p + i)->Display();
             SetColor(0,3);
+            CanLe();
             cout << "Nhap Ma Ve Moi: ";
             fflush(stdin);
             getline(cin, a);
+            CanLe();
             cout << "Nhap Ma Phim: ";
             fflush(stdin);
             getline(cin, b);
+            CanLe();
             cout << "Nhap Loai Khach Hang: ";
             fflush(stdin);
             getline(cin, c);
+            CanLe();
             cout << "Nhap Gia Ve: ";
             cin >> d;
+            CanLe();
             cout << "Nhap So Luong: ";
             cin >> e;
+            CanLe();
             cout << "Nhap So Ve Da Ban: ";
             cin >> f;
             (this->p + i)->setMaVe(a);
@@ -95,29 +102,39 @@ void QuanLyVe::Update(string m)
 
 
 void QuanLyVe::setLoaiVe(){
+    system("cls");
     QuanLyPhim QLP;
     DocFile_Phim(QLP);
-    string maVe, maPhim, loaiKhachHang, soLuongVe;
+    string maVe, maPhim, loaiKhachHang;
+    int soLuongVe;
     Ve temp;
     this->Show();
     SetColor(0,3);
+    CanLe();
     cout << "Nhap Ma Ve: ";
     cin >> maVe;
     temp.setMaVe(maVe);
+    system("cls");
     QLP.Show();
+    CanLe();
     cout << "Chon Ma Phim Ban Muon Tao Ve: ";
     cin >> maPhim;
     while(QLP.CheckMS(maPhim)<0){
         SetColor(0,4);
+        CanLe();
         cout << "Ban Da Nhap Sai Ma Phim, Vui Long Nhap Lai: ";
         cin >> maPhim;
     }
     temp.setMaPhim(maPhim);
     SetColor(0,3);
+    CanLe();
     cout << "Nhap Loai Khach Hang: ";
     cin >> loaiKhachHang;
+    temp.setLoaiKhachHang(loaiKhachHang);
+    CanLe();
     cout << "Nhap So Luong Ve: ";
     cin >> soLuongVe;
+    temp.setSoLuong(soLuongVe);
     this->Add(temp);
     SetColor(0,14);
 }
@@ -186,18 +203,16 @@ void QuanLyVe::Menu(){
 void QuanLyVe::ThemVe(){
     system("cls");
     this->Show();
+    vector<string> m = {"Them Ve", "Tro Ve"};
     SetColor(0,3);
+    CanLe();
     cout << "Them Mot Ve: " << endl;
-    Ve temp;
     setLoaiVe();
     SetColor(0,14);
+    CanLe();
     cout << "Them Thanh Cong" << endl;
-    int chon;
     SetColor(0,15);
-    cout << "1.Them Ve" << endl;
-    cout << "2.Tro Ve" << endl;
-    cout << "Nhap Lua Chon" << endl;
-    cout<<(char)16<<(char)16;cin >> chon;
+    int chon = menu2(m);
     switch (chon)
     {
     case 1:

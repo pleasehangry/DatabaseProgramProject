@@ -66,26 +66,31 @@ string LichChieu::Xuat(){
 
 istream& operator>>(istream& i, LichChieu& e){
     system("cls");
+    CanLe();
     SetColor(0,3);
     cout << "Nhap Ma Lich Chieu: ";
     fflush(stdin);
      SetColor(0,15);
     getline(i,e.MaLichChieu);
      SetColor(0,15);
+    CanLe();
     cout << "Nhap Ten Phim: ";
     fflush(stdin);
      SetColor(0,15);
     getline(i,e.TenPhim);
      SetColor(0,15);
+    CanLe();
     cout << "Nhap Que Quan: ";
     fflush(stdin);
      SetColor(0,15);
     getline(i,e.Ngay);
      SetColor(0,15);
+    CanLe();
     cout << "Nhap Ngay: ";
     fflush(stdin);
      SetColor(0,15);
     getline(i,e.Gio);
+    CanLe();
     cout << "Nhap Gio :";
     fflush(stdin);
      SetColor(0,15);

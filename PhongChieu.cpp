@@ -69,11 +69,17 @@ PhongChieu::PhongChieu(const PhongChieu& p){
 
 void PhongChieu::Display2(){
     cout << "Ma Phong Chieu: " << this->MaPhongChieu << endl;
+    CanLe();
     cout << "So Ghe: " << this->SoCho << endl;
+    CanLe();
     cout << "Loai May Chieu: " << this->MayChieu << endl;
+    CanLe();
     cout << "Loai Am Thanh: " << this->AmThanh << endl;
+    CanLe();
     cout << "Dien Tich: " << this->DienTich << "met vuong" << endl;
+    CanLe();
     cout << "Tinh Trang: "  << this->TinhTrang << endl;
+    CanLe();
     cout << "Ma Bao Ve: " << this->MaBaoVe << endl;
 }
 
@@ -104,6 +110,7 @@ void PhongChieu::DatGhe(int n,string xuatchieu){
         int ghe;
         cin >> ghe;
         while(i < 0 || i > this->SoCho){
+            CanLe();
             cout << "Vui Long Nhap Lai: ";
             cin >> ghe;
         }

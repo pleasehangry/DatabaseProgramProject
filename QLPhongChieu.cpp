@@ -220,7 +220,7 @@ void QLPhongChieu::CapNhatPhongChieu(){
         this->Update(ma);
         SetColor(0,14);
         CanLe();   
-        cout << "Cap Nhat PhongChieu Thanh Cong!!\n" << endl;
+        cout << "Cap Nhat Phong Chieu Thanh Cong!!\n" << endl;
         int chon3;
         SetColor(0,15);
         chon3 = menu2(m2);

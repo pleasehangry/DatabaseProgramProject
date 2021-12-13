@@ -211,7 +211,7 @@ void User(int index)
     GoTo(70,2);
     cout<<"Dang Nhap Thanh Cong!"<<endl;
     SetColor(0,7);
-    GoTo(70,3);
+    GoTo(70,10);
     cout<<"Xin Chao ";
     SetColor(0,9);
     cout << CTM[index].HoTen;
@@ -374,7 +374,9 @@ void DangKy(){
     }
     system("cls");
     GoTo(80,7);
-    cout << "Nhap Ho Ten Cua Ban: ";cin >> ten;
+    cout << "Nhap Ho Ten Cua Ban: ";
+    fflush(stdin);
+    getline(cin,ten);
     
     Customer temp(gmail,mk,ten);
     CTM.push_back(temp);
