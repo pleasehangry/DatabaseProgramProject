@@ -7,7 +7,7 @@
 using namespace std;
 int main()
 {
-  
+   system("Title Quan Ly Rap Chieu Phim");
    QuanLyPhim QLP;
    QuanLyNhanVien QLNV;
    vector<Customer> CTM;
