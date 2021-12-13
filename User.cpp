@@ -208,10 +208,10 @@ void User(int index)
     vector<string> mm4 = {"Nap Tien","Tro Ve"};
     system("cls");
     SetColor(0,2);
-    GoTo(70,2);
+    GoTo(80,10);
     cout<<"Dang Nhap Thanh Cong!"<<endl;
     SetColor(0,7);
-    GoTo(70,10);
+    GoTo(80,11);
     cout<<"Xin Chao ";
     SetColor(0,9);
     cout << CTM[index].HoTen;
