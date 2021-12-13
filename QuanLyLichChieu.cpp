@@ -59,6 +59,7 @@ void QuanLyLichChieu::Update(string m)
         {
             string a,b,c,d,e;
             system("cls");
+            GoTo(5,3);
             (this->p + i)->Display();
             SetColor(0,3);
             CanLe();
@@ -159,6 +160,7 @@ void QuanLyLichChieu::setLichChieu(){
         cout << endl;
     }
     this->Add(temp);
+    getch();
 }
 
 void QuanLyLichChieu::XemLichChieuCuaPhim(string m){
@@ -211,6 +213,7 @@ void QuanLyLichChieu::Menu(){
         break;
     case 2:
         this->setLichChieu();
+        this->Menu();
         break;
     case 3:
         this->XoaLichChieu();
@@ -294,6 +297,7 @@ void QuanLyLichChieu::XoaLichChieu(){
     else {
         this->Delete(ma);
         SetColor(0,14);
+        CanLe();
         cout << "Xoa Lich Chieu Thanh Cong!!" << endl;
         int chon3;
         SetColor(0,15);

@@ -53,7 +53,7 @@ int QuanLyVe::CheckMS(string s)
 
 void QuanLyVe::Update(string m)
 {
-    int i = CheckMS("m");
+    int i = CheckMS(m);
     if(i >= 0){
         if (m == (this->p + i)->getMaVe())
         {
@@ -94,9 +94,7 @@ void QuanLyVe::Update(string m)
         }
     }
     else {
-        SetColor(0,4);
-        CanLe();
-        cout << "Khong Tim Thay Ma Phim Can Sua!";
+        return;
     }
     cout << endl;
 }
@@ -138,8 +136,6 @@ void QuanLyVe::setLoaiVe(){
     temp.setSoLuong(soLuongVe);
     this->Add(temp);
     SetColor(0,14);
-    CanLe();
-    cout << "Tao Ve Thanh Cong!" << endl;
 }
 
 int QuanLyVe::GetMaVe(string maPhim, string loaiKhachHang){
@@ -233,6 +229,7 @@ void QuanLyVe::ThemVe(){
 void QuanLyVe::CapNhatVe(){
     system("cls");
     this->Show();
+    vector<string> m2 = {"Nhap Lai","Tro Ve"};
     string ma;
     SetColor(0,3);
     CanLe();
@@ -246,13 +243,7 @@ void QuanLyVe::CapNhatVe(){
         cout << "Khong Co Ma Ve Nao Trung Khop" << endl;
         int chon2;
         SetColor(0,15);
-        CanLe();
-        cout << "1.Nhap Lai" << endl;
-        CanLe();
-        cout << "2.Tro Ve" << endl;
-        CanLe();
-        cout << ">> " << endl;
-        cin >> chon2;
+        chon2 = menu2(m2);
         if(chon2 == 1){
             this->CapNhatVe();
         }
@@ -268,11 +259,7 @@ void QuanLyVe::CapNhatVe(){
         int chon3;
         SetColor(0,15);
         CanLe();
-        cout << "1.Nhap Lai" << endl;
-        CanLe();
-        cout << "2.Tro Ve" << endl;
-        CanLe();
-        cout << ">> " << endl;
+        chon3 = menu2(m2);
         cin >> chon3;
         if(chon3 == 1){
             this->CapNhatVe();

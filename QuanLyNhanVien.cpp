@@ -32,7 +32,7 @@ void QuanLyNhanVien::Show()
         (this->p + i)->Display();
     }
     int y = whereY();
-    box(x1, y1, 111, y - 5, 1, 0);
+    box(x1, y1, 110, y - 5, 1, 0);
     GoTo(x1, y + 1);
 }
 
@@ -57,8 +57,12 @@ void QuanLyNhanVien::Update(string m)
     {
         if (m == (this->p + i)->getMaNV())
         {
+            system("cls");
             string HoTen, NgaySinh, QueQuan, SoDienThoai, SoCMT, ChucVu, PhanQuyen, TaiKhoan, MatKhau;
             GoTo(5,3);
+            (this->p + i)->Display2();
+            cout << endl;
+            CanLe();
             cout << "Nhap Ten Moi: ";
             fflush(stdin);
             getline(cin, HoTen);
@@ -107,8 +111,7 @@ void QuanLyNhanVien::Update(string m)
     }
     else
     {
-        CanLe();
-        cout << "Khong Tim Thay Ma Phim Can Sua!";
+        return;
     }
     cout << endl;
 }

@@ -286,6 +286,7 @@ void User(int index)
                 {
                 case 1: 
                     CTM[index].NapTien();
+                    User(index);
                     break;
                 case 2:
                     User(index);
@@ -407,7 +408,7 @@ void DoiMatKhau(int index){
             cout << "Mat Khau Moi Khong Trung Khop!" << endl;
             getch();
             system("cls");
-            CanLe();
+            GoTo(5,3);
             cout << "Nhap Mat Khau Cu: " << mkc << endl;
             CanLe();
             cout << "Nhap Mat Khau Moi:";cin >> mkm;

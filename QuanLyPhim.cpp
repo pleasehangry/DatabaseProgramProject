@@ -115,10 +115,7 @@ void QuanLyPhim::Update(string m)
         }
     }
     else {
-        SetColor(0,4);
-        CanLe();
-        cout << "Khong Tim Thay Ma Phim Can Sua!";
-        SetColor(0,7);
+        return;
     }
     cout << endl;
 }
@@ -185,7 +182,7 @@ void QuanLyPhim::XemDSPhimCuaTheLoai(){
             }
         }
         int y=whereY();
-        box(x1,y1,145,y-5,1,0);
+        box(x1,y1,145,y-7,1,0);
         GoTo(x1,y+1); 
     }
 }
